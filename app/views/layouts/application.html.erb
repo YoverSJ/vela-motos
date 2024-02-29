@@ -1,15 +1,85 @@
 <!DOCTYPE html>
 <html>
   <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="VelaMotos - Venta de Motos Electricas y Accesorios" />
+    <meta name="keywords" content="motos, venta de motos, accesorios, motos electricas, accesorios para motos" />
+    <meta name="author" content="yoversj" />
+
     <title>VelaMotos</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%# stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    
+    <!--== Favicon ==-->
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
+
+    <!--== Google Fonts ==-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,500&display=swap"
+      rel="stylesheet">
+
+    <!--== Bootstrap CSS ==-->
+    <link href="/assets/bootstrap.min.css" rel="stylesheet" />
+    <!--== Font Awesome Min Icon CSS ==-->
+    <link href="/assets/font-awesome.min.css" rel="stylesheet" />
+    <!--== Pe7 Stroke Icon CSS ==-->
+    <link href="/assets/pe-icon-7-stroke.css" rel="stylesheet" />
+    <!--== Swiper CSS ==-->
+    <link href="/assets/swiper.min.css" rel="stylesheet" />
+    <!--== Fancybox Min CSS ==-->
+    <link href="/assets/fancybox.min.css" rel="stylesheet" />
+    <!--== Aos Min CSS ==-->
+    <link href="/assets/aos.min.css" rel="stylesheet" />
+
+    <!--== Main Style CSS ==-->
+    <link href="/assets/style.css" rel="stylesheet" />
+
+    <!--[if lt IE 9]>
+      <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
   </head>
 
   <body>
+
     <%= yield %>
+
+    <%# javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <!--=======================Javascript============================-->
+    <!--=== jQuery Modernizr Min Js ===-->
+    <script src="/assets/modernizr.js"></script>
+    <!--=== jQuery Min Js ===-->
+    <script src="/assets/jquery-main.js"></script>
+    <!--=== jQuery Migration Min Js ===-->
+    <script src="/assets/jquery-migrate.js"></script>
+    <!--=== jQuery Popper Min Js ===-->
+    <script src="/assets/popper.min.js"></script>
+    <!--=== jQuery Bootstrap Min Js ===-->
+    <script src="/assets/bootstrap.min.js"></script>
+    <!--=== jQuery Ui Min Js ===-->
+    <script src="/assets/jquery-ui.min.js"></script>
+    <!--=== jQuery Swiper Min Js ===-->
+    <script src="/assets/swiper.min.js"></script>
+    <!--=== jQuery Fancybox Min Js ===-->
+    <script src="/assets/fancybox.min.js"></script>
+    <!--=== jQuery Waypoint Js ===-->
+    <script src="/assets/waypoint.js"></script>
+    <!--=== jQuery Parallax Min Js ===-->
+    <script src="/assets/parallax.min.js"></script>
+    <!--=== jQuery Aos Min Js ===-->
+    <script src="/assets/aos.min.js"></script>
+
+    <!--=== jQuery Custom Js ===-->
+    <script src="/assets/custom.js"></script>
+
   </body>
 </html>
