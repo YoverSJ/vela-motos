@@ -8,4 +8,8 @@ class MainController < ApplicationController
 
   end
 
+  def catalog
+
+  end
+
 end
