@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   get "/index", to: "main#index"
   get "/nosotros", to: "main#about_us", as: :about_us
   get "/catalogo", to: "main#catalog", as: :catalog
+  get "/contacto", to: "main#contact", as: :contact
 
 end

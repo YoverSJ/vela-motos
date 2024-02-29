@@ -12,4 +12,8 @@ class MainController < ApplicationController
 
   end
 
+  def contact
+
+  end
+
 end
