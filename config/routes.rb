@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   root "main#index"
 
   get "/index", to: "main#index"
+  get "/nosotros", to: "main#about_us", as: :about_us
 
 end
