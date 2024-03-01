@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   get "/catalogo", to: "main#catalog", as: :catalog
   get "/contacto", to: "main#contact", as: :contact
 
+  resources :productos, controller: :products, as: :products
+
 end

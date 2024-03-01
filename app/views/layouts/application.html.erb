@@ -17,7 +17,7 @@
     <%# stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     
     <!--== Favicon ==-->
-    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon" />
 
     <!--== Google Fonts ==-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -50,7 +50,26 @@
 
   <body>
 
-    <%= yield %>
+    <!--wrapper start-->
+    <div class="wrapper">
+
+      <%= render "main/header" %>
+
+      <main class="main-content">
+
+        <%= yield %>
+
+      </main>
+
+      <%= render "main/footer" %>
+
+      <!--== Scroll Top Button ==-->
+      <div id="scroll-to-top" class="scroll-to-top"><span class="fa fa-angle-up"></span></div>
+
+      <%= render "main/mobile_menu" %>
+
+    </div>
+    <!--wrapper end-->
 
     <%# javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
