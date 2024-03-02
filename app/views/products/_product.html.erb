@@ -1,5 +1,5 @@
 <div class="myaccount-content" id="<%= dom_id product %>">
-  <h3><%= @title %></h3>
+  <h3>Detalles del producto</h3>
   <!--== Start Shopping Checkout Area Wrapper ==-->
   <section class="shopping-checkout-wrap">
     <div class="col-lg-12">
@@ -58,8 +58,12 @@
               </div>
               <div class="col-md-12">
                 <div class="form-group">
-                  <%= label_tag :stock, "Imagen (optional)" %>
-                  <div>Image</div>
+                  <%= label_tag :imagen, "Imagen" %>
+                  <div id="preview-image" class="mb-1 <%= product.imagen.blank? ? "d-none" : "d-block" %>" style="background-image: url(/product_images/<%= product.imagen %>);" onclick="showImage(this)"></div>
+                  <!-- Button to trigger modal -->
+                  <button type="button" id="show-image" class="btn btn-dark <%= product.imagen.blank? ? "d-none" : "d-block" %>" data-bs-toggle="modal" data-bs-target="#myModal" onclick="showImage(this)">
+                    Ver imagen
+                  </button>
                 </div>
               </div>
               <div class="col-md-12">

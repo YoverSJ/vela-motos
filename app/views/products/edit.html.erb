@@ -21,9 +21,12 @@
 
 <!--== Start Contact Area Wrapper ==-->
 <section class="contact-area contact-page-area">
-  <div class="container">
+  <div class="container" style="padding-top: 40px">
 
-    <%= render "form", product: @product %>
+    <div class="myaccount-content">
+      <h3>Editar producto</h3>
+      <%= render "form", product: @product %>
+    </div>
 
     <br>
 
@@ -35,3 +38,5 @@
   </div>
 </section>
 <!--== End Contact Area Wrapper ==-->
+
+<%= render "full_product_image_modal" %>

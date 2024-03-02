@@ -9675,3 +9675,10 @@ table p {
   background-size: contain;
   background-position: center;
 }
+
+/* CSS para centrar la imagen dentro del modal */
+.modal-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

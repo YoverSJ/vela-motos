@@ -21,7 +21,7 @@
 
 <!--== Start Contact Area Wrapper ==-->
 <section class="contact-area contact-page-area">
-  <div class="container">
+  <div class="container" style="padding-top: 40px">
 
     <p style="color: green"><%= notice %></p>
 
@@ -33,9 +33,9 @@
           <table class="table table-bordered">
             <thead class="thead-light">
               <tr>
-                <th>Codigo</th>
                 <th>Nombre</th>
-                <th>Precio</th>
+                <th>Garantía</th>
+                <th>Precio Total</th>
                 <th>Stock</th>
                 <th>Acciones</th>
               </tr>
@@ -43,8 +43,8 @@
             <tbody>
               <% @products.each do |product| %>
                 <tr>
-                  <td><%= product.code %></td>
                   <td><%= product.name %></td>
+                  <td><%= product.warranty %></td>
                   <td><%= product.total_price %></td>
                   <td><%= product.stock %></td>
                   <td>

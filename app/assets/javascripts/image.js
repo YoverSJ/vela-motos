@@ -2,7 +2,7 @@
 const previewImage = () => {
 
     let fileReader = new FileReader();
-    let inputFile = document.getElementById("product_image");
+    let inputFile = document.getElementById("product_file_image");
     let maxImageWidth = 800; // Definir el ancho máximo permitido
     let maxImageHeight = 800; // Definir el alto máximo permitido
 
@@ -45,19 +45,6 @@ const previewImage = () => {
                     }
                 };
 
-                // let pImage = document.getElementById("preview-image");
-                // pImage.classList.remove("d-none");
-                // pImage.style.backgroundImage = `url(${e.target.result})`;
-                // console.log(pImage);
-
-                // // Crear una nueva imagen para obtener sus dimensiones
-                // let img = new Image();
-                // img.src = e.target.result;
-                // img.onload = function() {
-                //     // Actualizar el tamaño del contenedor de acuerdo con las dimensiones de la imagen
-                //     pImage.style.width = img.width + 'px';
-                //     pImage.style.height = img.height + 'px';
-                // };
             }
         } else {
             alert('El archivo seleccionado no es una imagen.');
@@ -72,9 +59,6 @@ const previewImage = () => {
 // Obtener la imagen modal y el elemento modal
 let modal = new bootstrap.Modal(document.getElementById('myModal'));
 let modalImg = document.getElementById("modal-image");
-
-// Obtener la imagen de vista previa
-//let pImage = document.getElementById("preview-image");
 
 // Mostramos la imagen de la vista previa en el modal
 const showImage = () => {
