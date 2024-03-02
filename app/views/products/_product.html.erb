@@ -1,52 +1,78 @@
-<div id="<%= dom_id product %>">
-  <p>
-    <strong>Name:</strong>
-    <%= product.name %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= product.description %>
-  </p>
-
-  <p>
-    <strong>Color:</strong>
-    <%= product.color %>
-  </p>
-
-  <p>
-    <strong>Price:</strong>
-    <%= product.price %>
-  </p>
-
-  <p>
-    <strong>Discount:</strong>
-    <%= product.discount %>
-  </p>
-
-  <p>
-    <strong>Total price:</strong>
-    <%= product.total_price %>
-  </p>
-
-  <p>
-    <strong>Stock:</strong>
-    <%= product.stock %>
-  </p>
-
-  <p>
-    <strong>Code:</strong>
-    <%= product.code %>
-  </p>
-
-  <p>
-    <strong>Imagen:</strong>
-    <%= product.imagen %>
-  </p>
-
-  <p>
-    <strong>Warranty:</strong>
-    <%= product.warranty %>
-  </p>
-
+<div class="myaccount-content" id="<%= dom_id product %>">
+  <h3><%= @title %></h3>
+  <!--== Start Shopping Checkout Area Wrapper ==-->
+  <section class="shopping-checkout-wrap">
+    <div class="col-lg-12">
+      <!--== Start Billing Accordion ==-->
+      <div class="checkout-billing-details-wrap">
+        <div class="billing-form-wrap">
+          <form action="#" method="post">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <%= label_tag :name, "Nombre" %>
+                  <%= text_field_tag :name, product.name, class: "form-control", disabled: true %>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <%= label_tag :warranty, "Garantía" %>
+                  <%= text_field_tag :warranty, product.warranty, class: "form-control", disabled: true %>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <%= label_tag :color, "Color" %>
+                  <%= text_field_tag :color, product.color, class: "form-control", disabled: true %>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <%= label_tag :description, "Descripción (optional)" %>
+                  <%= text_area_tag :description, product.description, class: "form-control", disabled: true %>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <%= label_tag :price, "Precio" %>
+                  <%= text_field_tag :price, product.price, class: "form-control", disabled: true %>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <%= label_tag :discount, "Descuento" %>
+                  <%= number_field_tag :discount, product.discount, class: "form-control", disabled: true %>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <%= label_tag :total_price, "Precio Total" %>
+                  <%= number_field_tag :total_price, product.total_price, class: "form-control", disabled: true %>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <%= label_tag :stock, "Stock" %>
+                  <%= number_field_tag :stock, product.stock, class: "form-control", disabled: true %>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <%= label_tag :stock, "Imagen (optional)" %>
+                  <div>Image</div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <%= button_to "Eliminar", product, method: :delete, class: "btn-theme" %>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!--== End Billing Accordion ==-->
+    </div>
+  </section>
+  <!--== End Shopping Checkout Area Wrapper ==-->
 </div>

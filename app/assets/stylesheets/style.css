@@ -9666,3 +9666,12 @@ table p {
   font-size: 16px;
   margin: 0 2px;
 }
+
+/*  Preview Image  */
+#preview-image {
+  width: 400px;
+  height: 400px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}

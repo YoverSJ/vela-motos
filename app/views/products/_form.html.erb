@@ -1,67 +1,131 @@
-<%= form_with(model: product) do |form| %>
-  <% if product.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+<div class="myaccount-content">
+  <h3><%= @title %></h3>
+  <!--== Start Shopping Checkout Area Wrapper ==-->
+  <section class="shopping-checkout-wrap">
+    <div class="col-lg-12">
+      <!--== Start Billing Accordion ==-->
+      <div class="checkout-billing-details-wrap">
+        <div class="billing-form-wrap">
+          <%= form_with(model: product, class: "mt-1", multipart: true) do |form| %>
 
-      <ul>
-        <% product.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+            <% if product.errors.any? %>
+              <div style="color: red">
+                <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+                <ul>
+                  <% product.errors.each do |error| %>
+                    <li><%= error.full_message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <%= form.label :name do %>
+                    Nombre <abbr class="required" title="required">*</abbr>
+                  <% end %>
+                  <%= form.text_field :name, class: "form-control" %>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <%= form.label :warranty do %>
+                    Garantía <abbr class="required" title="required">*</abbr>
+                  <% end %>
+                  <%= form.text_field :warranty, class: "form-control" %>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <%= form.label :color do %>
+                    Color <abbr class="required" title="required">*</abbr>
+                  <% end %>
+                  <%= form.text_field :color, class: "form-control" %>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <%= form.label :description, "Descripción (optional)" %>
+                  <%= form.text_area :description, class: "form-control" %>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <%= form.label :price do %>
+                    Precio <abbr class="required" title="required">*</abbr>
+                  <% end %>
+                  <%= form.number_field :price, class: "form-control" %>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <%= form.label :discount do %>
+                    Descuento <abbr class="required" title="required">*</abbr>
+                  <% end %>
+                  <%= form.number_field :discount, class: "form-control" %>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <%= form.label :total_price do %>
+                    Precio Total <abbr class="required" title="required">*</abbr>
+                  <% end %>
+                  <%= form.number_field :total_price, class: "form-control" %>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <%= form.label :stock do %>
+                    Stock <abbr class="required" title="required">*</abbr>
+                  <% end %>
+                  <%= form.number_field :stock, class: "form-control" %>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <%= form.label :imagen, "Imagen (optional)" %>
+                  <%= form.file_field :imagen, accept: "image/*", class: "form-control", onchange: "previewImage()" %>
+                  <label><abbr class="required">El archivo debe ser una imagen 800x800</abbr></label>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>Vista previa</label>
+                  <div id="preview-image" class="d-none" onclick="showImage(this)"></div>
+                  <!-- Button to trigger modal -->
+                  <button type="button" id="show-image" class="btn btn-dark d-none" data-bs-toggle="modal" data-bs-target="#myModal" onclick="showImage(this)">
+                    Ver imagen
+                  </button>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <%= form.submit "Guardar", class: "btn-theme" %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <!--== End Billing Accordion ==-->
     </div>
-  <% end %>
+  </section>
+  <!--== End Shopping Checkout Area Wrapper ==-->
+</div>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Tamaño completo</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img class="img-fluid" id="modal-image" src="" alt="full-image">
+      </div>
+    </div>
   </div>
-
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div>
-    <%= form.label :color, style: "display: block" %>
-    <%= form.text_field :color %>
-  </div>
-
-  <div>
-    <%= form.label :price, style: "display: block" %>
-    <%= form.text_field :price %>
-  </div>
-
-  <div>
-    <%= form.label :discount, style: "display: block" %>
-    <%= form.number_field :discount %>
-  </div>
-
-  <div>
-    <%= form.label :total_price, style: "display: block" %>
-    <%= form.text_field :total_price %>
-  </div>
-
-  <div>
-    <%= form.label :stock, style: "display: block" %>
-    <%= form.number_field :stock %>
-  </div>
-
-  <div>
-    <%= form.label :code, style: "display: block" %>
-    <%= form.text_field :code %>
-  </div>
-
-  <div>
-    <%= form.label :imagen, style: "display: block" %>
-    <%= form.text_field :imagen %>
-  </div>
-
-  <div>
-    <%= form.label :warranty, style: "display: block" %>
-    <%= form.text_field :warranty %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
