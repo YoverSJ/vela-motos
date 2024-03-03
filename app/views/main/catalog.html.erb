@@ -49,468 +49,51 @@
             <div class="tab-content" id="nav-tabContent">
               <div class="tab-pane fade show active" id="nav-grid" role="tabpanel" aria-labelledby="nav-grid-tab">
                 <div class="row">
-                  <div class="col-sm-6 col-lg-4">
-                    <!--== Start Product Item ==-->
-                    <div class="product-item">
-                      <div class="inner-content">
-                        <div class="product-thumb">
-                          <a href="single-product.html">
-                            <img src="/assets/velamotos/trimoto.jpeg" width="270" height="274" alt="Image-HasTech">
-                          </a>
-                          <div class="product-flag">
-                            <ul>
-                              <li class="discount">-10%</li>
-                            </ul>
+                  <% @products.each do |product| %>
+                    <div class="col-sm-6 col-lg-4">
+                      <!--== Start Product Item ==-->
+                      <div class="product-item">
+                        <div class="inner-content">
+                          <div class="product-thumb">
+                            <a href="single-product.html">
+                              <img src="<%= product.imagen.blank? ? '/assets/shop/product-single/1.webp' : '/product_images/' + product.imagen %>" width="270" height="274" title="<%= product.name %>" alt="<%= product.imagen %>">
+                            </a>
+                            <div class="product-flag <%= product.discount.blank? || product.discount == 0 ? 'd-none' : 'd-block' %>">
+                              <ul>
+                                <li class="discount">-<%= product.discount %>%</li>
+                              </ul>
+                            </div>
+                            <div class="product-action">
+                              
+                              <%= link_to show_product_path(product), class: "btn-product-quick-view-open", remote: true do %>
+                                <i class="fa fa-arrows"></i>
+                              <% end %>
+
+                            </div>
+                            <a class="banner-link-overlay" href="/catalogo.html"></a>
                           </div>
-                          <div class="product-action">
-                            <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                            <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                            <button type="button" class="btn-product-quick-view-open">
-                              <i class="fa fa-arrows"></i>
-                            </button>
-                            <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
-                          </div>
-                          <a class="banner-link-overlay" href="/catalogo.html"></a>
-                        </div>
-                        <div class="product-info">
-                          <div class="category">
-                            <ul>
-                              <li><a href="/catalogo.html">Men</a></li>
-                              <li class="sep">/</li>
-                              <li><a href="/catalogo.html">Women</a></li>
-                            </ul>
-                          </div>
-                          <h4 class="title"><a href="single-product.html">Leather Mens Slipper</a></h4>
-                          <div class="prices">
-                            <span class="price-old">$300</span>
-                            <span class="sep">-</span>
-                            <span class="price">$240.00</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!--== End prPduct Item ==-->
-                  </div>
-                  <div class="col-sm-6 col-lg-4">
-                    <!--== Start Product Item ==-->
-                    <div class="product-item">
-                      <div class="inner-content">
-                        <div class="product-thumb">
-                          <a href="single-product.html">
-                            <img src="/assets/shop/2.webp" width="270" height="274" alt="Image-HasTech">
-                          </a>
-                          <div class="product-action">
-                            <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                            <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                            <button type="button" class="btn-product-quick-view-open">
-                              <i class="fa fa-arrows"></i>
-                            </button>
-                            <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
-                          </div>
-                          <a class="banner-link-overlay" href="/catalogo.html"></a>
-                        </div>
-                        <div class="product-info">
-                          <div class="category">
-                            <ul>
-                              <li><a href="/catalogo.html">Men</a></li>
-                              <li class="sep">/</li>
-                              <li><a href="/catalogo.html">Women</a></li>
-                            </ul>
-                          </div>
-                          <h4 class="title"><a href="single-product.html">Quickiin Mens shoes</a></h4>
-                          <div class="prices">
-                            <span class="price">$240.00</span>
+                          <div class="product-info">
+                            <div class="category">
+                              <ul>
+                                <li><a href="/catalogo.html">Men</a></li>
+                                <li class="sep">/</li>
+                                <li><a href="/catalogo.html">Women</a></li>
+                              </ul>
+                            </div>
+                            <h4 class="title"><a href="single-product.html"><%= product.name %></a></h4>
+                            <div class="prices">
+                              <% if product.price != product.total_price %>
+                                <span class="price-old">S/. <%= product.price %></span>
+                                <span class="sep">-</span>
+                              <% end %>
+                              <span class="price">S/. <%= product.total_price %></span>
+                            </div>
                           </div>
                         </div>
                       </div>
+                      <!--== End prPduct Item ==-->
                     </div>
-                    <!--== End prPduct Item ==-->
-                  </div>
-                  <div class="col-sm-6 col-lg-4">
-                    <!--== Start Product Item ==-->
-                    <div class="product-item">
-                      <div class="inner-content">
-                        <div class="product-thumb">
-                          <a href="single-product.html">
-                            <img src="/assets/shop/3.webp" width="270" height="274" alt="Image-HasTech">
-                          </a>
-                          <div class="product-flag">
-                            <ul>
-                              <li class="discount">-10%</li>
-                            </ul>
-                          </div>
-                          <div class="product-action">
-                            <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                            <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                            <button type="button" class="btn-product-quick-view-open">
-                              <i class="fa fa-arrows"></i>
-                            </button>
-                            <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
-                          </div>
-                          <a class="banner-link-overlay" href="/catalogo.html"></a>
-                        </div>
-                        <div class="product-info">
-                          <div class="category">
-                            <ul>
-                              <li><a href="/catalogo.html">Men</a></li>
-                              <li class="sep">/</li>
-                              <li><a href="/catalogo.html">Women</a></li>
-                            </ul>
-                          </div>
-                          <h4 class="title"><a href="single-product.html">Rexpo Womens shoes</a></h4>
-                          <div class="prices">
-                            <span class="price-old">$300</span>
-                            <span class="sep">-</span>
-                            <span class="price">$240.00</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!--== End prPduct Item ==-->
-                  </div>
-                  <div class="col-sm-6 col-lg-4">
-                    <!--== Start Product Item ==-->
-                    <div class="product-item">
-                      <div class="inner-content">
-                        <div class="product-thumb">
-                          <a href="single-product.html">
-                            <img src="/assets/shop/4.webp" width="270" height="274" alt="Image-HasTech">
-                          </a>
-                          <div class="product-action">
-                            <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                            <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                            <button type="button" class="btn-product-quick-view-open">
-                              <i class="fa fa-arrows"></i>
-                            </button>
-                            <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
-                          </div>
-                          <a class="banner-link-overlay" href="/catalogo.html"></a>
-                        </div>
-                        <div class="product-info">
-                          <div class="category">
-                            <ul>
-                              <li><a href="/catalogo.html">Men</a></li>
-                              <li class="sep">/</li>
-                              <li><a href="/catalogo.html">Women</a></li>
-                            </ul>
-                          </div>
-                          <h4 class="title"><a href="single-product.html">Modern Smart Shoes</a></h4>
-                          <div class="prices">
-                            <span class="price">$240.00</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!--== End prPduct Item ==-->
-                  </div>
-                  <div class="col-sm-6 col-lg-4">
-                    <!--== Start Product Item ==-->
-                    <div class="product-item">
-                      <div class="inner-content">
-                        <div class="product-thumb">
-                          <a href="single-product.html">
-                            <img src="/assets/shop/5.webp" width="270" height="274" alt="Image-HasTech">
-                          </a>
-                          <div class="product-flag">
-                            <ul>
-                              <li class="discount">-10%</li>
-                            </ul>
-                          </div>
-                          <div class="product-action">
-                            <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                            <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                            <button type="button" class="btn-product-quick-view-open">
-                              <i class="fa fa-arrows"></i>
-                            </button>
-                            <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
-                          </div>
-                          <a class="banner-link-overlay" href="/catalogo.html"></a>
-                        </div>
-                        <div class="product-info">
-                          <div class="category">
-                            <ul>
-                              <li><a href="/catalogo.html">Men</a></li>
-                              <li class="sep">/</li>
-                              <li><a href="/catalogo.html">Women</a></li>
-                            </ul>
-                          </div>
-                          <h4 class="title"><a href="single-product.html">Primitive Mens shoes</a></h4>
-                          <div class="prices">
-                            <span class="price">$240.00</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!--== End prPduct Item ==-->
-                  </div>
-                  <div class="col-sm-6 col-lg-4">
-                    <!--== Start Product Item ==-->
-                    <div class="product-item">
-                      <div class="inner-content">
-                        <div class="product-thumb">
-                          <a href="single-product.html">
-                            <img src="/assets/velamotos/trimoto.jpeg" width="270" height="274" alt="Image-HasTech">
-                          </a>
-                          <div class="product-action">
-                            <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                            <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                            <button type="button" class="btn-product-quick-view-open">
-                              <i class="fa fa-arrows"></i>
-                            </button>
-                            <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
-                          </div>
-                          <a class="banner-link-overlay" href="/catalogo.html"></a>
-                        </div>
-                        <div class="product-info">
-                          <div class="category">
-                            <ul>
-                              <li><a href="/catalogo.html">Men</a></li>
-                              <li class="sep">/</li>
-                              <li><a href="/catalogo.html">Women</a></li>
-                            </ul>
-                          </div>
-                          <h4 class="title"><a href="single-product.html">Leather Mens Slipper</a></h4>
-                          <div class="prices">
-                            <span class="price-old">$300</span>
-                            <span class="sep">-</span>
-                            <span class="price">$240.00</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!--== End prPduct Item ==-->
-                  </div>
-                  <div class="col-sm-6 col-lg-4">
-                    <!--== Start Product Item ==-->
-                    <div class="product-item">
-                      <div class="inner-content">
-                        <div class="product-thumb">
-                          <a href="single-product.html">
-                            <img src="/assets/shop/7.webp" width="270" height="274" alt="Image-HasTech">
-                          </a>
-                          <div class="product-flag">
-                            <ul>
-                              <li class="discount">-10%</li>
-                            </ul>
-                          </div>
-                          <div class="product-action">
-                            <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                            <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                            <button type="button" class="btn-product-quick-view-open">
-                              <i class="fa fa-arrows"></i>
-                            </button>
-                            <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
-                          </div>
-                          <a class="banner-link-overlay" href="/catalogo.html"></a>
-                        </div>
-                        <div class="product-info">
-                          <div class="category">
-                            <ul>
-                              <li><a href="/catalogo.html">Men</a></li>
-                              <li class="sep">/</li>
-                              <li><a href="/catalogo.html">Women</a></li>
-                            </ul>
-                          </div>
-                          <h4 class="title"><a href="single-product.html">Simple Fabric Shoe</a></h4>
-                          <div class="prices">
-                            <span class="price">$240.00</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!--== End prPduct Item ==-->
-                  </div>
-                  <div class="col-sm-6 col-lg-4">
-                    <!--== Start Product Item ==-->
-                    <div class="product-item">
-                      <div class="inner-content">
-                        <div class="product-thumb">
-                          <a href="single-product.html">
-                            <img src="/assets/shop/8.webp" width="270" height="274" alt="Image-HasTech">
-                          </a>
-                          <div class="product-action">
-                            <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                            <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                            <button type="button" class="btn-product-quick-view-open">
-                              <i class="fa fa-arrows"></i>
-                            </button>
-                            <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
-                          </div>
-                          <a class="banner-link-overlay" href="/catalogo.html"></a>
-                        </div>
-                        <div class="product-info">
-                          <div class="category">
-                            <ul>
-                              <li><a href="/catalogo.html">Men</a></li>
-                              <li class="sep">/</li>
-                              <li><a href="/catalogo.html">Women</a></li>
-                            </ul>
-                          </div>
-                          <h4 class="title"><a href="single-product.html">Primitive Men shoes</a></h4>
-                          <div class="prices">
-                            <span class="price-old">$300</span>
-                            <span class="sep">-</span>
-                            <span class="price">$240.00</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!--== End prPduct Item ==-->
-                  </div>
-                  <div class="col-sm-6 col-lg-4">
-                    <!--== Start Product Item ==-->
-                    <div class="product-item">
-                      <div class="inner-content">
-                        <div class="product-thumb">
-                          <a href="single-product.html">
-                            <img src="/assets/shop/1.webp" width="270" height="274" alt="Image-HasTech">
-                          </a>
-                          <div class="product-flag">
-                            <ul>
-                              <li class="discount">-10%</li>
-                            </ul>
-                          </div>
-                          <div class="product-action">
-                            <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                            <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                            <button type="button" class="btn-product-quick-view-open">
-                              <i class="fa fa-arrows"></i>
-                            </button>
-                            <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
-                          </div>
-                          <a class="banner-link-overlay" href="/catalogo.html"></a>
-                        </div>
-                        <div class="product-info">
-                          <div class="category">
-                            <ul>
-                              <li><a href="/catalogo.html">Men</a></li>
-                              <li class="sep">/</li>
-                              <li><a href="/catalogo.html">Women</a></li>
-                            </ul>
-                          </div>
-                          <h4 class="title"><a href="single-product.html">Hollister V-Neck Knit</a></h4>
-                          <div class="prices">
-                            <span class="price-old">$300</span>
-                            <span class="sep">-</span>
-                            <span class="price">$240.00</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!--== End prPduct Item ==-->
-                  </div>
-                  <div class="col-sm-6 col-lg-4">
-                    <!--== Start Product Item ==-->
-                    <div class="product-item">
-                      <div class="inner-content">
-                        <div class="product-thumb">
-                          <a href="single-product.html">
-                            <img src="/assets/shop/4.webp" width="270" height="274" alt="Image-HasTech">
-                          </a>
-                          <div class="product-action">
-                            <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                            <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                            <button type="button" class="btn-product-quick-view-open">
-                              <i class="fa fa-arrows"></i>
-                            </button>
-                            <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
-                          </div>
-                          <a class="banner-link-overlay" href="/catalogo.html"></a>
-                        </div>
-                        <div class="product-info">
-                          <div class="category">
-                            <ul>
-                              <li><a href="/catalogo.html">Men</a></li>
-                              <li class="sep">/</li>
-                              <li><a href="/catalogo.html">Women</a></li>
-                            </ul>
-                          </div>
-                          <h4 class="title"><a href="single-product.html">exclusive mens shoe</a></h4>
-                          <div class="prices">
-                            <span class="price">$240.00</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!--== End prPduct Item ==-->
-                  </div>
-                  <div class="col-sm-6 col-lg-4">
-                    <!--== Start Product Item ==-->
-                    <div class="product-item">
-                      <div class="inner-content">
-                        <div class="product-thumb">
-                          <a href="single-product.html">
-                            <img src="/assets/shop/2.webp" width="270" height="274" alt="Image-HasTech">
-                          </a>
-                          <div class="product-flag">
-                            <ul>
-                              <li class="discount">-10%</li>
-                            </ul>
-                          </div>
-                          <div class="product-action">
-                            <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                            <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                            <button type="button" class="btn-product-quick-view-open">
-                              <i class="fa fa-arrows"></i>
-                            </button>
-                            <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
-                          </div>
-                          <a class="banner-link-overlay" href="/catalogo.html"></a>
-                        </div>
-                        <div class="product-info">
-                          <div class="category">
-                            <ul>
-                              <li><a href="/catalogo.html">Men</a></li>
-                              <li class="sep">/</li>
-                              <li><a href="/catalogo.html">Women</a></li>
-                            </ul>
-                          </div>
-                          <h4 class="title"><a href="single-product.html">New Womens High Hills</a></h4>
-                          <div class="prices">
-                            <span class="price-old">$300</span>
-                            <span class="sep">-</span>
-                            <span class="price">$240.00</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!--== End prPduct Item ==-->
-                  </div>
-                  <div class="col-sm-6 col-lg-4">
-                    <!--== Start Product Item ==-->
-                    <div class="product-item">
-                      <div class="inner-content">
-                        <div class="product-thumb">
-                          <a href="single-product.html">
-                            <img src="/assets/velamotos/trimoto.jpeg" width="270" height="274" alt="Image-HasTech">
-                          </a>
-                          <div class="product-action">
-                            <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                            <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                            <button type="button" class="btn-product-quick-view-open">
-                              <i class="fa fa-arrows"></i>
-                            </button>
-                            <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
-                          </div>
-                          <a class="banner-link-overlay" href="/catalogo.html"></a>
-                        </div>
-                        <div class="product-info">
-                          <div class="category">
-                            <ul>
-                              <li><a href="/catalogo.html">Men</a></li>
-                              <li class="sep">/</li>
-                              <li><a href="/catalogo.html">Women</a></li>
-                            </ul>
-                          </div>
-                          <h4 class="title"><a href="single-product.html">Leather Mens slippers</a></h4>
-                          <div class="prices">
-                            <span class="price">$240.00</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!--== End prPduct Item ==-->
-                  </div>
+                  <% end %>
                   <div class="col-12">
                     <div class="pagination-items">
                       <ul class="pagination justify-content-end mb--0">
@@ -524,269 +107,53 @@
               </div>
               <div class="tab-pane fade" id="nav-list" role="tabpanel" aria-labelledby="nav-list-tab">
                 <div class="row">
-                  <div class="col-md-12">
-                    <!--== Start Product Item ==-->
-                    <div class="product-item product-list-item">
-                      <div class="inner-content">
-                        <div class="product-thumb">
-                          <a href="single-product.html">
-                            <img src="/assets/velamotos/trimoto.jpeg" width="322" height="360" alt="Image-HasTech">
-                          </a>
-                          <div class="product-flag">
-                            <ul>
-                              <li class="discount">-10%</li>
-                            </ul>
+                  <% @products.each do |product| %>
+                    <div class="col-md-12">
+                      <!--== Start Product Item ==-->
+                      <div class="product-item product-list-item">
+                        <div class="inner-content">
+                          <div class="product-thumb">
+                            <a href="single-product.html">
+                              <img src="<%= product.imagen.blank? ? '/assets/shop/product-single/1.webp' : '/product_images/' + product.imagen %>" width="322" height="360" title="<%= product.name %>" alt="<%= product.imagen %>">
+                            </a>
+                            <div class="product-flag <%= product.discount.blank? || product.discount == 0 ? 'd-none' : 'd-block' %>">
+                              <ul>
+                                <li class="discount">-<%= product.discount %>%</li>
+                              </ul>
+                            </div>
+                            <div class="product-action">
+                              
+                              <%= link_to show_product_path(product), class: "btn-product-quick-view-open", remote: true do %>
+                                <i class="fa fa-arrows"></i>
+                              <% end %>
+
+                            </div>
+                            <a class="banner-link-overlay" href="/catalogo.html"></a>
                           </div>
-                          <div class="product-action">
-                            <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                            <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                            <button type="button" class="btn-product-quick-view-open">
-                              <i class="fa fa-arrows"></i>
-                            </button>
-                            <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
+                          <div class="product-info">
+                            <div class="category">
+                              <ul>
+                                <li><a href="/catalogo.html">Men</a></li>
+                                <li class="sep">/</li>
+                                <li><a href="/catalogo.html">Women</a></li>
+                              </ul>
+                            </div>
+                            <h4 class="title"><a href="single-product.html"><%= product.name %></a></h4>
+                            <div class="prices">
+                              <% if product.price != product.total_price %>
+                                <span class="price-old">S/. <%= product.price %></span>
+                                <span class="sep">-</span>
+                              <% end %>
+                              <span class="price">S/. <%= product.total_price %></span>
+                            </div>
+                            <p><%= product.description %></p>
+                            <a class="btn-theme btn-sm" href="shop-cart.html">Comprar</a>
                           </div>
-                          <a class="banner-link-overlay" href="/catalogo.html"></a>
-                        </div>
-                        <div class="product-info">
-                          <div class="category">
-                            <ul>
-                              <li><a href="/catalogo.html">Men</a></li>
-                              <li class="sep">/</li>
-                              <li><a href="/catalogo.html">Women</a></li>
-                            </ul>
-                          </div>
-                          <h4 class="title"><a href="single-product.html">Leather Mens Slipper</a></h4>
-                          <div class="prices">
-                            <span class="price-old">$300</span>
-                            <span class="sep">-</span>
-                            <span class="price">$240.00</span>
-                          </div>
-                          <p>MOTOR 800 WATS DE POTENCIA VELOCIDAD 35K/H AUTONOMÍA 60 KM BATERÍAS 60V20AH CAPACIDAD
-                            PARA TRES PERSONAS. FRENOS DE PIE Y MANO.</p>
-                          <a class="btn-theme btn-sm" href="shop-cart.html">Comprar</a>
-                        </div>
-                      </div>
-                    </div>
-                    <!--== End prPduct Item ==-->
-                  </div>
-                  <div class="col-md-12">
-                    <!--== Start Product Item ==-->
-                    <div class="product-item product-list-item">
-                      <div class="inner-content">
-                        <div class="product-thumb">
-                          <a href="single-product.html">
-                            <img src="/assets/shop/list-2.webp" width="322" height="360" alt="Image-HasTech">
-                          </a>
-                          <div class="product-action">
-                            <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                            <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                            <button type="button" class="btn-product-quick-view-open">
-                              <i class="fa fa-arrows"></i>
-                            </button>
-                            <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
-                          </div>
-                          <a class="banner-link-overlay" href="/catalogo.html"></a>
-                        </div>
-                        <div class="product-info">
-                          <div class="category">
-                            <ul>
-                              <li><a href="/catalogo.html">Men</a></li>
-                              <li class="sep">/</li>
-                              <li><a href="/catalogo.html">Women</a></li>
-                            </ul>
-                          </div>
-                          <h4 class="title"><a href="single-product.html">Quickiin Mens shoes</a></h4>
-                          <div class="prices">
-                            <span class="price">$240.00</span>
-                          </div>
-                          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem quo, rerum rem
-                            soluta quisquam, repellat is deleniti omnis culpa ea quis provident dolore esse,
-                            offici modi dolorem nam cum eligendi enim!</p>
-                          <a class="btn-theme btn-sm" href="shop-cart.html">Add To Cart</a>
                         </div>
                       </div>
+                      <!--== End prPduct Item ==-->
                     </div>
-                    <!--== End prPduct Item ==-->
-                  </div>
-                  <div class="col-md-12">
-                    <!--== Start Product Item ==-->
-                    <div class="product-item product-list-item">
-                      <div class="inner-content">
-                        <div class="product-thumb">
-                          <a href="single-product.html">
-                            <img src="/assets/shop/list-3.webp" width="322" height="360" alt="Image-HasTech">
-                          </a>
-                          <div class="product-flag">
-                            <ul>
-                              <li class="discount">-10%</li>
-                            </ul>
-                          </div>
-                          <div class="product-action">
-                            <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                            <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                            <button type="button" class="btn-product-quick-view-open">
-                              <i class="fa fa-arrows"></i>
-                            </button>
-                            <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
-                          </div>
-                          <a class="banner-link-overlay" href="/catalogo.html"></a>
-                        </div>
-                        <div class="product-info">
-                          <div class="category">
-                            <ul>
-                              <li><a href="/catalogo.html">Men</a></li>
-                              <li class="sep">/</li>
-                              <li><a href="/catalogo.html">Women</a></li>
-                            </ul>
-                          </div>
-                          <h4 class="title"><a href="single-product.html">Rexpo Womens shoes</a></h4>
-                          <div class="prices">
-                            <span class="price-old">$300</span>
-                            <span class="sep">-</span>
-                            <span class="price">$240.00</span>
-                          </div>
-                          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem quo, rerum rem
-                            soluta quisquam, repellat is deleniti omnis culpa ea quis provident dolore esse,
-                            offici modi dolorem nam cum eligendi enim!</p>
-                          <a class="btn-theme btn-sm" href="shop-cart.html">Add To Cart</a>
-                        </div>
-                      </div>
-                    </div>
-                    <!--== End prPduct Item ==-->
-                  </div>
-                  <div class="col-md-12">
-                    <!--== Start Product Item ==-->
-                    <div class="product-item product-list-item">
-                      <div class="inner-content">
-                        <div class="product-thumb">
-                          <a href="single-product.html">
-                            <img src="/assets/shop/list-4.webp" width="322" height="360" alt="Image-HasTech">
-                          </a>
-                          <div class="product-action">
-                            <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                            <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                            <button type="button" class="btn-product-quick-view-open">
-                              <i class="fa fa-arrows"></i>
-                            </button>
-                            <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
-                          </div>
-                          <a class="banner-link-overlay" href="/catalogo.html"></a>
-                        </div>
-                        <div class="product-info">
-                          <div class="category">
-                            <ul>
-                              <li><a href="/catalogo.html">Men</a></li>
-                              <li class="sep">/</li>
-                              <li><a href="/catalogo.html">Women</a></li>
-                            </ul>
-                          </div>
-                          <h4 class="title"><a href="single-product.html">Modern Smart Shoes</a></h4>
-                          <div class="prices">
-                            <span class="price">$240.00</span>
-                          </div>
-                          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem quo, rerum rem
-                            soluta quisquam, repellat is deleniti omnis culpa ea quis provident dolore esse,
-                            offici modi dolorem nam cum eligendi enim!</p>
-                          <a class="btn-theme btn-sm" href="shop-cart.html">Add To Cart</a>
-                        </div>
-                      </div>
-                    </div>
-                    <!--== End prPduct Item ==-->
-                  </div>
-                  <div class="col-md-12">
-                    <!--== Start Product Item ==-->
-                    <div class="product-item product-list-item">
-                      <div class="inner-content">
-                        <div class="product-thumb">
-                          <a href="single-product.html">
-                            <img src="/assets/shop/list-5.webp" width="322" height="360" alt="Image-HasTech">
-                          </a>
-                          <div class="product-flag">
-                            <ul>
-                              <li class="discount">-10%</li>
-                            </ul>
-                          </div>
-                          <div class="product-action">
-                            <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                            <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                            <button type="button" class="btn-product-quick-view-open">
-                              <i class="fa fa-arrows"></i>
-                            </button>
-                            <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
-                          </div>
-                          <a class="banner-link-overlay" href="/catalogo.html"></a>
-                        </div>
-                        <div class="product-info">
-                          <div class="category">
-                            <ul>
-                              <li><a href="/catalogo.html">Men</a></li>
-                              <li class="sep">/</li>
-                              <li><a href="/catalogo.html">Women</a></li>
-                            </ul>
-                          </div>
-                          <h4 class="title"><a href="single-product.html">Primitive Mens shoes</a></h4>
-                          <div class="prices">
-                            <span class="price">$240.00</span>
-                          </div>
-                          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem quo, rerum rem
-                            soluta quisquam, repellat is deleniti omnis culpa ea quis provident dolore esse,
-                            offici modi dolorem nam cum eligendi enim!</p>
-                          <a class="btn-theme btn-sm" href="shop-cart.html">Add To Cart</a>
-                        </div>
-                      </div>
-                    </div>
-                    <!--== End prPduct Item ==-->
-                  </div>
-                  <div class="col-md-12">
-                    <!--== Start Product Item ==-->
-                    <div class="product-item product-list-item">
-                      <div class="inner-content">
-                        <div class="product-thumb">
-                          <a href="single-product.html">
-                            <img src="/assets/velamotos/trimoto.jpeg" width="322" height="360" alt="Image-HasTech">
-                          </a>
-                          <div class="product-action">
-                            <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                            <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                            <button type="button" class="btn-product-quick-view-open">
-                              <i class="fa fa-arrows"></i>
-                            </button>
-                            <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
-                          </div>
-                          <a class="banner-link-overlay" href="/catalogo.html"></a>
-                        </div>
-                        <div class="product-info">
-                          <div class="category">
-                            <ul>
-                              <li><a href="/catalogo.html">Men</a></li>
-                              <li class="sep">/</li>
-                              <li><a href="/catalogo.html">Women</a></li>
-                            </ul>
-                          </div>
-                          <h4 class="title"><a href="single-product.html">Leather Mens Slipper</a></h4>
-                          <div class="prices">
-                            <span class="price-old">$300</span>
-                            <span class="sep">-</span>
-                            <span class="price">$240.00</span>
-                          </div>
-                          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem quo, rerum rem
-                            soluta quisquam, repellat is deleniti omnis culpa ea quis provident dolore esse,
-                            offici modi dolorem nam cum eligendi enim!</p>
-                          <a class="btn-theme btn-sm" href="shop-cart.html">Add To Cart</a>
-                        </div>
-                      </div>
-                    </div>
-                    <!--== End prPduct Item ==-->
-                  </div>
-                  <div class="col-12">
-                    <div class="pagination-items">
-                      <ul class="pagination justify-content-end mb--0">
-                        <li><a class="active" href="/catalogo.html">1</a></li>
-                        <li><a href="shop-four-columns.html">2</a></li>
-                        <li><a href="shop-three-columns.html">3</a></li>
-                      </ul>
-                    </div>
-                  </div>
+                  <% end %>
                 </div>
               </div>
             </div>
@@ -812,5 +179,20 @@
 </section>
 <!--== End Product Area Wrapper ==-->
 
+<%# render "product_modal" %>
 
-<%= render "main/product_modal" %>
+<!--== Start Quick View Menu ==-->
+<aside class="product-quick-view-modal">
+    <div class="product-quick-view-inner">
+        <div class="product-quick-view-content">
+            <button type="button" class="btn-close">
+                <span class="close-icon"><i class="fa fa-close"></i></span>
+            </button>
+            <div class="row align-items-center" id="modal_content">
+                
+            </div>
+        </div>
+    </div>
+    <div class="canvas-overlay"></div>
+</aside>
+<!--== End Quick View Menu ==-->
