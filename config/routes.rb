@@ -13,10 +13,10 @@ Rails.application.routes.draw do
   get "/catalogo", to: "main#catalog", as: :catalog
   get "/contacto", to: "main#contact", as: :contact
 
+  get "/catalogo/:name", to: "main#single_product", as: :single_product
+
   resources :productos, controller: :products, as: :products do
     get "/producto", to: "products#show_product", on: :member, as: :show, format: :js
   end
-
-  #get "/producto/:id", to: "products#show_product", as: :show_product, format: :js
 
 end

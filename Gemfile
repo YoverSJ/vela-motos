@@ -70,5 +70,6 @@ end
 
 # other required gems
 
+gem 'awesome_print'
 gem 'dotenv-rails'
 gem 'mysql2'

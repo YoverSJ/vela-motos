@@ -4,19 +4,23 @@ class ProductsController < ApplicationController
   # GET /products or /products.json
   def index
     @products = Product.all
+    @page_title = "Productos"
   end
 
   # GET /products/1 or /products/1.json
   def show
+    @page_title = "Detalles del producto"
   end
 
   # GET /products/new
   def new
     @product = Product.new
+    @page_title = "Nuevo producto"
   end
 
   # GET /products/1/edit
   def edit
+    @page_title = "Editar producto"
   end
 
   # POST /products or /products.json
