@@ -8,7 +8,13 @@
         <div class="billing-form-wrap">
           <form action="#" method="post">
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-2">
+                <div class="form-group">
+                  <%= label_tag :code, "Codigo" %>
+                  <%= text_field_tag :code, product.code, class: "form-control", disabled: true %>
+                </div>
+              </div>
+              <div class="col-md-7">
                 <div class="form-group">
                   <%= label_tag :name, "Nombre" %>
                   <%= text_field_tag :name, product.name, class: "form-control", disabled: true %>
@@ -20,10 +26,21 @@
                   <%= text_field_tag :warranty, product.warranty, class: "form-control", disabled: true %>
                 </div>
               </div>
-              <div class="col-md-3">
+              <div class="col-md-12">
                 <div class="form-group">
-                  <%= label_tag :color, "Color" %>
-                  <%= text_field_tag :color, product.color, class: "form-control", disabled: true %>
+                  <%= label_tag :color, "Colores" %>
+                  <%= hidden_field_tag :color, product.color, class: "form-control", disabled: true %>
+                  <div class="product-single-item">
+                  <div class="product-single-info">
+                    <div class="product-color">
+                      <ul class="color-list">
+                        <% @colors.each do |color| %>
+                          <li data-bg-color="<%= color.values[0] %>" title="<%= color.keys[0] %>"></li>
+                        <% end %>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
                 </div>
               </div>
               <div class="col-md-12">

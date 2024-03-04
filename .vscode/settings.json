@@ -1,3 +1,4 @@
 {
-    "livePreview.defaultPreviewPath": "/app/views/main/catalog.html"
+    "livePreview.defaultPreviewPath": "/app/views/main/catalog.html",
+    "emmet.includeLanguages": { "erb":"html" }
 }

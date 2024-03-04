@@ -35,10 +35,25 @@
             </div>
             <div class="col-md-3">
               <div class="form-group">
-                <%= form.label :color do %>
+                <%= form.label :colores do %>
                   Color <abbr class="required" title="required">*</abbr>
                 <% end %>
-                <%= form.text_field :color, class: "form-control", required: true %>
+                <%= form.select :colores, [["Seleccione", ""]] +  @colors.to_a, {}, class: "form-control", onchange: "colorSelected(this)" %>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="list-colors">Colores</label>
+                <%= form.hidden_field :color %>
+                <div class="product-single-item" id="color-container">
+                  <div class="product-single-info">
+                    <div class="product-color">
+                      <ul class="color-list" id="color-list">
+                        
+                      </ul>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="col-md-12">

@@ -1,6 +1,32 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: %i[ show edit update destroy ]
 
+  COLORS = {
+    "Blanco": "white",
+    "Platino": "silver",
+    "Negro": "black",
+    "Rojo": "red",
+    "Naranja": "orange",
+    "Marrón": "brown",
+    "Amarillo": "yellow",
+    "Oliva": "olive",
+    "Lima": "lime",
+    "Verde": "green",
+    "Aqua": "aqua",
+    "Turquesa": "turquoise",
+    "Azul": "blue",
+    "Marino": "navy",
+    "Fucsia": "fuchsia",
+    "Morado": "purple",
+    "Gris": "gray",
+    "Rojo Oscuro": "darkred",
+    "Coral": "coral",
+    "Dorado": "gold",
+    "Azul Cielo": "skyblue",
+    "Violeta": "violet",
+    "Rosado": "pink",
+  }
+
   # GET /products or /products.json
   def index
     @products = Product.all
@@ -10,17 +36,20 @@ class ProductsController < ApplicationController
   # GET /products/1 or /products/1.json
   def show
     @page_title = "Detalles del producto"
+    @colors = get_colors(@product.color)
   end
 
   # GET /products/new
   def new
     @product = Product.new
     @page_title = "Nuevo producto"
+    @colors = COLORS
   end
 
   # GET /products/1/edit
   def edit
     @page_title = "Editar producto"
+    @colors = COLORS
   end
 
   # POST /products or /products.json
@@ -119,5 +148,15 @@ class ProductsController < ApplicationController
           file.write(image.read)
         end
       end
+    end
+
+    def get_colors(colores)
+      colors = []
+      array_color = colores.split(",")
+      array_color.each do |color|
+        result = COLORS.select { |k, v| v == color }
+        colors << result
+      end
+      return colors
     end
 end
