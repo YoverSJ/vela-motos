@@ -20,6 +20,7 @@ class MainController < ApplicationController
   def single_product
     @product = Product.find_by_name(params[:name].gsub("-", " "))
     @page_title = @product.name.capitalize
+    @colors = get_colors(@product.color)
   end
 
 end

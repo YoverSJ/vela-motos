@@ -1,32 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: %i[ show edit update destroy ]
 
-  COLORS = {
-    "Blanco": "white",
-    "Platino": "silver",
-    "Negro": "black",
-    "Rojo": "red",
-    "Naranja": "orange",
-    "Marrón": "brown",
-    "Amarillo": "yellow",
-    "Oliva": "olive",
-    "Lima": "lime",
-    "Verde": "green",
-    "Aqua": "aqua",
-    "Turquesa": "turquoise",
-    "Azul": "blue",
-    "Marino": "navy",
-    "Fucsia": "fuchsia",
-    "Morado": "purple",
-    "Gris": "gray",
-    "Rojo Oscuro": "darkred",
-    "Coral": "coral",
-    "Dorado": "gold",
-    "Azul Cielo": "skyblue",
-    "Violeta": "violet",
-    "Rosado": "pink",
-  }
-
   # GET /products or /products.json
   def index
     @products = Product.all
@@ -57,6 +31,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     image = params[:product][:file_image]
     image_name =  @product.imagen
+    @colors = COLORS
     respond_to do |format|
       if @product.save
         save_image(image, image_name)
@@ -150,13 +125,4 @@ class ProductsController < ApplicationController
       end
     end
 
-    def get_colors(colores)
-      colors = []
-      array_color = colores.split(",")
-      array_color.each do |color|
-        result = COLORS.select { |k, v| v == color }
-        colors << result
-      end
-      return colors
-    end
 end
