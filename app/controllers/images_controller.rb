@@ -1,7 +1,13 @@
 class ImagesController < ApplicationController
 
+  before_action :set_image, only: %i[ destroy ]
+
   def new
     @image = Image.new
+    @product_id = params[:product_id]
+    if @product_id.blank? || @product_id.to_i == 0
+      render file: "#{Rails.root}/public/404.html", layout: false, status: :not_found
+    end
   end
 
   # POST /images or /images.json
@@ -27,7 +33,17 @@ class ImagesController < ApplicationController
     end
   end
 
+  def destroy
+    @image.destroy!
+    respond_to do |format|
+      format.html { redirect_to edit_product_url(@image.product_id), notice: "Imagen eliminada." }
+    end
+  end
+
   private
+    def set_image
+      @image = Image.find(params[:id])
+    end
     def image_params
       parameters = params.require(:image).permit(:image_url, :product_id)
       product_id = params[:image][:product_id]

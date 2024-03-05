@@ -11,6 +11,7 @@ class ProductsController < ApplicationController
   def show
     @page_title = "Detalles del producto"
     @colors = get_colors(@product.color)
+    @images = @product.images
   end
 
   # GET /products/new

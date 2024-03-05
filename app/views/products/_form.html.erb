@@ -94,27 +94,8 @@
                 <%= form.number_field :stock, min: 0, class: "form-control", required: true %>
               </div>
             </div>
-            <div class="col-md-12">
-              <div class="form-group">
-                <label for="file_image">Imagen (optional)</label>
-                <input type="file" name="file_image" id="file_image" accept="image/*" class="form-control" onchange="previewImage()">
-                <label><abbr class="required">El archivo debe ser una imagen 800x800</abbr></label>
-              </div>
-            </div>
             <%= link_to "Agregar imagen", new_image_path(product_id: product) %>
-            <input type="text" id="list-images">
             <%= form.hidden_field :imagen %>
-            <div class="col-md-12">
-              <div class="form-group">
-                <label>Vista previa</label>
-                <div id="preview-image" class="mb-1 <%= product.imagen.blank? ? "d-none" : "d-block" %>" style="background-image: url(/product_images/<%= product.imagen %>);" onclick="showImage(this)"></div>
-                <!-- Button to trigger modal -->
-                <button type="button" id="show-image" class="btn btn-dark <%= product.imagen.blank? ? "d-none" : "d-block" %>" data-bs-toggle="modal" data-bs-target="#myModal" onclick="showImage(this)">
-                  Ver imagen
-                </button>
-              </div>
-            </div>
-            <%#  @images.inspect %>
             <div class="col-md-12">
               <div class="form-group">
                 <label>Fotos</label>
@@ -127,8 +108,11 @@
                           <% @images.each do |image| %>
                             <div class="swiper-slide">
                               <a class="lightbox-image" data-fancybox="gallery" href="/product_images/<%= image.image_url %>">
-                                <img src="/product_images/<%= image.image_url %>" width="570" height="541" alt="Image-HasTech">
+                                <img src="/product_images/<%= image.image_url %>" width="570" height="541" alt="<%= image.image_url %>">
                               </a>
+                              <%= link_to image, method: :delete, class: "check-btn sqr-btn" do %>
+                                <%# <i class="fa fa-trash"></i> %> Eliminar
+                              <% end %>
                             </div>
                           <% end %>
                         </div>
