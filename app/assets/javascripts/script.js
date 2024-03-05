@@ -15,7 +15,6 @@ inputsCalculate = document.getElementsByClassName('calculate-total-price');
 inputsArray = Array.from(inputsCalculate);
 
 inputsArray.forEach((element) => {
-    console.log(element);
     element.addEventListener('input', function() {
 
         let price = parseFloat(document.getElementById('product_price').value);

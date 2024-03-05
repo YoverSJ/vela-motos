@@ -19,4 +19,6 @@ Rails.application.routes.draw do
     get "/producto", to: "products#show_product", on: :member, as: :show, format: :js
   end
 
+  resources :images, controller: :images, as: :images, only: [:new, :create, :destroy]
+
 end

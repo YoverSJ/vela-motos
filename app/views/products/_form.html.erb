@@ -96,11 +96,13 @@
             </div>
             <div class="col-md-12">
               <div class="form-group">
-                <%= form.label :file_image, "Imagen (optional)" %>
-                <%= form.file_field :file_image, accept: "image/*", class: "form-control", onchange: "previewImage()" %>
+                <label for="file_image">Imagen (optional)</label>
+                <input type="file" name="file_image" id="file_image" accept="image/*" class="form-control" onchange="previewImage()">
                 <label><abbr class="required">El archivo debe ser una imagen 800x800</abbr></label>
               </div>
             </div>
+            <%= link_to "Agregar imagen", new_image_path(product_id: product) %>
+            <input type="text" id="list-images">
             <%= form.hidden_field :imagen %>
             <div class="col-md-12">
               <div class="form-group">
@@ -110,6 +112,40 @@
                 <button type="button" id="show-image" class="btn btn-dark <%= product.imagen.blank? ? "d-none" : "d-block" %>" data-bs-toggle="modal" data-bs-target="#myModal" onclick="showImage(this)">
                   Ver imagen
                 </button>
+              </div>
+            </div>
+            <%#  @images.inspect %>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Fotos</label>
+                <div class="product-single-item">
+                  <div class="col-xl-6">
+                    <!--== Start Product Thumbnail Area ==-->
+                    <div class="product-single-thumb">
+                      <div class="swiper-container single-product-thumb single-product-thumb-slider">
+                        <div class="swiper-wrapper">
+                          <% @images.each do |image| %>
+                            <div class="swiper-slide">
+                              <a class="lightbox-image" data-fancybox="gallery" href="/product_images/<%= image.image_url %>">
+                                <img src="/product_images/<%= image.image_url %>" width="570" height="541" alt="Image-HasTech">
+                              </a>
+                            </div>
+                          <% end %>
+                        </div>
+                      </div>
+                      <div class="swiper-container single-product-nav single-product-nav-slider">
+                        <div class="swiper-wrapper">
+                          <% @images.each do |image| %>
+                            <div class="swiper-slide">
+                              <img src="/product_images/<%= image.image_url %>" width="127" height="127" alt="Image-HasTech">
+                            </div>
+                          <% end %>
+                        </div>
+                      </div>
+                    </div>
+                    <!--== End Product Thumbnail Area ==-->
+                  </div>
+                </div>
               </div>
             </div>
             <div class="col-md-12">

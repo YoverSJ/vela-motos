@@ -1,8 +1,8 @@
 class Product < ApplicationRecord
 
-  before_create :generate_sku
+  has_many :images, dependent: :destroy
 
-  attr_accessor :file_image
+  before_create :generate_sku
 
   validates :name, presence: true, uniqueness: true
   validates :warranty, :color , presence: true

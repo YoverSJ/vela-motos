@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_01_004836) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_04_223924) do
+  create_table "images", charset: "utf8mb3", force: :cascade do |t|
+    t.string "image_url"
+    t.bigint "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_images_on_product_id"
+  end
+
   create_table "products", charset: "utf8mb3", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -26,4 +34,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_01_004836) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "images", "products"
 end

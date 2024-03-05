@@ -2,7 +2,7 @@
 const previewImage = () => {
 
     let fileReader = new FileReader();
-    let inputFile = document.getElementById("product_file_image");
+    let inputFile = document.getElementById("file_image");
     let maxImageWidth = 800; // Definir el ancho máximo permitido
     let maxImageHeight = 800; // Definir el alto máximo permitido
 
@@ -34,6 +34,16 @@ const previewImage = () => {
                         // Limpiar el input de archivo seleccionado
                         inputFile.value = '';
                     } else {
+
+                        // let imageName = getImageName(selectedFile);
+                        // let listImages = $("#list-images").val();
+
+                        // if (listImages == "") {
+                        //     $("#list-images").val(imageName);
+                        // } else {
+                        //     $("#list-images").val(listImages + "," + imageName);
+                        // }
+
                         // La imagen es válida, mostrarla en el contenedor preview-image
                         let pImage = document.getElementById("preview-image");
                         let sImage = document.getElementById("show-image");
@@ -73,3 +83,15 @@ window.onclick = function(event) {
     modal.hide();
   }
 }
+
+
+// const getImageName = (file) => {
+//     let listImages = $("#list-images").val().split(",").filter(urlImage => urlImage !== "");
+//     let productName = $("#product_name").val();
+//     return productName.toLowerCase().replace(" ", "-") + "-" + (listImages.length + 1) + "." + getExtension(file.name);
+// }
+
+// const getExtension = (fileName) => {
+//     let arrayName = fileName.split(".");
+//     return arrayName[arrayName.length - 1];
+// }

@@ -24,12 +24,13 @@ class ProductsController < ApplicationController
   def edit
     @page_title = "Editar producto"
     @colors = COLORS
+    @images = @product.images
   end
 
   # POST /products or /products.json
   def create
     @product = Product.new(product_params)
-    image = params[:product][:file_image]
+    image = params[:file_image]
     image_name =  @product.imagen
     @colors = COLORS
     respond_to do |format|
@@ -47,7 +48,7 @@ class ProductsController < ApplicationController
 
   # PATCH/PUT /products/1 or /products/1.json
   def update
-    image = params[:product][:file_image]
+    image = params[:file_image]
     image_name =  product_params[:imagen]
     respond_to do |format|
       if @product.update(product_params)
@@ -89,9 +90,9 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      parameters = params.require(:product).permit(:name, :description, :color, :price, :discount, :total_price, :stock, :code, :imagen, :warranty, :file_image)
+      parameters = params.require(:product).permit(:name, :description, :color, :price, :discount, :total_price, :stock, :code, :imagen, :warranty)
       product_name = parameters[:name]
-      file = params[:product][:file_image]
+      file = params[:file_image]
       parameters[:imagen] = get_image_name(file, product_name) if !file.blank?
       parameters
     end
