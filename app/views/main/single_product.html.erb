@@ -198,48 +198,92 @@
         <div class="product-slider-wrap">
             <div class="swiper-container product-slider-col4-container">
                 <div class="swiper-wrapper">
-                    <% @related_products.each do |product| %>
-                        <div class="swiper-slide">
-                            <!--== Start Product Item ==-->
-                            <div class="product-item">
-                                <div class="inner-content">
-                                    <div class="product-thumb">
-                                        <a href="/catalogo/<%= product.name.downcase.gsub(' ', '-') %>.html">
-                                            <img src="<%= product.imagen.blank? ? '/assets/shop/1.webp' : '/uploads/product_images/' + product.id.to_s + '/' + product.imagen %>" width="270" height="274" title="<%= product.name %>" alt="<%= product.imagen %>">
-                                        </a>
-                                        <div class="product-flag <%= product.discount.blank? || product.discount == 0 ? 'd-none' : 'd-block' %>">
-                                            <ul>
-                                                <li class="discount">-<%= product.discount %>%</li>
-                                            </ul>
+                    <% if @related_products.blank? %>
+                        <% 6.times do %>
+                            <div class="swiper-slide">
+                                <!--== Start Product Item ==-->
+                                <div class="product-item">
+                                    <div class="inner-content">
+                                        <div class="product-thumb">
+                                            <a href="/catalogo.html">
+                                                <img src="/assets/shop/1.webp" width="270" height="274" alt="Image-HasTech">
+                                            </a>
+                                            <div class="product-flag">
+                                                <ul>
+                                                    <li class="discount">-10%</li>
+                                                </ul>
+                                            </div>
+                                            <div class="product-action">
+                                                <button type="button" class="btn-product-quick-view-open">
+                                                    <i class="fa fa-arrows"></i>
+                                                </button>
+                                            </div>
+                                            <a class="banner-link-overlay" href="shop.html"></a>
                                         </div>
-                                        <div class="product-action">
-                                            <%= link_to show_product_path(product), class: "btn-product-quick-view-open", remote: true do %>
-                                                <i class="fa fa-arrows"></i>
-                                            <% end %>
-                                        </div>
-                                        <a class="banner-link-overlay" href="shop.html"></a>
-                                    </div>
-                                    <div class="product-info">
-                                        <div class="category">
-                                            <ul>
-                                                <li><a href="shop.html">Men</a></li>
-                                                <li class="sep">/</li>
-                                                <li><a href="shop.html">Women</a></li>
-                                            </ul>
-                                        </div>
-                                        <h4 class="title"><a href="/catalogo/<%= product.name.downcase.gsub(' ', '-') %>.html"><%= product.name %></a></h4>
-                                        <div class="prices">
-                                            <% if product.price != product.total_price %>
-                                                <span class="price-old">S/. <%= product.price %></span>
+                                        <div class="product-info">
+                                            <div class="category">
+                                                <ul>
+                                                    <li><a href="shop.html">Men</a></li>
+                                                    <li class="sep">/</li>
+                                                    <li><a href="shop.html">Women</a></li>
+                                                </ul>
+                                            </div>
+                                            <h4 class="title"><a href="/catalogo.html">Modern Smart Shoes</a></h4>
+                                            <div class="prices">
+                                                <span class="price-old">$300</span>
                                                 <span class="sep">-</span>
-                                            <% end %>
-                                            <span class="price">S/. <%= product.total_price %></span>
+                                                <span class="price">$240.00</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <!--== End prPduct Item ==-->
                             </div>
-                            <!--== End prPduct Item ==-->
-                        </div>
+                        <% end %>
+                    <% else %>
+                        <% @related_products.each do |product| %>
+                            <div class="swiper-slide">
+                                <!--== Start Product Item ==-->
+                                <div class="product-item">
+                                    <div class="inner-content">
+                                        <div class="product-thumb">
+                                            <a href="/catalogo/<%= product.name.downcase.gsub(' ', '-') %>.html">
+                                                <img src="<%= product.imagen.blank? ? '/assets/shop/1.webp' : '/uploads/product_images/' + product.id.to_s + '/' + product.imagen %>" width="270" height="274" title="<%= product.name %>" alt="<%= product.imagen %>">
+                                            </a>
+                                            <div class="product-flag <%= product.discount.blank? || product.discount == 0 ? 'd-none' : 'd-block' %>">
+                                                <ul>
+                                                    <li class="discount">-<%= product.discount %>%</li>
+                                                </ul>
+                                            </div>
+                                            <div class="product-action">
+                                                <%= link_to show_product_path(product), class: "btn-product-quick-view-open", remote: true do %>
+                                                    <i class="fa fa-arrows"></i>
+                                                <% end %>
+                                            </div>
+                                            <a class="banner-link-overlay" href="shop.html"></a>
+                                        </div>
+                                        <div class="product-info">
+                                            <div class="category">
+                                                <ul>
+                                                    <li><a href="shop.html">Men</a></li>
+                                                    <li class="sep">/</li>
+                                                    <li><a href="shop.html">Women</a></li>
+                                                </ul>
+                                            </div>
+                                            <h4 class="title"><a href="/catalogo/<%= product.name.downcase.gsub(' ', '-') %>.html"><%= product.name %></a></h4>
+                                            <div class="prices">
+                                                <% if product.price != product.total_price %>
+                                                    <span class="price-old">S/. <%= product.price %></span>
+                                                    <span class="sep">-</span>
+                                                <% end %>
+                                                <span class="price">S/. <%= product.total_price %></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--== End prPduct Item ==-->
+                            </div>
+                        <% end %>
                     <% end %>
                 </div>
             </div>

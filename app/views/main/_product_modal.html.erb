@@ -10,30 +10,25 @@
         <h4 class="title"><%= @product.name %></h4>
         <div class="prices">
             <% if @product.price != @product.total_price %>
-            <del class="price-old">$<%= @product.price %></del>
+                <del class="price-old">$<%= @product.price %></del>
             <% end %>
             <span class="price">$<%= @product.total_price %></span>
         </div>
         <p><%= @product.description %></p>
         <div class="quick-view-select">
             <div class="quick-view-select-item">
-                <label for="forSize" class="form-label">Size:</label>
-                <select class="form-select" id="forSize" required>
-                    <option selected value="">s</option>
-                    <option>m</option>
-                    <option>l</option>
-                    <option>xl</option>
-                </select>
-            </div>
-            <div class="quick-view-select-item">
                 <label for="forColor" class="form-label">Color:</label>
-                <select class="form-select" id="forColor" required>
-                    <option selected value="">red</option>
-                    <option>green</option>
-                    <option>blue</option>
-                    <option>yellow</option>
-                    <option>white</option>
-                </select>
+                <div class="product-single-item">
+                    <div class="product-single-info">
+                        <div class="product-color">
+                        <ul class="color-list">
+                            <% @colors.each do |color| %>
+                            <li data-bg-color="<%= color.values[0] %>"style="background-color: <%= color.values[0] %>" title="<%= color.keys[0] %>"></li>
+                            <% end %>
+                        </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="action-top">

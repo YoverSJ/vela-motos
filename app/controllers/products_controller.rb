@@ -72,6 +72,7 @@ class ProductsController < ApplicationController
 
   def show_product
     @product = Product.find(params[:id])
+    @colors = get_colors(@product.color)
     respond_to do |format|
       format.html
       format.js

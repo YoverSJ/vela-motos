@@ -31,16 +31,16 @@
                   <%= label_tag :color, "Colores" %>
                   <%= hidden_field_tag :color, product.color, class: "form-control", disabled: true %>
                   <div class="product-single-item">
-                  <div class="product-single-info">
-                    <div class="product-color">
-                      <ul class="color-list">
-                        <% @colors.each do |color| %>
-                          <li data-bg-color="<%= color.values[0] %>" title="<%= color.keys[0] %>"></li>
-                        <% end %>
-                      </ul>
+                    <div class="product-single-info">
+                      <div class="product-color">
+                        <ul class="color-list">
+                          <% @colors.each do |color| %>
+                            <li data-bg-color="<%= color.values[0] %>" title="<%= color.keys[0] %>"></li>
+                          <% end %>
+                        </ul>
+                      </div>
                     </div>
                   </div>
-                </div>
                 </div>
               </div>
               <div class="col-md-12">
