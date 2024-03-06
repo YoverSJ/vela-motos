@@ -77,6 +77,14 @@ const showImage = () => {
     modalImg.src = image.style.backgroundImage.slice(4, -1).replace(/"/g, "");
 }
 
+const showPhoto = (btn) => {
+    let image = document.getElementById("product_imagen");
+    let model = btn.getAttribute("data-model");
+    let id = btn.getAttribute("data-id");
+    modalImg.src = `/uploads/${model}/${id}/${image.value}`;
+    modal.show();
+}
+
 // Cuando el usuario haga clic en cualquier lugar fuera del modal, ciérrelo
 window.onclick = function(event) {
   if (event.target === modal) {
@@ -84,14 +92,13 @@ window.onclick = function(event) {
   }
 }
 
-
-// const getImageName = (file) => {
-//     let listImages = $("#list-images").val().split(",").filter(urlImage => urlImage !== "");
-//     let productName = $("#product_name").val();
-//     return productName.toLowerCase().replace(" ", "-") + "-" + (listImages.length + 1) + "." + getExtension(file.name);
-// }
-
-// const getExtension = (fileName) => {
-//     let arrayName = fileName.split(".");
-//     return arrayName[arrayName.length - 1];
-// }
+// Mostrar boton show-photo cuando se cambie la imagen
+$("#product_imagen").change(function(e) {
+    let btnShowPhoto = document.getElementById("show-photo");
+    if (e.target.value === "") {
+        btnShowPhoto.classList.add("d-none");
+    } else {
+        btnShowPhoto.classList.remove("d-none");
+        btnShowPhoto.classList.add("d-block");
+    }
+});

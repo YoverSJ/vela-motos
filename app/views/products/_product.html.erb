@@ -73,6 +73,24 @@
                   <%= number_field_tag :stock, product.stock, class: "form-control", disabled: true %>
                 </div>
               </div>
+              <% if !@images.blank? %>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <%= label_tag :imagen, "Foto Principal" %>
+                    <%= select_tag :imagen, options_for_select([["Ninguno", ""]] + @photos.to_a, product.imagen), { class: "form-control", id: "product_imagen", disabled: true } %>
+                  </div>
+                </div>
+                <% if !product.imagen.blank?%>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label>&nbsp;</label>
+                      <button type="button" id="show-photo" class="btn btn-dark d-block" data-bs-toggle="modal" data-bs-target="#myModal" data-model="product_images" data-id="<%= product.id %>" onclick="showPhoto(this)">
+                        Ver Foto
+                      </button>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
               <div class="col-md-12">
                 <div class="form-group">
                   <label>Fotos</label>
@@ -84,8 +102,8 @@
                           <div class="swiper-wrapper">
                             <% @images.each do |image| %>
                               <div class="swiper-slide">
-                                <a class="lightbox-image" data-fancybox="gallery" href="/product_images/<%= image.image_url %>">
-                                  <img src="/product_images/<%= image.image_url %>" width="570" height="541" alt="<%= image.image_url %>">
+                                <a class="lightbox-image" data-fancybox="gallery" href="/uploads/product_images/<%= image.product_id %>/<%= image.image_url %>">
+                                  <img src="/uploads/product_images/<%= image.product_id %>/<%= image.image_url %>" width="570" height="541" alt="<%= image.image_url %>">
                                 </a>
                               </div>
                             <% end %>
@@ -95,7 +113,7 @@
                           <div class="swiper-wrapper">
                             <% @images.each do |image| %>
                               <div class="swiper-slide">
-                                <img src="/product_images/<%= image.image_url %>" width="127" height="127" alt="Image-HasTech">
+                                <img src="/uploads/product_images/<%= image.product_id %>/<%= image.image_url %>" width="127" height="127" alt="<%= image.image_url %>">
                               </div>
                             <% end %>
                           </div>

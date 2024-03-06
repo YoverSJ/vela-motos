@@ -1,0 +1,50 @@
+<!--== Start Shopping Checkout Area Wrapper ==-->
+<section class="shopping-checkout-wrap">
+  <div class="col-lg-12">
+    <!--== Start Billing Accordion ==-->
+    <div class="checkout-billing-details-wrap">
+      <div class="billing-form-wrap">
+        <%= form_with(model: image, class: "mt-1", multipart: true) do |form| %>
+
+          <% if image.errors.any? %>
+            <div style="color: red">
+              <ul>
+                <% image.errors.each do |error| %>
+                  <li><%= error.full_message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="file_image">Imagen (optional)</label>
+                <input type="file" name="file_image" id="file_image" accept="image/*" class="form-control" onchange="previewImage()">
+                <label><abbr class="required">El archivo debe ser una imagen 800x800</abbr></label>
+              </div>
+            </div>
+            <%= form.hidden_field :image_url %>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Vista previa</label>
+                <div id="preview-image" class="mb-1 d-none" onclick="showImage(this)"></div>
+                <!-- Button to trigger modal -->
+                <button type="button" id="show-image" class="btn btn-dark d-none" data-bs-toggle="modal" data-bs-target="#myModal" onclick="showImage(this)">
+                  Ver imagen
+                </button>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <%= form.submit "Guardar", class: "btn-theme" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <!--== End Billing Accordion ==-->
+  </div>
+</section>
+<!--== End Shopping Checkout Area Wrapper ==-->

@@ -94,44 +94,65 @@
                 <%= form.number_field :stock, min: 0, class: "form-control", required: true %>
               </div>
             </div>
-            <%= link_to "Agregar imagen", new_image_path(product_id: product) %>
-            <%= form.hidden_field :imagen %>
-            <div class="col-md-12">
-              <div class="form-group">
-                <label>Fotos</label>
-                <div class="product-single-item">
-                  <div class="col-xl-6">
-                    <!--== Start Product Thumbnail Area ==-->
-                    <div class="product-single-thumb">
-                      <div class="swiper-container single-product-thumb single-product-thumb-slider">
-                        <div class="swiper-wrapper">
-                          <% @images.each do |image| %>
-                            <div class="swiper-slide">
-                              <a class="lightbox-image" data-fancybox="gallery" href="/product_images/<%= image.image_url %>">
-                                <img src="/product_images/<%= image.image_url %>" width="570" height="541" alt="<%= image.image_url %>">
-                              </a>
-                              <%= link_to image, method: :delete, class: "check-btn sqr-btn" do %>
-                                <%# <i class="fa fa-trash"></i> %> Eliminar
-                              <% end %>
-                            </div>
-                          <% end %>
+            <% if product.persisted? %>
+              <% if !@images.blank? %>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <%= form.label :imagen do %>
+                      Foto principal <abbr class="required" title="required">*</abbr>
+                    <% end %>
+                    <%= form.select :imagen, [["Ninguno", ""]] + @photos.to_a, {}, class: "form-control" %>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label>&nbsp;</label>
+                    <button type="button" id="show-photo" class="btn btn-dark <%= product.imagen.blank? ? 'd-none' : 'd-block' %>" data-bs-toggle="modal" data-bs-target="#myModal" data-model="product_images" data-id="<%= product.id %>" onclick="showPhoto(this)">
+                      Ver Foto
+                    </button>
+                  </div>
+                </div>
+              <% end %>
+              <% if @images.length < 5 %>
+                <%= link_to "Agregar imagen", new_product_image_path(product_id: product) %>
+              <% end %>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>Fotos</label>
+                  <div class="product-single-item">
+                    <div class="col-xl-6">
+                      <!--== Start Product Thumbnail Area ==-->
+                      <div class="product-single-thumb">
+                        <div class="swiper-container single-product-thumb single-product-thumb-slider">
+                          <div class="swiper-wrapper">
+                            <% @images.each do |image| %>
+                              <div class="swiper-slide">
+                                <a class="lightbox-image" data-fancybox="gallery" href="/uploads/product_images/<%= image.product_id %>/<%= image.image_url %>">
+                                  <img src="/uploads/product_images/<%= image.product_id %>/<%= image.image_url %>" width="570" height="541" alt="<%= image.image_url %>">
+                                </a>
+                                <%= link_to product_image_path(product_id: product, id: image), method: :delete, class: "check-btn sqr-btn" do %>
+                                  <%# <i class="fa fa-trash"></i> %> Eliminar
+                                <% end %>
+                              </div>
+                            <% end %>
+                          </div>
+                        </div>
+                        <div class="swiper-container single-product-nav single-product-nav-slider">
+                          <div class="swiper-wrapper">
+                            <% @images.each do |image| %>
+                              <div class="swiper-slide">
+                                <img src="/uploads/product_images/<%= image.product_id %>/<%= image.image_url %>" width="127" height="127" alt="<%= image.image_url %>">
+                              </div>
+                            <% end %>
+                          </div>
                         </div>
                       </div>
-                      <div class="swiper-container single-product-nav single-product-nav-slider">
-                        <div class="swiper-wrapper">
-                          <% @images.each do |image| %>
-                            <div class="swiper-slide">
-                              <img src="/product_images/<%= image.image_url %>" width="127" height="127" alt="Image-HasTech">
-                            </div>
-                          <% end %>
-                        </div>
-                      </div>
+                      <!--== End Product Thumbnail Area ==-->
                     </div>
-                    <!--== End Product Thumbnail Area ==-->
                   </div>
                 </div>
               </div>
-            </div>
+            <% end %>
             <div class="col-md-12">
               <div class="form-group">
                 <%= form.submit "Guardar", class: "btn-theme" %>

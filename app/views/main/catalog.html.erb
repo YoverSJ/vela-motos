@@ -56,7 +56,7 @@
                         <div class="inner-content">
                           <div class="product-thumb">
                             <a href="/catalogo/<%= product.name.downcase.gsub(' ', '-') %>.html">
-                              <img src="<%= product.imagen.blank? ? '/assets/shop/product-single/1.webp' : '/product_images/' + product.imagen %>" width="270" height="274" title="<%= product.name %>" alt="<%= product.imagen %>">
+                              <img src="<%= product.imagen.blank? ? '/assets/shop/product-single/1.webp' : '/uploads/product_images/'+ product.id.to_s + '/' + product.imagen %>" width="270" height="274" title="<%= product.name %>" alt="<%= product.imagen %>">
                             </a>
                             <div class="product-flag <%= product.discount.blank? || product.discount == 0 ? 'd-none' : 'd-block' %>">
                               <ul>
@@ -80,7 +80,7 @@
                                 <li><a href="/catalogo.html">Women</a></li>
                               </ul>
                             </div>
-                            <h4 class="title"><a href="single-product.html"><%= product.name %></a></h4>
+                            <h4 class="title"><a href="/catalogo/<%= product.name.downcase.gsub(' ', '-') %>.html"><%= product.name %></a></h4>
                             <div class="prices">
                               <% if product.price != product.total_price %>
                                 <span class="price-old">S/. <%= product.price %></span>
@@ -113,8 +113,8 @@
                       <div class="product-item product-list-item">
                         <div class="inner-content">
                           <div class="product-thumb">
-                            <a href="single-product.html">
-                              <img src="<%= product.imagen.blank? ? '/assets/shop/product-single/1.webp' : '/product_images/' + product.imagen %>" width="322" height="360" title="<%= product.name %>" alt="<%= product.imagen %>">
+                            <a href="/catalogo/<%= product.name.downcase.gsub(' ', '-') %>.html">
+                              <img src="<%= product.imagen.blank? ? '/assets/shop/product-single/1.webp' : '/uploads/product_images/' + product.id.to_s + '/' + product.imagen %>" width="322" height="360" title="<%= product.name %>" alt="<%= product.imagen %>">
                             </a>
                             <div class="product-flag <%= product.discount.blank? || product.discount == 0 ? 'd-none' : 'd-block' %>">
                               <ul>
@@ -138,7 +138,7 @@
                                 <li><a href="/catalogo.html">Women</a></li>
                               </ul>
                             </div>
-                            <h4 class="title"><a href="single-product.html"><%= product.name %></a></h4>
+                            <h4 class="title"><a href="/catalogo/<%= product.name.downcase.gsub(' ', '-') %>.html"><%= product.name %></a></h4>
                             <div class="prices">
                               <% if product.price != product.total_price %>
                                 <span class="price-old">S/. <%= product.price %></span>

@@ -27,58 +27,85 @@
                 <div class="product-single-item">
                     <div class="row">
                         <div class="col-xl-6">
-                            <!--== Start Product Thumbnail Area ==-->
-                            <div class="product-single-thumb">
-                                <div class="swiper-container single-product-thumb single-product-thumb-slider">
-                                    <div class="swiper-wrapper">
-                                        <div class="swiper-slide">
-                                            <a class="lightbox-image" data-fancybox="gallery" href="/assets/shop/product-single/1.webp">
-                                                <img src="/assets/shop/product-single/1.webp" width="570" height="541" alt="Image-HasTech">
-                                            </a>
+                            <% if @product.images.blank? %>
+                                <!--== Start Product Thumbnail Area ==-->
+                                <div class="product-single-thumb">
+                                    <div class="swiper-container single-product-thumb single-product-thumb-slider">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide">
+                                                <a class="lightbox-image" data-fancybox="gallery" href="/assets/shop/product-single/1.webp">
+                                                    <img src="/assets/shop/product-single/1.webp" width="570" height="541" alt="Image-HasTech">
+                                                </a>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <a class="lightbox-image" data-fancybox="gallery" href="/assets/shop/product-single/2.webp">
+                                                    <img src="/assets/shop/product-single/2.webp" width="570" height="541" alt="Image-HasTech">
+                                                </a>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <a class="lightbox-image" data-fancybox="gallery" href="/assets/shop/product-single/3.webp">
+                                                    <img src="/assets/shop/product-single/3.webp" width="570" height="541" alt="Image-HasTech">
+                                                </a>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <a class="lightbox-image" data-fancybox="gallery" href="/assets/shop/product-single/4.webp">
+                                                    <img src="/assets/shop/product-single/4.webp" width="570" height="541" alt="Image-HasTech">
+                                                </a>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <a class="lightbox-image" data-fancybox="gallery" href="/assets/shop/product-single/5.webp">
+                                                    <img src="/assets/shop/product-single/5.webp" width="570" height="541" alt="Image-HasTech">
+                                                </a>
+                                            </div>
                                         </div>
-                                        <div class="swiper-slide">
-                                            <a class="lightbox-image" data-fancybox="gallery" href="/assets/shop/product-single/2.webp">
-                                                <img src="/assets/shop/product-single/2.webp" width="570" height="541" alt="Image-HasTech">
-                                            </a>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <a class="lightbox-image" data-fancybox="gallery" href="/assets/shop/product-single/3.webp">
-                                                <img src="/assets/shop/product-single/3.webp" width="570" height="541" alt="Image-HasTech">
-                                            </a>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <a class="lightbox-image" data-fancybox="gallery" href="/assets/shop/product-single/4.webp">
-                                                <img src="/assets/shop/product-single/4.webp" width="570" height="541" alt="Image-HasTech">
-                                            </a>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <a class="lightbox-image" data-fancybox="gallery" href="/assets/shop/product-single/5.webp">
-                                                <img src="/assets/shop/product-single/5.webp" width="570" height="541" alt="Image-HasTech">
-                                            </a>
+                                    </div>
+                                    <div class="swiper-container single-product-nav single-product-nav-slider">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide">
+                                                <img src="/assets/shop/product-single/nav-1.webp" width="127" height="127" alt="Image-HasTech">
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <img src="/assets/shop/product-single/nav-2.webp" width="127" height="127" alt="Image-HasTech">
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <img src="/assets/shop/product-single/nav-3.webp" width="127" height="127" alt="Image-HasTech">
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <img src="/assets/shop/product-single/nav-4.webp" width="127" height="127" alt="Image-HasTech">
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <img src="/assets/shop/product-single/nav-5.webp" width="127" height="127" alt="Image-HasTech">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="swiper-container single-product-nav single-product-nav-slider">
+                                <!--== End Product Thumbnail Area ==-->
+                            <% else %>
+                                <!--== Start Product Thumbnail Area ==-->
+                                <div class="product-single-thumb">
+                                    <div class="swiper-container single-product-thumb single-product-thumb-slider">
                                     <div class="swiper-wrapper">
+                                        <% @product.images.each do |image| %>
                                         <div class="swiper-slide">
-                                            <img src="/assets/shop/product-single/nav-1.webp" width="127" height="127" alt="Image-HasTech">
+                                            <a class="lightbox-image" data-fancybox="gallery" href="/uploads/product_images/<%= image.product_id %>/<%= image.image_url %>">
+                                            <img src="/uploads/product_images/<%= image.product_id %>/<%= image.image_url %>" width="570" height="541" alt="<%= image.image_url %>">
+                                            </a>
                                         </div>
+                                        <% end %>
+                                    </div>
+                                    </div>
+                                    <div class="swiper-container single-product-nav single-product-nav-slider">
+                                    <div class="swiper-wrapper">
+                                        <% @product.images.each do |image| %>
                                         <div class="swiper-slide">
-                                            <img src="/assets/shop/product-single/nav-2.webp" width="127" height="127" alt="Image-HasTech">
+                                            <img src="/uploads/product_images/<%= image.product_id %>/<%= image.image_url %>" width="127" height="127" alt="<%= image.image_url %>">
                                         </div>
-                                        <div class="swiper-slide">
-                                            <img src="/assets/shop/product-single/nav-3.webp" width="127" height="127" alt="Image-HasTech">
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <img src="/assets/shop/product-single/nav-4.webp" width="127" height="127" alt="Image-HasTech">
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <img src="/assets/shop/product-single/nav-5.webp" width="127" height="127" alt="Image-HasTech">
-                                        </div>
+                                        <% end %>
+                                    </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!--== End Product Thumbnail Area ==-->
+                                <!--== End Product Thumbnail Area ==-->
+                            <% end %>
                         </div>
                         <div class="col-xl-6">
                             <!--== Start Product Info Area ==-->
@@ -170,241 +197,51 @@
         <div class="col-12">
         <div class="product-slider-wrap">
             <div class="swiper-container product-slider-col4-container">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                <!--== Start Product Item ==-->
-                <div class="product-item">
-                    <div class="inner-content">
-                    <div class="product-thumb">
-                        <a href="single-product.html">
-                        <img src="/assets/shop/1.webp" width="270" height="274" alt="Image-HasTech">
-                        </a>
-                        <div class="product-flag">
-                        <ul>
-                            <li class="discount">-10%</li>
-                        </ul>
+                <div class="swiper-wrapper">
+                    <% @related_products.each do |product| %>
+                        <div class="swiper-slide">
+                            <!--== Start Product Item ==-->
+                            <div class="product-item">
+                                <div class="inner-content">
+                                    <div class="product-thumb">
+                                        <a href="/catalogo/<%= product.name.downcase.gsub(' ', '-') %>.html">
+                                            <img src="<%= product.imagen.blank? ? '/assets/shop/1.webp' : '/uploads/product_images/' + product.id.to_s + '/' + product.imagen %>" width="270" height="274" title="<%= product.name %>" alt="<%= product.imagen %>">
+                                        </a>
+                                        <div class="product-flag <%= product.discount.blank? || product.discount == 0 ? 'd-none' : 'd-block' %>">
+                                            <ul>
+                                                <li class="discount">-<%= product.discount %>%</li>
+                                            </ul>
+                                        </div>
+                                        <div class="product-action">
+                                            <%= link_to show_product_path(product), class: "btn-product-quick-view-open", remote: true do %>
+                                                <i class="fa fa-arrows"></i>
+                                            <% end %>
+                                        </div>
+                                        <a class="banner-link-overlay" href="shop.html"></a>
+                                    </div>
+                                    <div class="product-info">
+                                        <div class="category">
+                                            <ul>
+                                                <li><a href="shop.html">Men</a></li>
+                                                <li class="sep">/</li>
+                                                <li><a href="shop.html">Women</a></li>
+                                            </ul>
+                                        </div>
+                                        <h4 class="title"><a href="/catalogo/<%= product.name.downcase.gsub(' ', '-') %>.html"><%= product.name %></a></h4>
+                                        <div class="prices">
+                                            <% if product.price != product.total_price %>
+                                                <span class="price-old">S/. <%= product.price %></span>
+                                                <span class="sep">-</span>
+                                            <% end %>
+                                            <span class="price">S/. <%= product.total_price %></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--== End prPduct Item ==-->
                         </div>
-                        <div class="product-action">
-                <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                <button type="button" class="btn-product-quick-view-open">
-                    <i class="fa fa-arrows"></i>
-                </button>
-                <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
+                    <% end %>
                 </div>
-                        <a class="banner-link-overlay" href="shop.html"></a>
-                    </div>
-                    <div class="product-info">
-                        <div class="category">
-                <ul>
-                    <li><a href="shop.html">Men</a></li>
-                            <li class="sep">/</li>
-                            <li><a href="shop.html">Women</a></li>
-                        </ul>
-                        </div>
-                        <h4 class="title"><a href="single-product.html">Modern Smart Shoes</a></h4>
-                        <div class="prices">
-                        <span class="price-old">$300</span>
-                        <span class="sep">-</span>
-                        <span class="price">$240.00</span>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                <!--== End prPduct Item ==-->
-                </div>
-                <div class="swiper-slide">
-                <!--== Start Product Item ==-->
-                <div class="product-item">
-                    <div class="inner-content">
-                    <div class="product-thumb">
-                        <a href="single-product.html">
-                        <img src="/assets/shop/7.webp" width="270" height="274" alt="Image-HasTech">
-                        </a>
-                        <div class="product-action">
-                <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                <button type="button" class="btn-product-quick-view-open">
-                    <i class="fa fa-arrows"></i>
-                </button>
-                <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
-                </div>
-                        <a class="banner-link-overlay" href="shop.html"></a>
-                    </div>
-                    <div class="product-info">
-                        <div class="category">
-                <ul>
-                    <li><a href="shop.html">Men</a></li>
-                            <li class="sep">/</li>
-                            <li><a href="shop.html">Women</a></li>
-                        </ul>
-                        </div>
-                        <h4 class="title"><a href="single-product.html">Quickiin Mens shoes</a></h4>
-                        <div class="prices">
-                        <span class="price">$240.00</span>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                <!--== End prPduct Item ==-->
-                </div>
-                <div class="swiper-slide">
-                <!--== Start Product Item ==-->
-                <div class="product-item">
-                    <div class="inner-content">
-                    <div class="product-thumb">
-                        <a href="single-product.html">
-                        <img src="/assets/shop/3.webp" width="270" height="274" alt="Image-HasTech">
-                        </a>
-                        <div class="product-flag">
-                        <ul>
-                            <li class="discount">-10%</li>
-                        </ul>
-                        </div>
-                        <div class="product-action">
-                <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                <button type="button" class="btn-product-quick-view-open">
-                    <i class="fa fa-arrows"></i>
-                </button>
-                <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
-                </div>
-                        <a class="banner-link-overlay" href="shop.html"></a>
-                    </div>
-                    <div class="product-info">
-                        <div class="category">
-                <ul>
-                    <li><a href="shop.html">Men</a></li>
-                            <li class="sep">/</li>
-                            <li><a href="shop.html">Women</a></li>
-                        </ul>
-                        </div>
-                        <h4 class="title"><a href="single-product.html">Rexpo Womens shoes</a></h4>
-                        <div class="prices">
-                        <span class="price-old">$300</span>
-                        <span class="sep">-</span>
-                        <span class="price">$240.00</span>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                <!--== End prPduct Item ==-->
-                </div>
-                <div class="swiper-slide">
-                <!--== Start Product Item ==-->
-                <div class="product-item">
-                    <div class="inner-content">
-                    <div class="product-thumb">
-                        <a href="single-product.html">
-                        <img src="/assets/shop/4.webp" width="270" height="274" alt="Image-HasTech">
-                        </a>
-                        <div class="product-action">
-                <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                <button type="button" class="btn-product-quick-view-open">
-                    <i class="fa fa-arrows"></i>
-                </button>
-                <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
-                </div>
-                        <a class="banner-link-overlay" href="shop.html"></a>
-                    </div>
-                    <div class="product-info">
-                        <div class="category">
-                <ul>
-                    <li><a href="shop.html">Men</a></li>
-                            <li class="sep">/</li>
-                            <li><a href="shop.html">Women</a></li>
-                        </ul>
-                        </div>
-                        <h4 class="title"><a href="single-product.html">Leather Mens Slipper</a></h4>
-                        <div class="prices">
-                        <span class="price">$240.00</span>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                <!--== End prPduct Item ==-->
-                </div>
-                <div class="swiper-slide">
-                <!--== Start Product Item ==-->
-                <div class="product-item">
-                    <div class="inner-content">
-                    <div class="product-thumb">
-                        <a href="single-product.html">
-                        <img src="/assets/shop/5.webp" width="270" height="274" alt="Image-HasTech">
-                        </a>
-                        <div class="product-action">
-                <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                <button type="button" class="btn-product-quick-view-open">
-                    <i class="fa fa-arrows"></i>
-                </button>
-                <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
-                </div>
-                        <a class="banner-link-overlay" href="shop.html"></a>
-                    </div>
-                    <div class="product-info">
-                        <div class="category">
-                <ul>
-                    <li><a href="shop.html">Men</a></li>
-                            <li class="sep">/</li>
-                            <li><a href="shop.html">Women</a></li>
-                        </ul>
-                        </div>
-                        <h4 class="title"><a href="single-product.html">Primitive Mens shoes</a></h4>
-                        <div class="prices">
-                        <span class="price-old">$300</span>
-                        <span class="sep">-</span>
-                        <span class="price">$240.00</span>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                <!--== End prPduct Item ==-->
-                </div>
-                <div class="swiper-slide">
-                <!--== Start Product Item ==-->
-                <div class="product-item">
-                    <div class="inner-content">
-                    <div class="product-thumb">
-                        <a href="single-product.html">
-                        <img src="/assets/shop/6.webp" width="270" height="274" alt="Image-HasTech">
-                        </a>
-                        <div class="product-flag">
-                        <ul>
-                            <li class="discount">-10%</li>
-                        </ul>
-                        </div>
-                        <div class="product-action">
-                <a class="btn-product-wishlist" href="shop-wishlist.html"><i class="fa fa-heart"></i></a>
-                <a class="btn-product-cart" href="shop-cart.html"><i class="fa fa-shopping-cart"></i></a>
-                <button type="button" class="btn-product-quick-view-open">
-                    <i class="fa fa-arrows"></i>
-                </button>
-                <a class="btn-product-compare" href="shop-compare.html"><i class="fa fa-random"></i></a>
-                </div>
-                        <a class="banner-link-overlay" href="shop.html"></a>
-                    </div>
-                    <div class="product-info">
-                        <div class="category">
-                <ul>
-                    <li><a href="shop.html">Men</a></li>
-                            <li class="sep">/</li>
-                            <li><a href="shop.html">Women</a></li>
-                        </ul>
-                        </div>
-                        <h4 class="title"><a href="single-product.html">Simple Fabric Shoe</a></h4>
-                        <div class="prices">
-                        <span class="price-old">$300</span>
-                        <span class="sep">-</span>
-                        <span class="price">$240.00</span>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                <!--== End prPduct Item ==-->
-                </div>
-            </div>
             </div>
             <!--== Add Swiper Arrows ==-->
             <div class="product-swiper-btn-wrap">
@@ -421,3 +258,20 @@
     </div>
 </section>
 <!--== End Product Area Wrapper ==-->
+
+
+<!--== Start Quick View Menu ==-->
+<aside class="product-quick-view-modal">
+    <div class="product-quick-view-inner">
+        <div class="product-quick-view-content">
+            <button type="button" class="btn-close">
+                <span class="close-icon"><i class="fa fa-close"></i></span>
+            </button>
+            <div class="row align-items-center" id="modal_content">
+                
+            </div>
+        </div>
+    </div>
+    <div class="canvas-overlay"></div>
+</aside>
+<!--== End Quick View Menu ==-->

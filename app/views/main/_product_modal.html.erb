@@ -1,7 +1,7 @@
 <%# @product.inspect %>
 <div class="col-lg-6 col-md-6 col-12">
     <div class="thumb">
-        <img src="<%= @product.imagen.blank? ? '/assets/shop/product-single/1.webp' : '/product_images/' + @product.imagen %>" width="570" height="541" alt="Alan-Shop">
+        <img src="<%= @product.imagen.blank? ? '/assets/shop/product-single/1.webp' : '/uploads/product_images/' + @product.id.to_s + '/' + @product.imagen %>" width="570" height="541" alt="Alan-Shop">
     </div>
 </div>
 <div class="col-lg-6 col-md-6 col-12">

@@ -21,6 +21,13 @@ class MainController < ApplicationController
     @product = Product.find_by_name(params[:name].gsub("-", " "))
     @page_title = @product.name.capitalize
     @colors = get_colors(@product.color)
+    @related_products = Product.where(id: get_random_products)
   end
+
+  private
+    def get_random_products
+      product_ids = Product.all.pluck(:id)
+      random_products = product_ids.shuffle.take(6)
+    end
 
 end

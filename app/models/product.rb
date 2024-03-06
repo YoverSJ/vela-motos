@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
 
-  has_many :images, dependent: :destroy
+  has_many :images, class_name: "ProductImage", foreign_key: "product_id", dependent: :destroy
 
   before_create :generate_sku
 
