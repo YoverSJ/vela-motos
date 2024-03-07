@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
 
+  include Pagy::Backend
+
   COLORS = {
     "Blanco": "white",
     "Platino": "silver",

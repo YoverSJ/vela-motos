@@ -73,3 +73,4 @@ end
 gem 'awesome_print'
 gem 'dotenv-rails'
 gem 'mysql2'
+gem 'pagy'

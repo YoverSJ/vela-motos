@@ -5,8 +5,9 @@ class ProductsController < ApplicationController
 
   # GET /products or /products.json
   def index
-    @products = Product.all
+    @pagy, @products = pagy(Product.all, items: params[:items] || 10)
     @page_title = "Productos"
+    @items = [10, 20, 50, 100]
   end
 
   # GET /products/1 or /products/1.json

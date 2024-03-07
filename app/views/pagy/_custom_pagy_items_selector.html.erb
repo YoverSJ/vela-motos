@@ -1,0 +1,12 @@
+<div class="pagy-custom-selector">
+  <label for="pagy-items-selector">Mostrar:</label>
+  <%= @items %>
+  <select id="pagy-items-selector" onchange="redirectToPage(this)">
+    
+    <% @items.each do |item| %>
+      <option value="?page=<%= @pagy.page %>&items=<%= item %>" <%= 'selected' if @pagy.vars[:items] == item %>>
+        <%= item %>
+      </option>
+    <% end %>
+  </select>
+</div>

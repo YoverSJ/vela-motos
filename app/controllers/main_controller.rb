@@ -9,7 +9,7 @@ class MainController < ApplicationController
   end
 
   def catalog
-    @products = Product.all
+    @pagy, @products = pagy(Product.all, items: 9)
     @page_title = "Catalogo"
   end
 

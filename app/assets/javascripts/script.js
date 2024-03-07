@@ -1,6 +1,7 @@
 $(document).ready(function() {
+    /* Cargar colores al editar un producto */
     let listColors = $("#product_color").val();
-    if (listColors !== "") {
+    if (listColors !== "" && listColors !== undefined) {
         let arrayColors = listColors.split(",");
         $("#product_color").val("");
 
@@ -9,6 +10,19 @@ $(document).ready(function() {
             colorSelected($("#product_colores")[0]);
         }) 
     }
+
+    // let navPage =$(".pagy-bootstrap-nav");
+    // let listPage =$(".pagination");
+    // let itemPage =$(".pagination li");
+    // let linkPage =$(".pagination li a");
+    // let activePage =$(".pagy-bootstrap-nav .pagination .page-item.active a");
+    // let parentActivePage = activePage.parent();
+    // navPage.addClass("pagination-items");
+    // listPage.addClass("justify-content-center mb--0");
+    // itemPage.removeClass("page-item");
+    // linkPage.removeClass("page-link");
+    // activePage.addClass("active");
+    // parentActivePage.removeClass("active");
 });
 
 inputsCalculate = document.getElementsByClassName('calculate-total-price');
@@ -76,3 +90,9 @@ const eliminarColor = (eColor) => {
     $(eColor).remove();
 }
 
+const redirectToPage = (selectElement) => {
+    var selectedOption = selectElement.value;
+    if (selectedOption) {
+        window.location.href = selectedOption;
+    }
+}

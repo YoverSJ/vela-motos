@@ -1,0 +1,58 @@
+<div class="col-12">
+    <div  class="pagination-items">
+    <ul class="pagination justify-content-center flex-wrap gap--0 mb--0">
+        <% if pagy.prev %>
+        <%# <li> %>
+            <%# link_to 'Primero', pagy_url_for(pagy, 1), style: "width: auto;padding: 0 8px 0 8px" %>
+        <%# </li> %>
+        <li>
+            <%= link_to '<', pagy_url_for(pagy, pagy.prev) %>
+        </li>
+        <% else %>
+        <%# <li class="disabled"> %>
+            <%# link_to 'Primero', "javascript:void(0)", style: "width: auto;padding: 0 8px 0 8px" %>
+        <%# </li> %>
+        <li class="disabled">
+            <%= link_to '<', "javascript:void(0)" %>
+        </li>
+        <% end %>
+
+        <% pagy.series.each do |item| %>
+            <% case item %>
+            <% when Integer %>
+                <li>
+                    <%= link_to item, pagy_url_for(pagy, item) %>
+                </li>
+            <% when String %>
+                <li>
+                    <%= link_to item,  "javascript:void(0)", class: "active" %>
+                </li>
+            <% when :gap %>
+                <li>
+                    <%= link_to "...",  "javascript:void(0)" %>
+                </li>
+            <% else %>
+                <li>
+                    <%= link_to item, pagy_url_for(pagy, item) %>
+                </li>
+            <% end %>
+        <% end %>
+
+        <% if pagy.next %>
+        <li>
+            <%= link_to '>', pagy_url_for(pagy, pagy.next) %>
+        </li>
+        <%# <li> %>
+            <%# link_to 'Ultimo', pagy_url_for(pagy, pagy.last), style: "width: auto;padding: 0 8px 0 8px" %>
+        <%# </li> %>
+        <% else %>
+        <li class="disabled">
+            <%= link_to '>', "javascript:void(0)" %>
+        </li>
+        <%# <li class="disabled"> %>
+            <%# link_to 'Ultimo', "javascript:void(0)", style: "width: auto;padding: 0 8px 0 8px" %>
+        <%# </li> %>
+        <% end %>
+    </ul>
+    </div>
+</div>

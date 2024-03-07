@@ -1,0 +1,9 @@
+<% if pagy.pages > 0 %>
+  <div class="pagy-info">
+    <% if pagy.count > 0 %>
+      <p class="pagination-line">Mostrando <a href="javascript:void(0)"><%= pagy.offset + 1 %> - <%= [pagy.offset + pagy.items, pagy.count].min %></a> de <a href="javascript:void(0)"><%= pagy.count %></a> resultados</p>
+    <% else %>
+      No se encontraron resultados
+    <% end %>
+  </div>
+<% end %>

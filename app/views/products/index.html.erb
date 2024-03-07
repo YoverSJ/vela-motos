@@ -41,28 +41,40 @@
               </tr>
             </thead>
             <tbody>
-              <% @products.each do |product| %>
+              <% unless @products.blank? %>
+                <% @products.each do |product| %>
+                  <tr>
+                    <td><%= product.name %></td>
+                    <td><%= product.warranty %></td>
+                    <td><%= product.total_price %></td>
+                    <td><%= product.stock %></td>
+                    <td>
+                      <%= link_to product, class: "check-btn sqr-btn" do %>
+                        <i class="fa fa-eye"></i>
+                      <% end %>  
+                      <%= link_to edit_product_path(product), class: "check-btn sqr-btn" do %>
+                        <i class="fa fa-pencil"></i>
+                      <% end %>  
+                      <%= link_to product, method: :delete, class: "check-btn sqr-btn" do %>
+                        <i class="fa fa-trash"></i>
+                      <% end %>
+                    </td>
+                  </tr>
+                <% end %>
+              <% else %>
                 <tr>
-                  <td><%= product.name %></td>
-                  <td><%= product.warranty %></td>
-                  <td><%= product.total_price %></td>
-                  <td><%= product.stock %></td>
-                  <td>
-                    <%= link_to product, class: "check-btn sqr-btn" do %>
-                      <i class="fa fa-eye"></i>
-                    <% end %>  
-                    <%= link_to edit_product_path(product), class: "check-btn sqr-btn" do %>
-                      <i class="fa fa-pencil"></i>
-                    <% end %>  
-                    <%= link_to product, method: :delete, class: "check-btn sqr-btn" do %>
-                      <i class="fa fa-trash"></i>
-                    <% end %>
-                  </td>
+                  <td colspan="5">No hay resultados</td>
                 </tr>
               <% end %>
             </tbody>
           </table>
+          <%== pagy_items_selector_js(@pagy) %>
+          <%= render "pagy/custom_pagy_items_selector", pagy: @pagy, items: @items unless @products.blank? %>
         </div>
+        <div class="d-flex justify-content-center">
+          <%= render "pagy/custom_pagy_info", pagy: @pagy unless @products.blank? %>
+        </div>
+        <%= render "pagy/custom_pagy", pagy: @pagy unless @products.blank? %>
       </div>
     </div>
 
