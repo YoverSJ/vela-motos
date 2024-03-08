@@ -107,14 +107,18 @@
                 <div class="col-md-3">
                   <div class="form-group">
                     <label>&nbsp;</label>
-                    <button type="button" id="show-photo" class="btn btn-dark <%= product.imagen.blank? ? 'd-none' : 'd-block' %>" data-bs-toggle="modal" data-bs-target="#myModal" data-model="product_images" data-id="<%= product.id %>" onclick="showPhoto(this)">
+                    <button type="button" id="show-photo" class="btn-coupon  <%= product.imagen.blank? ? 'd-none' : 'd-block' %>" data-bs-toggle="modal" data-bs-target="#myModal" data-model="product_images" data-id="<%= product.id %>" onclick="showPhoto(this)">
                       Ver Foto
                     </button>
                   </div>
                 </div>
+                <div class="col-md-6">
+                </div>
               <% end %>
               <% if @images.length < 5 %>
-                <%= link_to "Agregar imagen", new_product_image_path(product_id: product) %>
+                <div class="col-md-3">
+                  <%= link_to "Agregar imagen", new_product_image_path(product_id: product), class: "btn-coupon d-inline-block text-center mb-3" %>
+                </div>
               <% end %>
               <div class="col-md-12">
                 <div class="form-group">

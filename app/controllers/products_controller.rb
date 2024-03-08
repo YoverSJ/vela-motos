@@ -5,9 +5,12 @@ class ProductsController < ApplicationController
 
   # GET /products or /products.json
   def index
-    @pagy, @products = pagy(Product.all, items: params[:items] || 10)
-    @page_title = "Productos"
-    @items = [10, 20, 50, 100]
+    if params[:page].is_a?(String) && params[:page].to_i < 1
+      render file: "#{Rails.root}/public/404.html", layout: false, status: :not_found
+    else
+      @pagy, @products = pagy(Product.all.order("updated_at DESC"), items: 10)
+      @page_title = "Productos"
+    end
   end
 
   # GET /products/1 or /products/1.json
@@ -35,6 +38,7 @@ class ProductsController < ApplicationController
   # POST /products or /products.json
   def create
     @product = Product.new(product_params)
+    @images = @product.images
     respond_to do |format|
       if @product.save
         format.html { redirect_to product_url(@product), notice: "Producto creado." }
@@ -49,6 +53,7 @@ class ProductsController < ApplicationController
 
   # PATCH/PUT /products/1 or /products/1.json
   def update
+    @images = @product.images
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to product_url(@product), notice: "Producto actualizado." }

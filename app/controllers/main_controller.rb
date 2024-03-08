@@ -9,8 +9,12 @@ class MainController < ApplicationController
   end
 
   def catalog
-    @pagy, @products = pagy(Product.all, items: 9)
-    @page_title = "Catalogo"
+    if params[:page].is_a?(String) && params[:page].to_i < 1
+      render file: "#{Rails.root}/public/404.html", layout: false, status: :not_found
+    else
+      @pagy, @products = pagy(Product.all, items: 9)
+      @page_title = "Catalogo"
+    end
   end
 
   def contact
@@ -19,9 +23,13 @@ class MainController < ApplicationController
 
   def single_product
     @product = Product.find_by_name(params[:name].gsub("-", " "))
-    @page_title = @product.name.capitalize
-    @colors = get_colors(@product.color)
-    @related_products = Product.where(id: get_random_products(@product.id))
+    if @product.blank?
+      render file: "#{Rails.root}/public/404.html", layout: false, status: :not_found
+    else
+      @page_title = @product.name.capitalize
+      @colors = get_colors(@product.color)
+      @related_products = Product.where(id: get_random_products(@product.id))
+    end
   end
 
   private

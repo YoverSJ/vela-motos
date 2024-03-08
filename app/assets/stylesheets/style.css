@@ -6018,7 +6018,7 @@ table p {
   /* Firefox 18- */
   color: #626262;
 }
-.shopping-checkout-wrap .checkout-page-coupon-wrap .coupon-accordion .card .card-body .apply-coupon-wrap form .btn-coupon {
+.btn-coupon {
   background-color: #333131;
   border: none;
   color: #fff;
@@ -6029,15 +6029,16 @@ table p {
   font-weight: 700;
   padding: 15px;
   line-height: 22px;
-  margin-left: 17px;
+  /*margin-left: 17px;*/
 }
 @media only screen and (max-width: 991px) {
-  .shopping-checkout-wrap .checkout-page-coupon-wrap .coupon-accordion .card .card-body .apply-coupon-wrap form .btn-coupon {
+  .btn-coupon {
     margin-left: 0;
   }
 }
-.shopping-checkout-wrap .checkout-page-coupon-wrap .coupon-accordion .card .card-body .apply-coupon-wrap form .btn-coupon:hover {
+.btn-coupon:hover {
   background-color: #eb3e32;
+  color: #fff;
 }
 .shopping-checkout-wrap .checkout-billing-details-wrap .billing-form-wrap form .form-group {
   margin-bottom: 20px;
