@@ -14,7 +14,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%# stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     
     <!--== Favicon ==-->
     <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon" />
@@ -26,21 +27,28 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,500&display=swap"
       rel="stylesheet">
 
-    <%# <!--== Bootstrap CSS ==-->
-    <link href="/assets/bootstrap.min.css" rel="stylesheet" />
+    <!--== Bootstrap CSS ==-->
+    <%# <link href="/assets/bootstrap.min.css" rel="stylesheet" /> %>
+    <%= stylesheet_link_tag "bootstrap.min", "data-turbo-track": "reload" %>
     <!--== Font Awesome Min Icon CSS ==-->
-    <link href="/assets/font-awesome.min.css" rel="stylesheet" />
+    <%# <link href="/assets/font-awesome.min.css" rel="stylesheet" /> %>
+    <%= stylesheet_link_tag "font-awesome.min", "data-turbo-track": "reload" %>
     <!--== Pe7 Stroke Icon CSS ==-->
-    <link href="/assets/pe-icon-7-stroke.css" rel="stylesheet" />
+    <%# <link href="/assets/pe-icon-7-stroke.css" rel="stylesheet" /> %>
+    <%= stylesheet_link_tag "pe-icon-7-stroke", "data-turbo-track": "reload" %>
     <!--== Swiper CSS ==-->
-    <link href="/assets/swiper.min.css" rel="stylesheet" />
+    <%# <link href="/assets/swiper.min.css" rel="stylesheet" /> %>
+    <%= stylesheet_link_tag "swiper.min", "data-turbo-track": "reload" %>
     <!--== Fancybox Min CSS ==-->
-    <link href="/assets/fancybox.min.css" rel="stylesheet" />
+    <%# <link href="/assets/fancybox.min.css" rel="stylesheet" /> %>
+    <%= stylesheet_link_tag "fancybox.min", "data-turbo-track": "reload" %>
     <!--== Aos Min CSS ==-->
-    <link href="/assets/aos.min.css" rel="stylesheet" />
+    <%# <link href="/assets/aos.min.css" rel="stylesheet" /> %>
+    <%= stylesheet_link_tag "aos.min", "data-turbo-track": "reload" %>
 
     <!--== Main Style CSS ==-->
-    <link href="/assets/style.css" rel="stylesheet" /> %>
+    <%# <link href="/assets/style.css" rel="stylesheet" /> %>
+    <%= stylesheet_link_tag "style", "data-turbo-track": "reload" %>
 
     <!--[if lt IE 9]>
       <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -71,38 +79,50 @@
     </div>
     <!--wrapper end-->
 
-
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>s
-    <%# <!--=======================Javascript============================-->
+    <!--=======================Javascript============================-->
     <!--=== jQuery Modernizr Min Js ===-->
-    <script src="/assets/modernizr.js"></script>
+    <%# <script src="/assets/modernizr.js"></script> %>
+    <%= javascript_include_tag 'modernizr', 'data-turbolinks-track': 'reload' %>
     <!--=== jQuery Min Js ===-->
-    <script src="/assets/jquery-main.js"></script>
+    <%# <script src="/assets/jquery-main.js"></script> %>
+    <%= javascript_include_tag 'jquery-main', 'data-turbolinks-track': 'reload' %>
     <!--=== jQuery Migration Min Js ===-->
-    <script src="/assets/jquery-migrate.js"></script>
+    <%# <script src="/assets/jquery-migrate.js"></script> %>
+    <%= javascript_include_tag 'jquery-migrate', 'data-turbolinks-track': 'reload' %>
     <!--=== jQuery Popper Min Js ===-->
-    <script src="/assets/popper.min.js"></script>
+    <%# <script src="/assets/popper.min.js"></script> %>
+    <%= javascript_include_tag 'popper.min', 'data-turbolinks-track': 'reload' %>
     <!--=== jQuery Bootstrap Min Js ===-->
-    <script src="/assets/bootstrap.min.js"></script>
+    <%# <script src="/assets/bootstrap.min.js"></script> %>
+    <%= javascript_include_tag 'bootstrap.min', 'data-turbolinks-track': 'reload' %>
     <!--=== jQuery Ui Min Js ===-->
-    <script src="/assets/jquery-ui.min.js"></script>
+    <%# <script src="/assets/jquery-ui.min.js"></script> %>
+    <%= javascript_include_tag 'jquery-ui.min', 'data-turbolinks-track': 'reload' %>
     <!--=== jQuery Swiper Min Js ===-->
-    <script src="/assets/swiper.min.js"></script>
+    <%# <script src="/assets/swiper.min.js"></script> %>
+    <%= javascript_include_tag 'swiper.min', 'data-turbolinks-track': 'reload' %>
     <!--=== jQuery Fancybox Min Js ===-->
-    <script src="/assets/fancybox.min.js"></script>
+    <%# <script src="/assets/fancybox.min.js"></script> %>
+    <%= javascript_include_tag 'fancybox.min', 'data-turbolinks-track': 'reload' %>
     <!--=== jQuery Waypoint Js ===-->
-    <script src="/assets/waypoint.js"></script>
+    <%# <script src="/assets/waypoint.js"></script> %>
+    <%= javascript_include_tag 'waypoint', 'data-turbolinks-track': 'reload' %>
     <!--=== jQuery Parallax Min Js ===-->
-    <script src="/assets/parallax.min.js"></script>
+    <%# <script src="/assets/parallax.min.js"></script> %>
+    <%= javascript_include_tag 'parallax.min', 'data-turbolinks-track': 'reload' %>
     <!--=== jQuery Aos Min Js ===-->
-    <script src="/assets/aos.min.js"></script>
+    <%# <script src="/assets/aos.min.js"></script> %>
+    <%= javascript_include_tag 'aos.min', 'data-turbolinks-track': 'reload' %>
     <!--=== Preview Image ===-->
-    <script src="/assets/image.js"></script>
+    <%# <script src="/assets/image.js"></script> %>
+    <%= javascript_include_tag 'image', 'data-turbolinks-track': 'reload' %>
 
     <!--=== jQuery Custom Js ===-->
-    <script src="/assets/custom.js"></script>
+    <%# <script src="/assets/custom.js"></script> %>
+    <%= javascript_include_tag 'custom', 'data-turbolinks-track': 'reload' %>
     <!--=== Custom Js ===-->
-    <script src="/assets/script.js"></script> %>
+    <%# <script src="/assets/script.js"></script> %>
+    <%= javascript_include_tag 'script', 'data-turbolinks-track': 'reload' %>
 
   </body>
 </html>
