@@ -22,7 +22,7 @@ class MainController < ApplicationController
   end
 
   def single_product
-    @product = Product.find_by_name(params[:name].gsub("-", " "))
+    @product = Product.find_by("LOWER(name) = ?", params[:name].gsub("-", " "))
     if @product.blank?
       render file: "#{Rails.root}/public/404.html", layout: false, status: :not_found
     else

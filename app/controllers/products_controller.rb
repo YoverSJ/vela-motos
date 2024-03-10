@@ -94,6 +94,8 @@ class ProductsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def product_params
       parameters = params.require(:product).permit(:name, :description, :color, :price, :discount, :total_price, :stock, :code, :imagen, :warranty)
+      parameters[:name] = parameters[:name].strip
+      parameters
     end
 
     def set_data_select
