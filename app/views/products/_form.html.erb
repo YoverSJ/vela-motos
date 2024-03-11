@@ -107,7 +107,7 @@
                 <div class="col-md-3">
                   <div class="form-group">
                     <label>&nbsp;</label>
-                    <button type="button" id="show-photo" class="btn-coupon  <%= product.imagen.blank? ? 'd-none' : 'd-block' %>" data-bs-toggle="modal" data-bs-target="#myModal" data-model="product_images" data-id="<%= product.id %>" onclick="showPhoto(this)">
+                    <button type="button" id="show-photo" class="btn-coupon  <%= product.imagen.blank? ? 'd-none' : 'd-block' %>" data-bs-toggle="modal" data-bs-target="#myModal" data-image-url="<%= product.imagen %>" onclick="showPhoto(this)">
                       Ver Foto
                     </button>
                   </div>
@@ -131,8 +131,8 @@
                           <div class="swiper-wrapper">
                             <% @images.each do |image| %>
                               <div class="swiper-slide">
-                                <a class="lightbox-image" data-fancybox="gallery" href="/uploads/product_images/<%= image.product_id %>/<%= image.image_url %>">
-                                  <img src="/uploads/product_images/<%= image.product_id %>/<%= image.image_url %>" width="570" height="541" alt="<%= image.image_url %>">
+                                <a class="lightbox-image" data-fancybox="gallery" href="<%= image.image_url %>">
+                                  <img src="<%= image.image_url %>" width="570" height="541" alt="<%= image.image_name %>">
                                 </a>
                                 <%= link_to product_image_path(product_id: product, id: image), method: :delete, class: "check-btn sqr-btn" do %>
                                   <%# <i class="fa fa-trash"></i> %> Eliminar
@@ -145,7 +145,7 @@
                           <div class="swiper-wrapper">
                             <% @images.each do |image| %>
                               <div class="swiper-slide">
-                                <img src="/uploads/product_images/<%= image.product_id %>/<%= image.image_url %>" width="127" height="127" alt="<%= image.image_url %>">
+                                <img src="<%= image.image_url %>" width="127" height="127" alt="<%= image.image_name %>">
                               </div>
                             <% end %>
                           </div>

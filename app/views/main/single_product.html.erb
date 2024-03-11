@@ -87,8 +87,8 @@
                                     <div class="swiper-wrapper">
                                         <% @product.images.each do |image| %>
                                         <div class="swiper-slide">
-                                            <a class="lightbox-image" data-fancybox="gallery" href="/uploads/product_images/<%= image.product_id %>/<%= image.image_url %>">
-                                            <img src="/uploads/product_images/<%= image.product_id %>/<%= image.image_url %>" width="570" height="541" alt="<%= image.image_url %>">
+                                            <a class="lightbox-image" data-fancybox="gallery" href="<%= image.image_url %>">
+                                            <img src="<%= image.image_url %>" width="570" height="541" alt="<%= image.image_name %>">
                                             </a>
                                         </div>
                                         <% end %>
@@ -98,7 +98,7 @@
                                     <div class="swiper-wrapper">
                                         <% @product.images.each do |image| %>
                                         <div class="swiper-slide">
-                                            <img src="/uploads/product_images/<%= image.product_id %>/<%= image.image_url %>" width="127" height="127" alt="<%= image.image_url %>">
+                                            <img src="<%= image.image_url %>" width="127" height="127" alt="<%= image.image_name %>">
                                         </div>
                                         <% end %>
                                     </div>

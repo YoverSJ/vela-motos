@@ -42,4 +42,30 @@ class Image
     end
   end
 
+  def self.upload_image_to_cloudinary(file_image, model_type, model_id, image_name)
+    cloudinary_upload = nil
+    if !file_image.blank?
+      # Obtenemos el nombre de la imagen sin la extension
+      image_name = File.basename(image_name, '.*')
+      # Carpeta en Cloudinary donde deseas guardar la imagen
+      folder = "uploads/#{model_type}/#{model_id}"
+      # Construimos el nombre del archivo con la carpeta
+      # uploaded_name = File.join(folder, image_name)
+      # Subimos la imagen a Cloudinary con el nombre personalizado y la carpeta especificada
+      cloudinary_upload = Cloudinary::Uploader.upload(file_image.tempfile, folder: folder, public_id: image_name)
+      return cloudinary_upload
+    else
+      return cloudinary_upload
+    end
+  end
+
+  def self.delete_image_from_cloudinary(model_type, model_id, image_name)
+    # Obtenemos el nombre de la imagen sin la extension
+    image_name = File.basename(image_name, '.*')
+    # Extrae el ID público de la imagen de Cloudinary
+    folder = "uploads/#{model_type}/#{model_id}/#{image_name}"
+    # Elimina la imagen de Cloudinary
+    Cloudinary::Uploader.destroy(folder)
+  end
+
 end

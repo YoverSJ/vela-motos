@@ -23,5 +23,11 @@ module VelaMotos
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    Cloudinary.config do |config|
+      config.cloud_name = 'dqzps3lbq'
+      config.api_key = '366926627984427'
+      config.api_secret = 'dK7yAqzCV3RdCJ18JjtT7X7w9gM'
+    end
+
   end
 end

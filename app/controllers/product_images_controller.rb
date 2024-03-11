@@ -18,7 +18,9 @@ class ProductImagesController < ApplicationController
     respond_to do |format|
       if (@product.images.length - 1) < 5
         if @image.save
-          Image.save_image(params[:file_image], "product_images", @image.product_id, @image.image_url)
+          #Image.save_image(params[:file_image], "product_images", @image.product_id, @image.image_name)
+          cloudinary_upload = Image.upload_image_to_cloudinary(params[:file_image], "product_images", @product.code, @image.image_name)
+          @image.update(image_url: cloudinary_upload['secure_url'])
           format.html { redirect_to edit_product_url(@image.product_id), notice: "Imagen agregada." }
         else
           format.html { render :new, status: :unprocessable_entity }
@@ -31,7 +33,8 @@ class ProductImagesController < ApplicationController
   end
 
   def destroy
-    Image.delete_image("product_images", @image.product_id, @image.image_url)
+    #Image.delete_image("product_images", @image.product_id, @image.image_name)
+    Image.delete_image_from_cloudinary("product_images", @image.product.code, @image.image_name)
     @image.destroy!
     respond_to do |format|
       format.html { redirect_to edit_product_url(@image.product_id), notice: "Imagen eliminada." }
@@ -43,10 +46,10 @@ class ProductImagesController < ApplicationController
       @image = ProductImage.find(params[:id])
     end
     def product_image_params
-      parameters = params.require(:product_image).permit(:image_url, :product_id)
+      parameters = params.require(:product_image).permit(:image_name, :image_url, :product_id)
       product_id = params[:product_id]
       file = params[:file_image]
-      parameters[:image_url] = Image.get_image_name(file, product_id) if !file.blank?
+      parameters[:image_name] = Image.get_image_name(file, product_id) if !file.blank?
       parameters
     end
 

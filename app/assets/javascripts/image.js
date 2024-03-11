@@ -81,7 +81,9 @@ const showPhoto = (btn) => {
     let image = document.getElementById("product_imagen");
     let model = btn.getAttribute("data-model");
     let id = btn.getAttribute("data-id");
-    modalImg.src = `/uploads/${model}/${id}/${image.value}`;
+    let imageUrl = btn.getAttribute("data-image-url");
+    console.log(imageUrl);
+    modalImg.src = imageUrl;
     modal.show();
 }
 
@@ -100,5 +102,6 @@ $("#product_imagen").change(function(e) {
     } else {
         btnShowPhoto.classList.remove("d-none");
         btnShowPhoto.classList.add("d-block");
+        btnShowPhoto.setAttribute("data-image-url", e.target.value);
     }
 });
