@@ -3,6 +3,7 @@ class ProductImagesController < ApplicationController
   before_action :set_product_image, only: %i[ destroy ]
 
   def new
+    @page_title = "Nueva Imagen"
     product_id = params[:product_id]
     if product_id.blank? || product_id.to_i == 0
       render file: "#{Rails.root}/public/404.html", layout: false, status: :not_found
@@ -34,8 +35,8 @@ class ProductImagesController < ApplicationController
 
   def destroy
     #Image.delete_image("product_images", @image.product_id, @image.image_name)
-    delete_main_product_photo(@image.image_url, @image.product.imagen)
     Image.delete_image_from_cloudinary("product_images", @image.product.code, @image.image_name)
+    delete_main_product_photo(@image.image_url, @image.product.imagen)
     @image.destroy!
     respond_to do |format|
       format.html { redirect_to edit_product_url(@image.product_id), notice: "Imagen eliminada." }
