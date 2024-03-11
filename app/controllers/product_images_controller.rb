@@ -34,6 +34,7 @@ class ProductImagesController < ApplicationController
 
   def destroy
     #Image.delete_image("product_images", @image.product_id, @image.image_name)
+    delete_main_product_photo(@image.image_url, @image.product.imagen)
     Image.delete_image_from_cloudinary("product_images", @image.product.code, @image.image_name)
     @image.destroy!
     respond_to do |format|
@@ -51,6 +52,12 @@ class ProductImagesController < ApplicationController
       file = params[:file_image]
       parameters[:image_name] = Image.get_image_name(file, product_id) if !file.blank?
       parameters
+    end
+
+    def delete_main_product_photo(photo, main_photo)
+      if photo == main_photo
+        @image.product.update(imagen: nil)
+      end
     end
 
 end

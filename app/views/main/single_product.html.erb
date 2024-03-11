@@ -248,7 +248,7 @@
                                     <div class="inner-content">
                                         <div class="product-thumb">
                                             <a href="/catalogo/<%= product.name.downcase.gsub(' ', '-') %>.html">
-                                                <img src="<%= product.imagen.blank? ? '/assets/shop/1.webp' : '/uploads/product_images/' + product.id.to_s + '/' + product.imagen %>" width="270" height="274" title="<%= product.name %>" alt="<%= product.imagen %>">
+                                                <img src="<%= product.imagen.blank? ? '/assets/shop/1.webp' : product.imagen %>" width="270" height="274" title="<%= product.name %>" alt="<%= product.imagen %>">
                                             </a>
                                             <div class="product-flag <%= product.discount.blank? || product.discount == 0 ? 'd-none' : 'd-block' %>">
                                                 <ul>
