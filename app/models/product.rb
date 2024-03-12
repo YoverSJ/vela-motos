@@ -5,7 +5,7 @@ class Product < ApplicationRecord
   before_create :generate_sku
 
   validates :name, presence: true, uniqueness: true
-  validates :warranty, :color , presence: true
+  validates :category, :warranty, :color, presence: true
   validates :price, :discount, :total_price, :stock, presence: true, numericality: { greater_than_or_equal_to: 0 }
 
   private

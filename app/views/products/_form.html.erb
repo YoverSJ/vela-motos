@@ -17,7 +17,7 @@
           <% end %>
 
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-5">
               <div class="form-group">
                 <%= form.label :name do %>
                   Nombre <abbr class="required" title="required">*</abbr>
@@ -27,13 +27,21 @@
             </div>
             <div class="col-md-3">
               <div class="form-group">
+                <%= form.label :category do %>
+                  Categoria <abbr class="required" title="required">*</abbr>
+                <% end %>
+                <%= form.select :category, [["Seleccione", ""]] +  @categories.to_a, {}, class: "form-control" %>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="form-group">
                 <%= form.label :warranty do %>
                   Garantía <abbr class="required" title="required">*</abbr>
                 <% end %>
                 <%= form.text_field :warranty, class: "form-control", required: true %>
               </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
               <div class="form-group">
                 <%= form.label :colores do %>
                   Color <abbr class="required" title="required">*</abbr>

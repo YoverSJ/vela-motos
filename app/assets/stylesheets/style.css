@@ -7789,7 +7789,12 @@ table p {
   line-height: 1;
   margin-bottom: 0;
 }
+
 .shop-sidebar-color .color-list > li {
+  display: inline-block;
+}
+
+.shop-sidebar-color .color-list > li > a {
   border-radius: 50%;
   cursor: pointer;
   display: inline-block;
@@ -7800,7 +7805,7 @@ table p {
   width: 14px;
   z-index: 1;
 }
-.shop-sidebar-color .color-list > li:before {
+.shop-sidebar-color .color-list > li > a:before {
   -webkit-box-shadow: 0 0 3px rgba(35, 35, 36, 0.25);
           box-shadow: 0 0 3px rgba(35, 35, 36, 0.25);
   border-radius: 50%;
@@ -7822,13 +7827,13 @@ table p {
   width: 100%;
   z-index: -1;
 }
-.shop-sidebar-color .color-list > li.active:before {
+.shop-sidebar-color .color-list > li > a.active:before {
   opacity: 1;
   visibility: visible;
   -webkit-transform: scale(1.4);
           transform: scale(1.4);
 }
-.shop-sidebar-color .color-list > li:hover:before {
+.shop-sidebar-color .color-list > li > a:hover:before {
   opacity: 1;
   visibility: visible;
   -webkit-transform: scale(1.4);

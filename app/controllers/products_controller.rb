@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
 
-  before_action :set_data_select, only: %i[ new create edit ]
+  before_action :set_data_select, only: %i[ new create edit update]
   before_action :set_product, only: %i[ show edit update destroy ]
 
   # GET /products or /products.json
@@ -19,6 +19,7 @@ class ProductsController < ApplicationController
     @colors = get_colors(@product.color)
     @images = @product.images
     @photos = get_photos(@images)
+    @categories = Category::PRODUCT_CATEGORY
   end
 
   # GET /products/new
@@ -93,13 +94,14 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      parameters = params.require(:product).permit(:name, :description, :color, :price, :discount, :total_price, :stock, :code, :imagen, :warranty)
+      parameters = params.require(:product).permit(:name, :description, :color, :price, :discount, :total_price, :stock, :code, :imagen, :warranty, :category)
       parameters[:name] = parameters[:name].strip
       parameters
     end
 
     def set_data_select
       @colors = COLORS
+      @categories = Category::PRODUCT_CATEGORY
     end
 
     def get_photos(photos)

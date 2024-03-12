@@ -12,8 +12,19 @@ class MainController < ApplicationController
     if params[:page].is_a?(String) && params[:page].to_i < 1
       render file: "#{Rails.root}/public/404.html", layout: false, status: :not_found
     else
-      @pagy, @products = pagy(Product.all, items: 9)
       @page_title = "Catalogo"
+      @categories = Category::PRODUCT_CATEGORY
+      @colors = COLORS
+      ap params
+      if !params[:category].blank? && params[:color].blank?
+        @pagy, @products = pagy(Product.where(category: params[:category]), items: 9)
+      elsif !params[:color].blank? && params[:category].blank?
+        @pagy, @products = pagy(Product.where("color like ?", "%#{params[:color]}%"), items: 9)
+      elsif !params[:category].blank? && !params[:color].blank?
+        @pagy, @products = pagy(Product.where(category: params[:category]).where("color like ?", "%#{params[:color]}%"), items: 9)
+      else
+        @pagy, @products = pagy(Product.all, items: 9)
+      end
     end
   end
 

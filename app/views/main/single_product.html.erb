@@ -7,7 +7,7 @@
             <h2 class="title" data-aos="fade-down" data-aos-duration="1000">Product Details</h2>
             <nav class="breadcrumb-area" data-aos="fade-down" data-aos-duration="1200">
             <ul class="breadcrumb">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="/">Inicio</a></li>
                 <li class="breadcrumb-sep">//</li>
                 <li>Product Details</li>
             </ul>
@@ -129,7 +129,7 @@
                                 </div>
                             
                                 <div class="product-quick-action">
-                                    <a class="btn-theme ml--0" href="shop-checkout.html">Comprar</a>
+                                    <a class="btn-theme ml--0" href="shop-checkout">Comprar</a>
                                 </div>
                             
                                 <div class="product-wishlist-compare"></div>
@@ -205,7 +205,7 @@
                                 <div class="product-item">
                                     <div class="inner-content">
                                         <div class="product-thumb">
-                                            <a href="/catalogo.html">
+                                            <a href="/catalogo">
                                                 <img src="/assets/shop/1.webp" width="270" height="274" alt="Image-HasTech">
                                             </a>
                                             <div class="product-flag">
@@ -218,17 +218,17 @@
                                                     <i class="fa fa-arrows"></i>
                                                 </button>
                                             </div>
-                                            <a class="banner-link-overlay" href="shop.html"></a>
+                                            <a class="banner-link-overlay" href="shop"></a>
                                         </div>
                                         <div class="product-info">
                                             <div class="category">
                                                 <ul>
-                                                    <li><a href="shop.html">Men</a></li>
+                                                    <li><a href="shop">Men</a></li>
                                                     <li class="sep">/</li>
-                                                    <li><a href="shop.html">Women</a></li>
+                                                    <li><a href="shop">Women</a></li>
                                                 </ul>
                                             </div>
-                                            <h4 class="title"><a href="/catalogo.html">Modern Smart Shoes</a></h4>
+                                            <h4 class="title"><a href="/catalogo">Modern Smart Shoes</a></h4>
                                             <div class="prices">
                                                 <span class="price-old">$300</span>
                                                 <span class="sep">-</span>
@@ -247,7 +247,7 @@
                                 <div class="product-item">
                                     <div class="inner-content">
                                         <div class="product-thumb">
-                                            <a href="/catalogo/<%= product.name.downcase.gsub(' ', '-') %>.html">
+                                            <a href="/catalogo/<%= product.name.downcase.gsub(' ', '-') %>">
                                                 <img src="<%= product.imagen.blank? ? '/assets/shop/1.webp' : product.imagen %>" width="270" height="274" title="<%= product.name %>" alt="<%= product.imagen %>">
                                             </a>
                                             <div class="product-flag <%= product.discount.blank? || product.discount == 0 ? 'd-none' : 'd-block' %>">
@@ -260,17 +260,17 @@
                                                     <i class="fa fa-arrows"></i>
                                                 <% end %>
                                             </div>
-                                            <a class="banner-link-overlay" href="shop.html"></a>
+                                            <a class="banner-link-overlay" href="shop"></a>
                                         </div>
                                         <div class="product-info">
                                             <div class="category">
                                                 <ul>
-                                                    <li><a href="shop.html">Men</a></li>
+                                                    <li><a href="shop">Men</a></li>
                                                     <li class="sep">/</li>
-                                                    <li><a href="shop.html">Women</a></li>
+                                                    <li><a href="shop">Women</a></li>
                                                 </ul>
                                             </div>
-                                            <h4 class="title"><a href="/catalogo/<%= product.name.downcase.gsub(' ', '-') %>.html"><%= product.name %></a></h4>
+                                            <h4 class="title"><a href="/catalogo/<%= product.name.downcase.gsub(' ', '-') %>"><%= product.name %></a></h4>
                                             <div class="prices">
                                                 <% if product.price != product.total_price %>
                                                     <span class="price-old">S/. <%= product.price %></span>

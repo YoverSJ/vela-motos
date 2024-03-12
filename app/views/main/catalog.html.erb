@@ -7,7 +7,7 @@
           <h2 class="title" data-aos="fade-down" data-aos-duration="1000" style="color: #EB3E32;">Productos</h2>
           <nav class="breadcrumb-area" data-aos="fade-down" data-aos-duration="1200">
             <ul class="breadcrumb">
-              <li><a href="/index.html">Inicio</a></li>
+              <li><a href="/">Inicio</a></li>
               <li class="breadcrumb-sep">//</li>
               <li>Productos</li>
             </ul>
@@ -55,7 +55,7 @@
                         <div class="product-item">
                           <div class="inner-content">
                             <div class="product-thumb">
-                              <a href="/catalogo/<%= product.name.strip.downcase.gsub(' ', '-') %>.html">
+                              <a href="/catalogo/<%= product.name.strip.downcase.gsub(' ', '-') %>">
                                 <img src="<%= product.imagen.blank? ? '/assets/shop/product-single/1.webp' : product.imagen %>" width="270" height="274" title="<%= product.name %>" alt="<%= product.imagen %>">
                               </a>
                               <div class="product-flag <%= product.discount.blank? || product.discount == 0 ? 'd-none' : 'd-block' %>">
@@ -70,17 +70,17 @@
                                 <% end %>
 
                               </div>
-                              <a class="banner-link-overlay" href="/catalogo.html"></a>
+                              <a class="banner-link-overlay" href="/catalogo"></a>
                             </div>
                             <div class="product-info">
                               <div class="category">
                                 <ul>
-                                  <li><a href="/catalogo.html">Men</a></li>
+                                  <li><a href="/catalogo">Men</a></li>
                                   <li class="sep">/</li>
-                                  <li><a href="/catalogo.html">Women</a></li>
+                                  <li><a href="/catalogo">Women</a></li>
                                 </ul>
                               </div>
-                              <h4 class="title"><a href="/catalogo/<%= product.name.strip.downcase.gsub(' ', '-') %>.html"><%= product.name %></a></h4>
+                              <h4 class="title"><a href="/catalogo/<%= product.name.strip.downcase.gsub(' ', '-') %>"><%= product.name %></a></h4>
                               <div class="prices">
                                 <% if product.price != product.total_price %>
                                   <span class="price-old">S/. <%= product.price %></span>
@@ -106,51 +106,59 @@
               </div>
               <div class="tab-pane fade" id="nav-list" role="tabpanel" aria-labelledby="nav-list-tab">
                 <div class="row">
-                  <% @products.each do |product| %>
-                    <div class="col-md-12">
-                      <!--== Start Product Item ==-->
-                      <div class="product-item product-list-item">
-                        <div class="inner-content">
-                          <div class="product-thumb">
-                            <a href="/catalogo/<%= product.name.strip.downcase.gsub(' ', '-') %>.html">
-                              <img src="<%= product.imagen.blank? ? '/assets/shop/product-single/1.webp' : product.imagen %>" width="322" height="360" title="<%= product.name %>" alt="<%= product.imagen %>">
-                            </a>
-                            <div class="product-flag <%= product.discount.blank? || product.discount == 0 ? 'd-none' : 'd-block' %>">
-                              <ul>
-                                <li class="discount">-<%= product.discount %>%</li>
-                              </ul>
-                            </div>
-                            <div class="product-action">
-                              
-                              <%= link_to show_product_path(product), class: "btn-product-quick-view-open", remote: true do %>
-                                <i class="fa fa-arrows"></i>
-                              <% end %>
+                  <% unless @products.blank? %>
+                    <% @products.each do |product| %>
+                      <div class="col-md-12">
+                        <!--== Start Product Item ==-->
+                        <div class="product-item product-list-item">
+                          <div class="inner-content">
+                            <div class="product-thumb">
+                              <a href="/catalogo/<%= product.name.strip.downcase.gsub(' ', '-') %>">
+                                <img src="<%= product.imagen.blank? ? '/assets/shop/product-single/1.webp' : product.imagen %>" width="322" height="360" title="<%= product.name %>" alt="<%= product.imagen %>">
+                              </a>
+                              <div class="product-flag <%= product.discount.blank? || product.discount == 0 ? 'd-none' : 'd-block' %>">
+                                <ul>
+                                  <li class="discount">-<%= product.discount %>%</li>
+                                </ul>
+                              </div>
+                              <div class="product-action">
+                                
+                                <%= link_to show_product_path(product), class: "btn-product-quick-view-open", remote: true do %>
+                                  <i class="fa fa-arrows"></i>
+                                <% end %>
 
+                              </div>
+                              <a class="banner-link-overlay" href="/catalogo"></a>
                             </div>
-                            <a class="banner-link-overlay" href="/catalogo.html"></a>
-                          </div>
-                          <div class="product-info">
-                            <div class="category">
-                              <ul>
-                                <li><a href="/catalogo.html">Men</a></li>
-                                <li class="sep">/</li>
-                                <li><a href="/catalogo.html">Women</a></li>
-                              </ul>
+                            <div class="product-info">
+                              <div class="category">
+                                <ul>
+                                  <li><a href="/catalogo">Men</a></li>
+                                  <li class="sep">/</li>
+                                  <li><a href="/catalogo">Women</a></li>
+                                </ul>
+                              </div>
+                              <h4 class="title"><a href="/catalogo/<%= product.name.strip.downcase.gsub(' ', '-') %>"><%= product.name %></a></h4>
+                              <div class="prices">
+                                <% if product.price != product.total_price %>
+                                  <span class="price-old">S/. <%= product.price %></span>
+                                  <span class="sep">-</span>
+                                <% end %>
+                                <span class="price">S/. <%= product.total_price %></span>
+                              </div>
+                              <p><%= product.description %></p>
+                              <a class="btn-theme btn-sm" href="shop-cart">Comprar</a>
                             </div>
-                            <h4 class="title"><a href="/catalogo/<%= product.name.strip.downcase.gsub(' ', '-') %>.html"><%= product.name %></a></h4>
-                            <div class="prices">
-                              <% if product.price != product.total_price %>
-                                <span class="price-old">S/. <%= product.price %></span>
-                                <span class="sep">-</span>
-                              <% end %>
-                              <span class="price">S/. <%= product.total_price %></span>
-                            </div>
-                            <p><%= product.description %></p>
-                            <a class="btn-theme btn-sm" href="shop-cart.html">Comprar</a>
                           </div>
                         </div>
+                        <!--== End prPduct Item ==-->
                       </div>
-                      <!--== End prPduct Item ==-->
+                    <% end %>
+                  <% else %>
+                    <div class="col-12">
+                      <div class="alert alert-warning" role="alert">
+                        No se encontraron productos
+                      </div>
                     </div>
                   <% end %>
                 </div>
@@ -165,9 +173,25 @@
             <h4 class="sidebar-title">Categorias</h4>
             <div class="sidebar-category">
               <ul class="category-list mb--0">
-                <li><a href="/catalogo.html">Moto Lineal <span>(4)</span></a></li>
-                <li><a href="/catalogo.html">Trimoto <span>(4)</span></a></li>
-                <li><a href="/catalogo.html">Cuatrimoto <span>(4)</span></a></li>
+                <% @categories.each do |category| %>
+                  <li>
+                    <%= link_to url_for(category: category, color: params[:color]), style: params[:category] == category ? 'color:#eb3e32' : '' do %>
+                    <%= category %> <span>(<%= Product.where(category: category).length %>)</span>
+                    <% end %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+          <div class="shop-sidebar-color">
+            <h4 class="sidebar-title">Color</h4>
+            <div class="sidebar-color">
+              <ul class="color-list">
+                <% @colors.each do |color| %>
+                  <li>
+                    <%= link_to "", url_for(category: params[:category], color: color[1]), data: {bg_color: color[1]}, title: color[0], class: params[:color] == color[1] ? 'active' : '' %>
+                  </li>
+                <% end %>
               </ul>
             </div>
           </div>
