@@ -1,9 +1,9 @@
 class Image
 
-  def self.get_image_name(file, product_id)
+  def self.get_image_name(file, model, product_id)
     image_name = nil
     if !file.blank?
-      product = product = Product.find(product_id)
+      product = product = model.find(product_id)
       images = product.images
       file_name = file.original_filename
       extension = File.extname(file_name)

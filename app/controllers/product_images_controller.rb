@@ -51,7 +51,7 @@ class ProductImagesController < ApplicationController
       parameters = params.require(:product_image).permit(:image_name, :image_url, :product_id)
       product_id = params[:product_id]
       file = params[:file_image]
-      parameters[:image_name] = Image.get_image_name(file, product_id) if !file.blank?
+      parameters[:image_name] = Image.get_image_name(file, Product.all, product_id) if !file.blank?
       parameters
     end
 

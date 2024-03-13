@@ -52,7 +52,7 @@ class AccessoryImagesController < ApplicationController
       parameters = params.require(:accessory_image).permit(:image_name, :image_url, :accessory_id)
       accessory_id = params[:accessory_id]
       file = params[:file_image]
-      parameters[:image_name] = Image.get_image_name(file, accessory_id) if !file.blank?
+      parameters[:image_name] = Image.get_image_name(file, Accessory.all, accessory_id) if !file.blank?
       parameters
     end
 
