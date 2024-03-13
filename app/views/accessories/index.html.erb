@@ -30,10 +30,10 @@
         
         <div class="row mb-3">
           <div class="col-md-8">
-              <h3>Productos</h3>
+              <h3>Accesorios</h3>
           </div>
           <div class="col-md-4 d-flex justify-content-end">
-              <%= link_to "Nuevo", new_product_path, class: "btn-theme" %>
+              <%= link_to "Nuevo", new_accessory_path, class: "btn-theme" %>
           </div>
         </div>
         <div class="myaccount-table table-responsive text-center">
@@ -49,24 +49,24 @@
               </tr>
             </thead>
             <tbody>
-              <% unless @products.blank? %>
-                <% @products.each_with_index do |product, index| %>
+              <% unless @accessories.blank? %>
+                <% @accessories.each_with_index do |accessory, index| %>
                   <tr>
                     <td>
-                      <%= (@pagy.page - 1) * @products.limit_value + index + 1 %>
+                      <%= (@pagy.page - 1) * @accessories.limit_value + index + 1 %>
                     </td>
-                    <td><%= product.name %></td>
-                    <td><%= product.warranty %></td>
-                    <td><%= product.total_price %></td>
-                    <td><%= product.stock %></td>
+                    <td><%= accessory.name %></td>
+                    <td><%= accessory.warranty %></td>
+                    <td><%= accessory.total_price %></td>
+                    <td><%= accessory.stock %></td>
                     <td>
-                      <%= link_to product, class: "check-btn sqr-btn" do %>
+                      <%= link_to accessory, class: "check-btn sqr-btn" do %>
                         <i class="fa fa-eye"></i>
                       <% end %>  
-                      <%= link_to edit_product_path(product), class: "check-btn sqr-btn" do %>
+                      <%= link_to edit_accessory_path(accessory), class: "check-btn sqr-btn" do %>
                         <i class="fa fa-pencil"></i>
                       <% end %>  
-                      <%= link_to product, method: :delete, class: "check-btn sqr-btn" do %>
+                      <%= link_to accessory, method: :delete, data: { confirm: '¿Estas seguro de eliminar este accesorio?' }, class: "check-btn sqr-btn" do %>
                         <i class="fa fa-trash"></i>
                       <% end %>
                     </td>
@@ -80,12 +80,12 @@
             </tbody>
           </table>
           <%# pagy_items_selector_js(@pagy) %>
-          <%# render "pagy/custom_pagy_items_selector", pagy: @pagy, items: @items unless @products.blank? %>
+          <%# render "pagy/custom_pagy_items_selector", pagy: @pagy, items: @items unless @accessories.blank? %>
         </div>
         <div class="d-flex justify-content-center">
-          <%= render "pagy/custom_pagy_info", pagy: @pagy unless @products.blank? %>
+          <%= render "pagy/custom_pagy_info", pagy: @pagy unless @accessories.blank? %>
         </div>
-        <%= render "pagy/custom_pagy", pagy: @pagy unless @products.blank? %>
+        <%= render "pagy/custom_pagy", pagy: @pagy unless @accessories.blank? %>
       </div>
     </div>
 

@@ -20,4 +20,8 @@ Rails.application.routes.draw do
     resources :imagenes, controller: :product_images, as: :images, only: [:new, :create, :destroy]
   end
 
+  resources :accesorios, controller: :accessories, as: :accessories do
+    resources :imagenes, controller: :accessory_images, as: :images, only: [:new, :create, :destroy]
+  end
+
 end

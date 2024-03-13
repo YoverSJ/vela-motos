@@ -1,6 +1,6 @@
-class Product < ApplicationRecord
+class Accessory < ApplicationRecord
 
-  has_many :images, class_name: "ProductImage", foreign_key: "product_id", dependent: :destroy
+  has_many :images, class_name: "AccessoryImage", foreign_key: "accessory_id", dependent: :destroy
 
   before_create :generate_sku
 

@@ -4,12 +4,12 @@
     <!--== Start Billing Accordion ==-->
     <div class="checkout-billing-details-wrap">
       <div class="billing-form-wrap">
-        <%= form_with(model: product, class: "mt-1", multipart: true) do |form| %>
+        <%= form_with(model: accessory, class: "mt-1", multipart: true) do |form| %>
 
-          <% if product.errors.any? %>
+          <% if accessory.errors.any? %>
             <div style="color: red">
               <ul>
-                <% product.errors.each do |error| %>
+                <% accessory.errors.each do |error| %>
                   <li><%= error.full_message %></li>
                 <% end %>
               </ul>
@@ -46,13 +46,13 @@
                 <%= form.label :colores do %>
                   Color <abbr class="required" title="required">*</abbr>
                 <% end %>
-                <%= form.select :colores, [["Seleccione", ""]] +  @colors.to_a, {}, class: "form-control", onchange: "colorSelected(this)" %>
+                <%= form.select :colores, [["Seleccione", ""]] +  @colors.to_a, {}, class: "form-control", id: "product_colores", onchange: "colorSelected(this)" %>
               </div>
             </div>
             <div class="col-md-12">
               <div class="form-group">
                 <label for="list-colors">Colores</label>
-                <%= form.hidden_field :color %>
+                <%= form.hidden_field :color, id: "product_color" %>
                 <div class="product-single-item" id="color-container">
                   <div class="product-single-info">
                     <div class="product-color">
@@ -75,7 +75,7 @@
                 <%= form.label :price do %>
                   Precio <abbr class="required" title="required">*</abbr>
                 <% end %>
-                <%= form.number_field :price, min: 0, class: "form-control calculate-total-price", required: true %>
+                <%= form.number_field :price, min: 0, class: "form-control calculate-total-price", id: "product_price", required: true %>
               </div>
             </div>
             <div class="col-md-3">
@@ -83,7 +83,7 @@
                 <%= form.label :discount do %>
                   Descuento (%) <abbr class="required" title="required">*</abbr>
                 <% end %>
-                <%= form.number_field :discount, min: 0, class: "form-control calculate-total-price", required: true %>
+                <%= form.number_field :discount, min: 0, class: "form-control calculate-total-price", id: "product_discount", required: true %>
               </div>
             </div>
             <div class="col-md-3">
@@ -91,7 +91,7 @@
                 <%= form.label :total_price do %>
                   Precio Total <abbr class="required" title="required">*</abbr>
                 <% end %>
-                <%= form.number_field :total_price, min: 0, class: "form-control", readonly: true, required: true %>
+                <%= form.number_field :total_price, min: 0, class: "form-control", id: "product_total_price", readonly: true, required: true %>
               </div>
             </div>
             <div class="col-md-3">
@@ -102,20 +102,20 @@
                 <%= form.number_field :stock, min: 0, class: "form-control", required: true %>
               </div>
             </div>
-            <% if product.persisted? %>
+            <% if accessory.persisted? %>
               <% if !@images.blank? %>
                 <div class="col-md-3">
                   <div class="form-group">
                     <%= form.label :imagen do %>
                       Foto principal <abbr class="required" title="required">*</abbr>
                     <% end %>
-                    <%= form.select :imagen, [["Ninguno", ""]] + @photos.to_a, {}, class: "form-control" %>
+                    <%= form.select :imagen, [["Ninguno", ""]] + @photos.to_a, {}, class: "form-control", id: "product_imagen" %>
                   </div>
                 </div>
                 <div class="col-md-3">
                   <div class="form-group">
                     <label>&nbsp;</label>
-                    <button type="button" id="show-photo" class="btn-coupon  <%= product.imagen.blank? ? 'd-none' : 'd-block' %>" data-bs-toggle="modal" data-bs-target="#myModal" data-image-url="<%= product.imagen %>" onclick="showPhoto(this)">
+                    <button type="button" id="show-photo" class="btn-coupon  <%= accessory.imagen.blank? ? 'd-none' : 'd-block' %>" data-bs-toggle="modal" data-bs-target="#myModal" data-image-url="<%= accessory.imagen %>" onclick="showPhoto(this)">
                       Ver Foto
                     </button>
                   </div>
@@ -125,7 +125,7 @@
               <% end %>
               <% if @images.length < 5 %>
                 <div class="col-md-3">
-                  <%= link_to "Agregar imagen", new_product_image_path(product_id: product), class: "btn-coupon d-inline-block text-center mb-3" %>
+                  <%= link_to "Agregar imagen", new_accessory_image_path(accessory_id: accessory), class: "btn-coupon d-inline-block text-center mb-3" %>
                 </div>
               <% end %>
               <div class="col-md-12">
@@ -142,7 +142,7 @@
                                 <a class="lightbox-image" data-fancybox="gallery" href="<%= image.image_url %>">
                                   <img src="<%= image.image_url %>" width="570" height="541" alt="<%= image.image_name %>">
                                 </a>
-                                <%= link_to product_image_path(product_id: product, id: image), method: :delete, class: "check-btn sqr-btn" do %>
+                                <%= link_to accessory_image_path(accessory_id: accessory, id: image), method: :delete, data: { confirm: '¿Estas seguro de eliminar esta imagen?' }, class: "check-btn sqr-btn" do %>
                                   <%# <i class="fa fa-trash"></i> %> Eliminar
                                 <% end %>
                               </div>

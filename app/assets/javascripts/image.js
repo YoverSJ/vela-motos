@@ -78,11 +78,7 @@ const showImage = () => {
 }
 
 const showPhoto = (btn) => {
-    let image = document.getElementById("product_imagen");
-    let model = btn.getAttribute("data-model");
-    let id = btn.getAttribute("data-id");
     let imageUrl = btn.getAttribute("data-image-url");
-    console.log(imageUrl);
     modalImg.src = imageUrl;
     modal.show();
 }

@@ -38,6 +38,7 @@ class ProductsController < ApplicationController
 
   # POST /products or /products.json
   def create
+    @page_title = "Nuevo producto"
     @product = Product.new(product_params)
     @images = @product.images
     respond_to do |format|
@@ -54,6 +55,7 @@ class ProductsController < ApplicationController
 
   # PATCH/PUT /products/1 or /products/1.json
   def update
+    @page_title = "Editar producto"
     @images = @product.images
     respond_to do |format|
       if @product.update(product_params)
