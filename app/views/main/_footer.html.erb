@@ -9,9 +9,9 @@
                     <div class="widget-item">
                         <div class="about-widget-wrap">
                             <div class="widget-logo-area">
-                                <a href="/">
+                                <%= link_to root_path do %>
                                     <h1 class="title" style="color: white;">GreenLite VelaMotos</h1>
-                                </a>
+                                <% end %>
                             </div>
                             <p class="desc">Una De Las Primeras Empresas Que Operan Con Productos Eléctricos En El Perú
                             </p>
@@ -40,9 +40,9 @@
                             <div class="collapse-body">
                                 <div class="widget-menu-wrap">
                                     <ul class="nav-menu">
-                                        <li><a href="/contacto">Atención Personalizada</a></li>
-                                        <li><a href="/contacto">Asesoramiento</a></li>
-                                        <li><a href="/contacto">Promociones</a></li>
+                                        <li><%= link_to contact_path do %><span>Atención Personalizada</span><% end %></li>
+                                        <li><%= link_to contact_path do %><span>Asesoramiento</span><% end %></li>
+                                        <li><%= link_to contact_path do %><span>Promociones</span><% end %></li>
                                     </ul>
                                 </div>
                             </div>
@@ -62,15 +62,10 @@
                                 <div class="widget-contact-wrap">
                                     <ul>
                                         <li><span>Dirección:</span> AV. PETIT THOUARS 3565 SAN ISIDRO LIMA 27</li>
-                                        <li><span>Celular 1:</span> <a href="tel://+51962383474">+51 962 383 474</a>
-                                        </li>
-                                        <li><span>Celular 2:</span> <a href="tel://+51975135920">+51 975 135 920</a>
-                                        </li>
-                                        <li><span>Email:</span> <a
-                                                href="mailto:contacto@velamotos.com">contacto@velamotos.com</a>
-                                        </li>
-                                        <li><a target="_blank" href="https://www.velamotos.com">www.velamotos.com</a>
-                                        </li>
+                                        <li><span>Celular 1:</span> <%= link_to "+51 962 383 474", "tel://+51962383474" %></li>
+                                        <li><span>Celular 2:</span> <%= link_to "+51 975 135 920", "tel://+51975135920" %></li>
+                                        <li><span>Email:</span> <%= link_to "contacto@velamotos.com", "mailto:contacto@velamotos.com" %></li>
+                                        <li><%= link_to "www.velamotos.com", "https://www.velamotos.com", target: "_blank" %></li>
                                     </ul>
                                 </div>
                             </div>
@@ -88,7 +83,7 @@
         <div class="container pt--0 pb--0">
             <div class="row">
                 <div class="col-md-7 col-lg-6">
-                    <p class="copyright">© 2023 GreenLite VelaMotos</p>
+                    <p class="copyright">© <%= Time.now.year %> GreenLite VelaMotos</p>
                 </div>
             </div>
         </div>

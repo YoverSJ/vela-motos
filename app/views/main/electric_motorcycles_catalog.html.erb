@@ -7,7 +7,7 @@
           <h2 class="title" data-aos="fade-down" data-aos-duration="1000" style="color: #EB3E32;">Productos</h2>
           <nav class="breadcrumb-area" data-aos="fade-down" data-aos-duration="1200">
             <ul class="breadcrumb">
-              <li><a href="/">Inicio</a></li>
+              <li><%= link_to "Inicio", root_path %></li>
               <li class="breadcrumb-sep">//</li>
               <li>Productos</li>
             </ul>
@@ -55,9 +55,9 @@
                         <div class="product-item">
                           <div class="inner-content">
                             <div class="product-thumb">
-                              <a href="/catalogo/<%= product.name.strip.downcase.gsub(' ', '-') %>">
+                              <%= link_to single_product_electric_motorcycles_path(name: product.name.downcase.gsub(' ', '-')) do %>
                                 <img src="<%= product.imagen.blank? ? '/assets/shop/product-single/1.webp' : product.imagen %>" width="270" height="274" title="<%= product.name %>" alt="<%= product.imagen %>">
-                              </a>
+                              <% end %>
                               <div class="product-flag <%= product.discount.blank? || product.discount == 0 ? 'd-none' : 'd-block' %>">
                                 <ul>
                                   <li class="discount">-<%= product.discount %>%</li>
@@ -70,17 +70,14 @@
                                 <% end %>
 
                               </div>
-                              <a class="banner-link-overlay" href="/catalogo"></a>
                             </div>
                             <div class="product-info">
                               <div class="category">
                                 <ul>
-                                  <li><a href="/catalogo">Men</a></li>
-                                  <li class="sep">/</li>
-                                  <li><a href="/catalogo">Women</a></li>
+                                  <li><%= link_to product.category, electric_motorcycles_catalog_path(category: product.category) %></li>
                                 </ul>
                               </div>
-                              <h4 class="title"><a href="/catalogo/<%= product.name.strip.downcase.gsub(' ', '-') %>"><%= product.name %></a></h4>
+                              <h4 class="title"><%= link_to product.name, single_product_electric_motorcycles_path(name: product.name.downcase.gsub(' ', '-'))%></h4>
                               <div class="prices">
                                 <% if product.price != product.total_price %>
                                   <span class="price-old">S/. <%= product.price %></span>
@@ -113,9 +110,9 @@
                         <div class="product-item product-list-item">
                           <div class="inner-content">
                             <div class="product-thumb">
-                              <a href="/catalogo/<%= product.name.strip.downcase.gsub(' ', '-') %>">
+                              <%= link_to single_product_electric_motorcycles_path(name: product.name.downcase.gsub(' ', '-')) do %>
                                 <img src="<%= product.imagen.blank? ? '/assets/shop/product-single/1.webp' : product.imagen %>" width="322" height="360" title="<%= product.name %>" alt="<%= product.imagen %>">
-                              </a>
+                              <% end %>
                               <div class="product-flag <%= product.discount.blank? || product.discount == 0 ? 'd-none' : 'd-block' %>">
                                 <ul>
                                   <li class="discount">-<%= product.discount %>%</li>
@@ -128,17 +125,14 @@
                                 <% end %>
 
                               </div>
-                              <a class="banner-link-overlay" href="/catalogo"></a>
                             </div>
                             <div class="product-info">
                               <div class="category">
                                 <ul>
-                                  <li><a href="/catalogo">Men</a></li>
-                                  <li class="sep">/</li>
-                                  <li><a href="/catalogo">Women</a></li>
+                                  <li><%= link_to product.category, electric_motorcycles_catalog_path(category: product.category) %></li>
                                 </ul>
                               </div>
-                              <h4 class="title"><a href="/catalogo/<%= product.name.strip.downcase.gsub(' ', '-') %>"><%= product.name %></a></h4>
+                              <h4 class="title"><%= link_to product.name, single_product_electric_motorcycles_path(name: product.name.downcase.gsub(' ', '-'))%></h4>
                               <div class="prices">
                                 <% if product.price != product.total_price %>
                                   <span class="price-old">S/. <%= product.price %></span>

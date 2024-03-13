@@ -7,7 +7,7 @@
           <h2 class="title" data-aos="fade-down" data-aos-duration="1000">Nosotros</h2>
           <nav class="breadcrumb-area" data-aos="fade-down" data-aos-duration="1200">
             <ul class="breadcrumb">
-              <li><a href="/">Inicio</a></li>
+              <li><%= link_to "Inicio", root_path %></li>
               <li class="breadcrumb-sep">//</li>
               <li>Nosotros</li>
             </ul>
@@ -39,7 +39,7 @@
             <h3 class="title">DISTRIBUIDORES E IMPORTADORES SAC</h3>
             <p class="desc">Importadores de todo tipo de vehículos eléctricos. Enfocado especialmente para movilidad
               familiar y adulto mayor personas con discapacidad.</p>
-            <a class="btn-theme" href="/contacto">Contactanos</a>
+            <%= link_to "Contactanos", contact_path, class: "btn-theme" %>
           </div>
         </div>
       </div>

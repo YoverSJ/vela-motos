@@ -14,15 +14,14 @@
               <div class="header-info-items">
                 <div class="info-items">
                   <ul>
-                    <li class="number"><i class="fa fa-phone"></i><a target="_blank"
-                        href="https://wa.me/+51962383474?text=Hola%20estoy%20interesado%20en%20uno%20de%20sus%20productos">+51
-                        962 383 474</a></li>
-                    <li class="number"><i class="fa fa-phone"></i><a target="_blank"
-                        href="https://wa.me/+51975135920?text=Hola%20estoy%20interesado%20en%20uno%20de%20sus%20productos">+51
-                        975 135 920</a></li>
-                    <li class="email"><i class="fa fa-envelope"></i><a
-                        href="mailto:contacto@velamotos.com">contacto@velamotos.com</a></li>
-                    <li class="account"><i class="fa fa-user"></i><%= link_to 'Productos', products_path %></li>
+                    <li class="number"><i class="fa fa-phone"></i>
+                        <%= link_to "+51 962 383 474", "https://wa.me/+51962383474?text=Hola%20estoy%20interesado%20en%20uno%20de%20sus%20productos", target: "_blank" %>
+                    </li>
+                    <li class="number"><i class="fa fa-phone"></i>
+                        <%= link_to "+51 975 135 920", "https://wa.me/+51975135920?text=Hola%20estoy%20interesado%20en%20uno%20de%20sus%20productos", target: "_blank" %>
+                    </li>
+                    <li class="email"><i class="fa fa-envelope"></i><%= link_to "contacto@velamotos.com", "mailto:contacto@velamotos.com" %></li>
+                    <li class="account"><i class="fa fa-user"></i><%= link_to 'Inicar Sesión', "#" %></li>
                   </ul>
                 </div>
               </div>
@@ -39,10 +38,9 @@
           <div class="header-middle-align">
             <div class="header-middle-align-start">
               <div class="header-logo-area">
-                <a href="/">
+                <%= link_to root_path do %>
                   <img class="logo-main" src="/assets/logo-vm.png" width="191" height="34" alt="Logo" />
-                  
-                </a>
+                <% end %>
               </div>
             </div>
             <div class="header-middle-align-end">
@@ -65,10 +63,22 @@
           <div class="header-align">
             <div class="header-navigation-area position-relative">
               <ul class="main-menu nav">
-                <li><a href="/"><span>Inicio</span></a></li>
-                <li><a href="/nosotros"><span>Nosotros</span></a></li>
-                <li><a href="/catalogo"><span>Catalogo</span></a></li>
-                <li><a href="/contacto"><span>Contacto</span></a></li>
+                <li class="has-submenu"><a href="#/"><span>Dashboard</span></a>
+                  <ul class="submenu-nav">
+                    <li><%= link_to products_path do %><span>Motos electricas</span><% end %></li>
+                    <li><%= link_to accessories_path do %><span>Accesorios</span><% end %></li>
+                  </ul>
+                </li>
+                <li><%= link_to root_path do %><span>Inicio</span><% end %></li>
+                <li><%= link_to about_us_path do %><span>Nosotros</span><% end %>
+                </li>
+                <li class="has-submenu"><a href="#/"><span>Catalogo</span></a>
+                  <ul class="submenu-nav">
+                    <li><%= link_to electric_motorcycles_catalog_path do %><span>Motos electricas</span><% end %></li>
+                    <li><%= link_to accessories_catalog_path do %><span>Accesorios</span><% end %></li>
+                  </ul>
+                </li>
+                <li><%= link_to contact_path do %><span>Contacto</span><% end %></li>
               </ul>
             </div>
           </div>

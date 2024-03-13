@@ -10,10 +10,12 @@ Rails.application.routes.draw do
 
   get "/index", to: "main#index"
   get "/nosotros", to: "main#about_us", as: :about_us
-  get "/catalogo", to: "main#catalog", as: :catalog
+  get "/catalogo/motos-electricas", to: "main#electric_motorcycles_catalog", as: :electric_motorcycles_catalog
+  get "/catalogo/accesorios", to: "main#accessories_catalog", as: :accessories_catalog
   get "/contacto", to: "main#contact", as: :contact
 
-  get "/catalogo/:name", to: "main#single_product", as: :single_product
+  get "/catalogo/motos-electricas/:name", to: "main#single_product_electric_motorcycles", as: :single_product_electric_motorcycles
+  get "/catalogo/accesorios/:name", to: "main#single_product_accessories", as: :single_product_accessories
 
   resources :productos, controller: :products, as: :products do
     get "/producto", to: "products#show_product", on: :member, as: :show, format: :js
@@ -21,6 +23,7 @@ Rails.application.routes.draw do
   end
 
   resources :accesorios, controller: :accessories, as: :accessories do
+    get "/accesorio", to: "accessories#show_accessory", on: :member, as: :show, format: :js
     resources :imagenes, controller: :accessory_images, as: :images, only: [:new, :create, :destroy]
   end
 

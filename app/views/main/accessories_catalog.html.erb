@@ -1,0 +1,215 @@
+<!--== Start Page Header Area Wrapper ==-->
+<div class="page-header-area" data-bg-img="/assets/velamotos/shop-bg.png">
+  <div class="container pt--0 pb--0">
+    <div class="row">
+      <div class="col-12">
+        <div class="page-header-content">
+          <h2 class="title" data-aos="fade-down" data-aos-duration="1000" style="color: #EB3E32;">Productos</h2>
+          <nav class="breadcrumb-area" data-aos="fade-down" data-aos-duration="1200">
+            <ul class="breadcrumb">
+              <li><%= link_to "Inicio", root_path %></li>
+              <li class="breadcrumb-sep">//</li>
+              <li>Productos</li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--== End Page Header Area Wrapper ==-->
+
+<!--== Start Product Area Wrapper ==-->
+<section class="product-area product-default-area">
+  <div class="container">
+    <div class="row flex-xl-row-reverse justify-content-between">
+      <div class="col-xl-9">
+        <div class="row">
+          <div class="col-12">
+            <div class="shop-top-bar">
+              <div class="shop-top-left" style="width: auto;">
+                <%= render "pagy/custom_pagy_info", pagy: @pagy %>
+              </div>
+              <div class="shop-top-center">
+                <nav class="product-nav">
+                  <div class="nav nav-tabs" id="nav-tab" role="tablist" style="flex-wrap: nowrap;">
+                    <button class="nav-link active" id="nav-grid-tab" data-bs-toggle="tab" data-bs-target="#nav-grid"
+                      type="button" role="tab" aria-controls="nav-grid" aria-selected="true"><i
+                        class="fa fa-th"></i></button>
+                    <button class="nav-link" id="nav-list-tab" data-bs-toggle="tab" data-bs-target="#nav-list"
+                      type="button" role="tab" aria-controls="nav-list" aria-selected="false"><i
+                        class="fa fa-list"></i></button>
+                  </div>
+                </nav>
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="tab-content" id="nav-tabContent">
+              <div class="tab-pane fade show active" id="nav-grid" role="tabpanel" aria-labelledby="nav-grid-tab">
+                <div class="row">
+                  <% unless @accessories.blank? %>
+                    <% @accessories.each do |accessory| %>
+                      <div class="col-sm-6 col-lg-4">
+                        <!--== Start Product Item ==-->
+                        <div class="product-item">
+                          <div class="inner-content">
+                            <div class="product-thumb">
+                              <%= link_to single_product_accessories_path(name: accessory.name.downcase.gsub(' ', '-')) do %>
+                                <img src="<%= accessory.imagen.blank? ? '/assets/shop/product-single/1.webp' : accessory.imagen %>" width="270" height="274" title="<%= accessory.name %>" alt="<%= accessory.imagen %>">
+                              <% end %>
+                              <div class="product-flag <%= accessory.discount.blank? || accessory.discount == 0 ? 'd-none' : 'd-block' %>">
+                                <ul>
+                                  <li class="discount">-<%= accessory.discount %>%</li>
+                                </ul>
+                              </div>
+                              <div class="product-action">
+                                
+                                <%= link_to show_accessory_path(accessory), class: "btn-product-quick-view-open", remote: true do %>
+                                  <i class="fa fa-arrows"></i>
+                                <% end %>
+
+                              </div>
+                            </div>
+                            <div class="product-info">
+                              <div class="category">
+                                <ul>
+                                  <li><%= link_to accessory.category, accessories_catalog_path(category: accessory.category) %></li>
+                                </ul>
+                              </div>
+                              <h4 class="title"><%= link_to accessory.name, single_product_accessories_path(name: accessory.name.downcase.gsub(' ', '-'))%></h4>
+                              <div class="prices">
+                                <% if accessory.price != accessory.total_price %>
+                                  <span class="price-old">S/. <%= accessory.price %></span>
+                                  <span class="sep">-</span>
+                                <% end %>
+                                <span class="price">S/. <%= accessory.total_price %></span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!--== End prPduct Item ==-->
+                      </div>
+                    <% end %>
+                    <%== render "pagy/custom_pagy", pagy: @pagy %>
+                  <% else %>
+                    <div class="col-12">
+                      <div class="alert alert-warning" role="alert">
+                        No se encontraron productos
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="nav-list" role="tabpanel" aria-labelledby="nav-list-tab">
+                <div class="row">
+                  <% unless @accessories.blank? %>
+                    <% @accessories.each do |accessory| %>
+                      <div class="col-md-12">
+                        <!--== Start Product Item ==-->
+                        <div class="product-item product-list-item">
+                          <div class="inner-content">
+                            <div class="product-thumb">
+                              <%= link_to single_product_accessories_path(name: accessory.name.downcase.gsub(' ', '-')) do %>
+                                <img src="<%= accessory.imagen.blank? ? '/assets/shop/product-single/1.webp' : accessory.imagen %>" width="322" height="360" title="<%= accessory.name %>" alt="<%= accessory.imagen %>">
+                              <% end %>
+                              <div class="product-flag <%= accessory.discount.blank? || accessory.discount == 0 ? 'd-none' : 'd-block' %>">
+                                <ul>
+                                  <li class="discount">-<%= accessory.discount %>%</li>
+                                </ul>
+                              </div>
+                              <div class="product-action">
+                                
+                                <%= link_to show_accessory_path(accessory), class: "btn-product-quick-view-open", remote: true do %>
+                                  <i class="fa fa-arrows"></i>
+                                <% end %>
+
+                              </div>
+                            </div>
+                            <div class="product-info">
+                              <div class="category">
+                                <ul>
+                                  <li><%= link_to accessory.category, accessories_catalog_path(category: accessory.category) %></li>
+                                </ul>
+                              </div>
+                              <h4 class="title"><%= link_to accessory.name, single_product_accessories_path(name: accessory.name.downcase.gsub(' ', '-'))%></h4>
+                              <div class="prices">
+                                <% if accessory.price != accessory.total_price %>
+                                  <span class="price-old">S/. <%= accessory.price %></span>
+                                  <span class="sep">-</span>
+                                <% end %>
+                                <span class="price">S/. <%= accessory.total_price %></span>
+                              </div>
+                              <p><%= accessory.description %></p>
+                              <a class="btn-theme btn-sm" href="shop-cart">Comprar</a>
+                            </div>
+                          </div>
+                        </div>
+                        <!--== End prPduct Item ==-->
+                      </div>
+                    <% end %>
+                  <% else %>
+                    <div class="col-12">
+                      <div class="alert alert-warning" role="alert">
+                        No se encontraron productos
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3">
+        <div class="shop-sidebar">
+          <div class="shop-sidebar-category">
+            <h4 class="sidebar-title">Categorias</h4>
+            <div class="sidebar-category">
+              <ul class="category-list mb--0">
+                <% @categories.each do |category| %>
+                  <li>
+                    <%= link_to url_for(category: category, color: params[:color]), style: params[:category] == category ? 'color:#eb3e32' : '' do %>
+                    <%= category %> <span>(<%= Accessory.where(category: category).length %>)</span>
+                    <% end %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+          <div class="shop-sidebar-color">
+            <h4 class="sidebar-title">Color</h4>
+            <div class="sidebar-color">
+              <ul class="color-list">
+                <% @colors.each do |color| %>
+                  <li>
+                    <%= link_to "", url_for(category: params[:category], color: color[1]), data: {bg_color: color[1]}, title: color[0], class: params[:color] == color[1] ? 'active' : '' %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--== End Product Area Wrapper ==-->
+
+<%# render "product_modal" %>
+
+<!--== Start Quick View Menu ==-->
+<aside class="product-quick-view-modal">
+    <div class="product-quick-view-inner">
+        <div class="product-quick-view-content">
+            <button type="button" class="btn-close">
+                <span class="close-icon"><i class="fa fa-close"></i></span>
+            </button>
+            <div class="row align-items-center" id="modal_content">
+                
+            </div>
+        </div>
+    </div>
+    <div class="canvas-overlay"></div>
+</aside>
+<!--== End Quick View Menu ==-->

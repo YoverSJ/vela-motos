@@ -1,0 +1,285 @@
+<!--== Start Page Header Area Wrapper ==-->
+<div class="page-header-area" data-bg-img="/assets/photos/bg3.webp">
+    <div class="container pt--0 pb--0">
+    <div class="row">
+        <div class="col-12">
+        <div class="page-header-content">
+            <h2 class="title" data-aos="fade-down" data-aos-duration="1000">Product Details</h2>
+            <nav class="breadcrumb-area" data-aos="fade-down" data-aos-duration="1200">
+            <ul class="breadcrumb">
+                <li><%= link_to "Inicio", root_path %></li>
+                <li class="breadcrumb-sep">//</li>
+                <li>Product Details</li>
+            </ul>
+            </nav>
+        </div>
+        </div>
+    </div>
+    </div>
+</div>
+<!--== End Page Header Area Wrapper ==-->
+
+<!--== Start Product Single Area Wrapper ==-->
+<section class="product-area product-single-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="product-single-item">
+                    <div class="row">
+                        <div class="col-xl-6">
+                            <% if @product.images.blank? %>
+                                <!--== Start Product Thumbnail Area ==-->
+                                <div class="product-single-thumb">
+                                    <div class="swiper-container single-product-thumb single-product-thumb-slider">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide">
+                                                <a class="lightbox-image" data-fancybox="gallery" href="/assets/shop/product-single/1.webp">
+                                                    <img src="/assets/shop/product-single/1.webp" width="570" height="541" alt="Image-HasTech">
+                                                </a>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <a class="lightbox-image" data-fancybox="gallery" href="/assets/shop/product-single/2.webp">
+                                                    <img src="/assets/shop/product-single/2.webp" width="570" height="541" alt="Image-HasTech">
+                                                </a>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <a class="lightbox-image" data-fancybox="gallery" href="/assets/shop/product-single/3.webp">
+                                                    <img src="/assets/shop/product-single/3.webp" width="570" height="541" alt="Image-HasTech">
+                                                </a>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <a class="lightbox-image" data-fancybox="gallery" href="/assets/shop/product-single/4.webp">
+                                                    <img src="/assets/shop/product-single/4.webp" width="570" height="541" alt="Image-HasTech">
+                                                </a>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <a class="lightbox-image" data-fancybox="gallery" href="/assets/shop/product-single/5.webp">
+                                                    <img src="/assets/shop/product-single/5.webp" width="570" height="541" alt="Image-HasTech">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-container single-product-nav single-product-nav-slider">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide">
+                                                <img src="/assets/shop/product-single/nav-1.webp" width="127" height="127" alt="Image-HasTech">
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <img src="/assets/shop/product-single/nav-2.webp" width="127" height="127" alt="Image-HasTech">
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <img src="/assets/shop/product-single/nav-3.webp" width="127" height="127" alt="Image-HasTech">
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <img src="/assets/shop/product-single/nav-4.webp" width="127" height="127" alt="Image-HasTech">
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <img src="/assets/shop/product-single/nav-5.webp" width="127" height="127" alt="Image-HasTech">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--== End Product Thumbnail Area ==-->
+                            <% else %>
+                                <!--== Start Product Thumbnail Area ==-->
+                                <div class="product-single-thumb">
+                                    <div class="swiper-container single-product-thumb single-product-thumb-slider">
+                                    <div class="swiper-wrapper">
+                                        <% @product.images.each do |image| %>
+                                        <div class="swiper-slide">
+                                            <a class="lightbox-image" data-fancybox="gallery" href="<%= image.image_url %>">
+                                            <img src="<%= image.image_url %>" width="570" height="541" alt="<%= image.image_name %>">
+                                            </a>
+                                        </div>
+                                        <% end %>
+                                    </div>
+                                    </div>
+                                    <div class="swiper-container single-product-nav single-product-nav-slider">
+                                    <div class="swiper-wrapper">
+                                        <% @product.images.each do |image| %>
+                                        <div class="swiper-slide">
+                                            <img src="<%= image.image_url %>" width="127" height="127" alt="<%= image.image_name %>">
+                                        </div>
+                                        <% end %>
+                                    </div>
+                                    </div>
+                                </div>
+                                <!--== End Product Thumbnail Area ==-->
+                            <% end %>
+                        </div>
+                        <div class="col-xl-6">
+                            <!--== Start Product Info Area ==-->
+                            <div class="product-single-info">
+                                <h3 class="main-title"><%= @product.name %></h3>
+                                <div class="prices">
+                                    <% if @product.price != @product.total_price %>
+                                    <del class="price-old">S/.<%= @product.price %></del>
+                                    <% end %>
+                                    <span class="price">S/.<%= @product.total_price %></span>
+                                </div>
+                                <div class="rating-box-wrap"></div>
+                                <p><%= @product.description %></p>
+                                <div class="product-color">
+                                    <h6 class="title">Color</h6>
+                                    <ul class="color-list">
+                                        <% @colors.each do |color| %>
+                                            <li data-bg-color="<%= color.values[0] %>" title="<%= color.keys[0] %>"></li>
+                                        <% end %>
+                                    </ul>
+                                </div>
+                            
+                                <div class="product-quick-action">
+                                    <a class="btn-theme ml--0" href="shop-checkout">Comprar</a>
+                                </div>
+                            
+                                <div class="product-wishlist-compare"></div>
+                                <div class="product-info-footer">
+                                    <h6 class="code"><span>SKU :</span><%= @product.code %></h6>
+                                    <div class="social-icons">
+                                        <span>Share</span>
+                                        <a href="#/"><i class="fa fa-facebook"></i></a>
+                                        <a href="#/"><i class="fa fa-dribbble"></i></a>
+                                        <a href="#/"><i class="fa fa-pinterest-p"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--== End Product Info Area ==-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="product-review-tabs-content">
+                    <ul class="nav product-tab-nav" id="ReviewTab" role="tablist">
+                        <li role="presentation">
+                            <a class="active" id="information-tab" data-bs-toggle="pill" href="#information" role="tab" aria-controls="information" aria-selected="true">Información</a>
+                        </li>
+                        <li role="presentation">
+                            <a id="description-tab" data-bs-toggle="pill" href="#description" role="tab" aria-controls="description" aria-selected="false">Descripción</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content product-tab-content" id="ReviewTabContent">
+                        <div class="tab-pane fade show active" id="information" role="tabpanel" aria-labelledby="information-tab">
+                            <div class="product-information">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim adlo minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in tun tuni reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserun mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rel aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.</p>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="description" role="tabpanel" aria-labelledby="description-tab">
+                            <div class="product-description">
+                            <p><%= @product.description %></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--== End Product Single Area Wrapper ==-->
+
+<!--== Start Product Area Wrapper ==-->
+<section class="product-area product-best-seller-area">
+    <div class="container pt--0">
+    <div class="row">
+        <div class="col-12">
+        <div class="section-title text-center">
+            <h3 class="title">Productos Relacionados</h3>
+            <div class="desc">
+            <p>Te recomendamos estos productos similares</p>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+        <div class="product-slider-wrap">
+            <div class="swiper-container product-slider-col4-container">
+                <div class="swiper-wrapper">
+                    <% if @related_products.blank? %>
+                        <div class="col-12">
+                            <div class="alert alert-warning" role="alert">
+                                No se encontraron productos
+                            </div>
+                        </div>
+                    <% else %>
+                        <% @related_products.each do |product| %>
+                            <div class="swiper-slide">
+                                <!--== Start Product Item ==-->
+                                <div class="product-item">
+                                    <div class="inner-content">
+                                        <div class="product-thumb">
+                                            <%= link_to single_product_electric_motorcycles_path(name: product.name.downcase.gsub(' ', '-')) do %>
+                                                <img src="<%= product.imagen.blank? ? '/assets/shop/1.webp' : product.imagen %>" width="270" height="274" title="<%= product.name %>" alt="<%= product.imagen %>">
+                                            <% end %>
+                                            <div class="product-flag <%= product.discount.blank? || product.discount == 0 ? 'd-none' : 'd-block' %>">
+                                                <ul>
+                                                    <li class="discount">-<%= product.discount %>%</li>
+                                                </ul>
+                                            </div>
+                                            <div class="product-action">
+                                                <%= link_to show_product_path(product), class: "btn-product-quick-view-open", remote: true do %>
+                                                    <i class="fa fa-arrows"></i>
+                                                <% end %>
+                                            </div>
+                                            <a class="banner-link-overlay" href="shop"></a>
+                                        </div>
+                                        <div class="product-info">
+                                            <div class="category">
+                                                <ul>
+                                                    <li><%= link_to product.category, electric_motorcycles_catalog_path(category: product.category) %></li>
+                                                </ul>
+                                            </div>
+                                            <h4 class="title"><%= link_to product.name, single_product_electric_motorcycles_path(name: product.name.downcase.gsub(' ', '-'))%></h4>
+                                            <div class="prices">
+                                                <% if product.price != product.total_price %>
+                                                    <span class="price-old">S/. <%= product.price %></span>
+                                                    <span class="sep">-</span>
+                                                <% end %>
+                                                <span class="price">S/. <%= product.total_price %></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--== End prPduct Item ==-->
+                            </div>
+                        <% end %>
+                    <% end %>
+                </div>
+            </div>
+            <!--== Add Swiper Arrows ==-->
+            <% unless @related_products.blank? %>
+                <div class="product-swiper-btn-wrap">
+                    <div class="product-swiper-btn-prev">
+                        <i class="fa fa-arrow-left"></i>
+                    </div>
+                    <div class="product-swiper-btn-next">
+                        <i class="fa fa-arrow-right"></i>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+        </div>
+    </div>
+    </div>
+</section>
+<!--== End Product Area Wrapper ==-->
+
+
+<!--== Start Quick View Menu ==-->
+<aside class="product-quick-view-modal">
+    <div class="product-quick-view-inner">
+        <div class="product-quick-view-content">
+            <button type="button" class="btn-close">
+                <span class="close-icon"><i class="fa fa-close"></i></span>
+            </button>
+            <div class="row align-items-center" id="modal_content">
+                
+            </div>
+        </div>
+    </div>
+    <div class="canvas-overlay"></div>
+</aside>
+<!--== End Quick View Menu ==-->

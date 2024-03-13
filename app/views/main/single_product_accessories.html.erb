@@ -7,7 +7,7 @@
             <h2 class="title" data-aos="fade-down" data-aos-duration="1000">Product Details</h2>
             <nav class="breadcrumb-area" data-aos="fade-down" data-aos-duration="1200">
             <ul class="breadcrumb">
-                <li><a href="/">Inicio</a></li>
+                <li><%= link_to "Inicio", root_path %></li>
                 <li class="breadcrumb-sep">//</li>
                 <li>Product Details</li>
             </ul>
@@ -27,7 +27,7 @@
                 <div class="product-single-item">
                     <div class="row">
                         <div class="col-xl-6">
-                            <% if @product.images.blank? %>
+                            <% if @accessory.images.blank? %>
                                 <!--== Start Product Thumbnail Area ==-->
                                 <div class="product-single-thumb">
                                     <div class="swiper-container single-product-thumb single-product-thumb-slider">
@@ -85,7 +85,7 @@
                                 <div class="product-single-thumb">
                                     <div class="swiper-container single-product-thumb single-product-thumb-slider">
                                     <div class="swiper-wrapper">
-                                        <% @product.images.each do |image| %>
+                                        <% @accessory.images.each do |image| %>
                                         <div class="swiper-slide">
                                             <a class="lightbox-image" data-fancybox="gallery" href="<%= image.image_url %>">
                                             <img src="<%= image.image_url %>" width="570" height="541" alt="<%= image.image_name %>">
@@ -96,7 +96,7 @@
                                     </div>
                                     <div class="swiper-container single-product-nav single-product-nav-slider">
                                     <div class="swiper-wrapper">
-                                        <% @product.images.each do |image| %>
+                                        <% @accessory.images.each do |image| %>
                                         <div class="swiper-slide">
                                             <img src="<%= image.image_url %>" width="127" height="127" alt="<%= image.image_name %>">
                                         </div>
@@ -110,15 +110,15 @@
                         <div class="col-xl-6">
                             <!--== Start Product Info Area ==-->
                             <div class="product-single-info">
-                                <h3 class="main-title"><%= @product.name %></h3>
+                                <h3 class="main-title"><%= @accessory.name %></h3>
                                 <div class="prices">
-                                    <% if @product.price != @product.total_price %>
-                                    <del class="price-old">S/.<%= @product.price %></del>
+                                    <% if @accessory.price != @accessory.total_price %>
+                                    <del class="price-old">S/.<%= @accessory.price %></del>
                                     <% end %>
-                                    <span class="price">S/.<%= @product.total_price %></span>
+                                    <span class="price">S/.<%= @accessory.total_price %></span>
                                 </div>
                                 <div class="rating-box-wrap"></div>
-                                <p><%= @product.description %></p>
+                                <p><%= @accessory.description %></p>
                                 <div class="product-color">
                                     <h6 class="title">Color</h6>
                                     <ul class="color-list">
@@ -134,7 +134,7 @@
                             
                                 <div class="product-wishlist-compare"></div>
                                 <div class="product-info-footer">
-                                    <h6 class="code"><span>SKU :</span><%= @product.code %></h6>
+                                    <h6 class="code"><span>SKU :</span><%= @accessory.code %></h6>
                                     <div class="social-icons">
                                         <span>Share</span>
                                         <a href="#/"><i class="fa fa-facebook"></i></a>
@@ -169,7 +169,7 @@
                         </div>
                         <div class="tab-pane fade" id="description" role="tabpanel" aria-labelledby="description-tab">
                             <div class="product-description">
-                            <p><%= @product.description %></p>
+                            <p><%= @accessory.description %></p>
                             </div>
                         </div>
                     </div>
@@ -198,65 +198,29 @@
         <div class="product-slider-wrap">
             <div class="swiper-container product-slider-col4-container">
                 <div class="swiper-wrapper">
-                    <% if @related_products.blank? %>
-                        <% 6.times do %>
-                            <div class="swiper-slide">
-                                <!--== Start Product Item ==-->
-                                <div class="product-item">
-                                    <div class="inner-content">
-                                        <div class="product-thumb">
-                                            <a href="/catalogo">
-                                                <img src="/assets/shop/1.webp" width="270" height="274" alt="Image-HasTech">
-                                            </a>
-                                            <div class="product-flag">
-                                                <ul>
-                                                    <li class="discount">-10%</li>
-                                                </ul>
-                                            </div>
-                                            <div class="product-action">
-                                                <button type="button" class="btn-product-quick-view-open">
-                                                    <i class="fa fa-arrows"></i>
-                                                </button>
-                                            </div>
-                                            <a class="banner-link-overlay" href="shop"></a>
-                                        </div>
-                                        <div class="product-info">
-                                            <div class="category">
-                                                <ul>
-                                                    <li><a href="shop">Men</a></li>
-                                                    <li class="sep">/</li>
-                                                    <li><a href="shop">Women</a></li>
-                                                </ul>
-                                            </div>
-                                            <h4 class="title"><a href="/catalogo">Modern Smart Shoes</a></h4>
-                                            <div class="prices">
-                                                <span class="price-old">$300</span>
-                                                <span class="sep">-</span>
-                                                <span class="price">$240.00</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--== End prPduct Item ==-->
+                    <% if @related_accessories.blank? %>
+                        <div class="col-12">
+                            <div class="alert alert-warning" role="alert">
+                                No se encontraron productos
                             </div>
-                        <% end %>
+                        </div>
                     <% else %>
-                        <% @related_products.each do |product| %>
+                        <% @related_accessories.each do |accessory| %>
                             <div class="swiper-slide">
                                 <!--== Start Product Item ==-->
                                 <div class="product-item">
                                     <div class="inner-content">
                                         <div class="product-thumb">
-                                            <a href="/catalogo/<%= product.name.downcase.gsub(' ', '-') %>">
-                                                <img src="<%= product.imagen.blank? ? '/assets/shop/1.webp' : product.imagen %>" width="270" height="274" title="<%= product.name %>" alt="<%= product.imagen %>">
-                                            </a>
-                                            <div class="product-flag <%= product.discount.blank? || product.discount == 0 ? 'd-none' : 'd-block' %>">
+                                            <%= link_to single_product_accessories_path(name: accessory.name.downcase.gsub(' ', '-')) do %>
+                                                <img src="<%= accessory.imagen.blank? ? '/assets/shop/1.webp' : accessory.imagen %>" width="270" height="274" title="<%= accessory.name %>" alt="<%= accessory.imagen %>">
+                                            <% end %>
+                                            <div class="product-flag <%= accessory.discount.blank? || accessory.discount == 0 ? 'd-none' : 'd-block' %>">
                                                 <ul>
-                                                    <li class="discount">-<%= product.discount %>%</li>
+                                                    <li class="discount">-<%= accessory.discount %>%</li>
                                                 </ul>
                                             </div>
                                             <div class="product-action">
-                                                <%= link_to show_product_path(product), class: "btn-product-quick-view-open", remote: true do %>
+                                                <%= link_to show_accessory_path(accessory), class: "btn-product-quick-view-open", remote: true do %>
                                                     <i class="fa fa-arrows"></i>
                                                 <% end %>
                                             </div>
@@ -265,18 +229,16 @@
                                         <div class="product-info">
                                             <div class="category">
                                                 <ul>
-                                                    <li><a href="shop">Men</a></li>
-                                                    <li class="sep">/</li>
-                                                    <li><a href="shop">Women</a></li>
+                                                    <li><%= link_to accessory.category, accessories_catalog_path(category: accessory.category) %></li>
                                                 </ul>
                                             </div>
-                                            <h4 class="title"><a href="/catalogo/<%= product.name.downcase.gsub(' ', '-') %>"><%= product.name %></a></h4>
+                                            <h4 class="title"><%= link_to accessory.name, single_product_accessories_path(name: accessory.name.downcase.gsub(' ', '-'))%></h4>
                                             <div class="prices">
-                                                <% if product.price != product.total_price %>
-                                                    <span class="price-old">S/. <%= product.price %></span>
+                                                <% if accessory.price != accessory.total_price %>
+                                                    <span class="price-old">S/. <%= accessory.price %></span>
                                                     <span class="sep">-</span>
                                                 <% end %>
-                                                <span class="price">S/. <%= product.total_price %></span>
+                                                <span class="price">S/. <%= accessory.total_price %></span>
                                             </div>
                                         </div>
                                     </div>
@@ -288,14 +250,16 @@
                 </div>
             </div>
             <!--== Add Swiper Arrows ==-->
-            <div class="product-swiper-btn-wrap">
-            <div class="product-swiper-btn-prev">
-                <i class="fa fa-arrow-left"></i>
-            </div>
-            <div class="product-swiper-btn-next">
-                <i class="fa fa-arrow-right"></i>
-            </div>
-            </div>
+            <% unless @related_accessories.blank? %>
+                <div class="product-swiper-btn-wrap">
+                    <div class="product-swiper-btn-prev">
+                        <i class="fa fa-arrow-left"></i>
+                    </div>
+                    <div class="product-swiper-btn-next">
+                        <i class="fa fa-arrow-right"></i>
+                    </div>
+                </div>
+            <% end %>
         </div>
         </div>
     </div>
