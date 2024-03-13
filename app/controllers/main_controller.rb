@@ -2,6 +2,8 @@ class MainController < ApplicationController
 
   def index
     @page_title = "GreenLote VelaMotos | Una De Las Primeras Empresas Que Operan Con Productos Eléctricos En El Perú"
+    @products = Product.where(id: get_random_products(Product.all, 0, 8))
+    @accessories = Accessory.where(id: get_random_products(Accessory.all, 0, 6))
   end
 
   def about_us
@@ -57,7 +59,7 @@ class MainController < ApplicationController
     else
       @page_title = @product.name.capitalize
       @colors = get_colors(@product.color)
-      @related_products = Product.where(id: get_random_products(Product.all, @product.id))
+      @related_products = Product.where(id: get_random_products(Product.all, @product.id, 6))
     end
   end
 
@@ -68,14 +70,14 @@ class MainController < ApplicationController
     else
       @page_title = @accessory.name.capitalize
       @colors = get_colors(@accessory.color)
-      @related_accessories = Accessory.where(id: get_random_products(Accessory.all, @accessory.id))
+      @related_accessories = Accessory.where(id: get_random_products(Accessory.all, @accessory.id, 6))
     end
   end
 
   private
-    def get_random_products(products, product_id)
+    def get_random_products(products, product_id, quantity)
       product_ids = products.pluck(:id) - [product_id]
-      random_products = product_ids.shuffle.take(6)
+      random_products = product_ids.shuffle.take(quantity)
     end
 
 end

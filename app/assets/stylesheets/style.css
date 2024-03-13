@@ -9688,3 +9688,16 @@ table p {
   justify-content: center;
   align-items: center;
 }
+
+/* Video */
+.video-container {
+  display: flex;
+  justify-content: center; /* Centrado horizontal */
+  align-items: center; /* Centrado vertical */
+  height: 100%;
+}
+
+video {
+  max-width: 100%;
+  max-height: 100%;
+}
