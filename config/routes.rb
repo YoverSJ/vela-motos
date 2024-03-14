@@ -27,6 +27,10 @@ Rails.application.routes.draw do
     resources :imagenes, controller: :accessory_images, as: :images, only: [:new, :create, :destroy]
   end
 
-  devise_for :users
+  devise_for :users, controllers: {
+    sessions:       "users/sessions",
+    registrations:  "users/registrations",
+    passwords:      "users/passwords",
+  }
 
 end
