@@ -1,0 +1,80 @@
+<!--== Start Page Header Area Wrapper ==-->
+<div class="page-header-area" data-bg-img="/assets/photos/bg3.webp">
+  <div class="container pt--0 pb--0">
+    <div class="row">
+      <div class="col-12">
+        <div class="page-header-content">
+          <h2 class="title" data-aos="fade-down" data-aos-duration="1000">Register</h2>
+          <nav class="breadcrumb-area" data-aos="fade-down" data-aos-duration="1200">
+            <ul class="breadcrumb">
+              <li><a href="index.html">Home</a></li>
+              <li class="breadcrumb-sep">//</li>
+              <li>Register</li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--== End Page Header Area Wrapper ==-->
+
+<!--== Start My Account Area Wrapper ==-->
+<section class="account-area">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 m-auto">
+        <div class="section-title text-center">
+          <h2 class="title">Registrarse</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="register-form-content">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%# <form action="#"> %>
+            <%= render "devise/shared/error_messages", resource: resource %>
+            <div class="row">
+              <div class="col-12">
+                <div class="form-group">
+                  <%= f.label :email do %>
+                    Correo electronico <span class="required">*</span>
+                  <% end %>
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-group">
+                  <%= f.label :password do %>
+                    Constraseña
+                    <% if @minimum_password_length %>
+                      <em>(<%= @minimum_password_length %> caracteres mínimos)</em>
+                    <% end %>
+                    <span class="required">*</span>
+                  <% end %>
+                  <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-group">
+                  <%= f.label :password_confirmation do %>
+                    Confirmar contraseña <span class="required">*</span>
+                  <% end %>
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-group mb--0">
+                  <%= f.submit "Registrar", class: "btn-register" %>
+                </div>
+              </div>
+            </div>
+          <%# </form> %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--== End My Account Area Wrapper ==-->

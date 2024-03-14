@@ -1,5 +1,6 @@
 class AccessoriesController < ApplicationController
 
+  before_action :authenticate_user!
   before_action :set_data_select, only: %i[ new create edit update]
   before_action :set_accessory, only: %i[ show edit update destroy ]
 

@@ -1,5 +1,6 @@
 class AccessoryImagesController < ApplicationController
 
+  before_action :authenticate_user!
   before_action :set_accessory_image, only: %i[ destroy ]
 
   def new

@@ -21,7 +21,12 @@
                         <%= link_to "+51 975 135 920", "https://wa.me/+51975135920?text=Hola%20estoy%20interesado%20en%20uno%20de%20sus%20productos", target: "_blank" %>
                     </li>
                     <li class="email"><i class="fa fa-envelope"></i><%= link_to "contacto@velamotos.com", "mailto:contacto@velamotos.com" %></li>
-                    <li class="account"><i class="fa fa-user"></i><%= link_to 'Inicar Sesión', "#" %></li>
+                    <% unless user_signed_in? %>
+                      <li class="account"><i class="fa fa-user"></i><%= link_to 'Inicar Sesión', new_user_session_path %></li>
+                    <% end %>
+                    <% if user_signed_in? %>
+                      <li class="account"><i class="fa fa-sign-out"></i><%= link_to 'Cerrar Sesión', destroy_user_session_path, method: :delete %></li>
+                    <% end %>
                   </ul>
                 </div>
               </div>
@@ -63,12 +68,14 @@
           <div class="header-align">
             <div class="header-navigation-area position-relative">
               <ul class="main-menu nav">
-                <li class="has-submenu"><a href="#/"><span>Dashboard</span></a>
-                  <ul class="submenu-nav">
-                    <li><%= link_to products_path do %><span>Motos electricas</span><% end %></li>
-                    <li><%= link_to accessories_path do %><span>Accesorios</span><% end %></li>
-                  </ul>
-                </li>
+                <% if user_signed_in? %>
+                  <li class="has-submenu"><a href="#/"><span>Dashboard</span></a>
+                    <ul class="submenu-nav">
+                      <li><%= link_to products_path do %><span>Motos electricas</span><% end %></li>
+                      <li><%= link_to accessories_path do %><span>Accesorios</span><% end %></li>
+                    </ul>
+                  </li>
+                <% end %>
                 <li><%= link_to root_path do %><span>Inicio</span><% end %></li>
                 <li><%= link_to about_us_path do %><span>Nosotros</span><% end %>
                 </li>

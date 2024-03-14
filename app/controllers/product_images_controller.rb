@@ -1,5 +1,6 @@
 class ProductImagesController < ApplicationController
 
+  before_action :authenticate_user!
   before_action :set_product_image, only: %i[ destroy ]
 
   def new
