@@ -1,0 +1,54 @@
+<div class="myaccount-content" id="<%= dom_id user %>">
+  <h3>Detalles del usuario</h3>
+  <!--== Start Shopping Checkout Area Wrapper ==-->
+  <section class="shopping-checkout-wrap">
+    <div class="col-lg-12">
+      <!--== Start Billing Accordion ==-->
+      <div class="checkout-billing-details-wrap">
+        <div class="billing-form-wrap">
+          <form action="#" method="post">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                    <%= label_tag :first_name, "Nombres" %>
+                    <%= text_field_tag :first_name, user.first_name, class: "form-control", disabled: true %>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                    <%= label_tag :last_name, "Apellidos" %>
+                    <%= text_field_tag :last_name, user.last_name, class: "form-control", disabled: true %>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                    <%= label_tag :username, "Usuario" %>
+                    <%= text_field_tag :username, user.username, class: "form-control", disabled: true %>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                    <%= label_tag :email, "Correo electronico" %>
+                    <%= text_field_tag :email, user.email, class: "form-control", disabled: true %>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="form-group">
+                    <%= label_tag :password, "Contraseña" %>
+                    <%= text_field_tag :password, user.encrypted_password, class: "form-control", disabled: true %>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                    <%= button_to "Eliminar", usuario_path(user), method: :delete, data: { confirm: "¿Deseas borrar este usuario?" }, class: "btn-theme" %>
+                    </div>
+                </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!--== End Billing Accordion ==-->
+    </div>
+  </section>
+  <!--== End Shopping Checkout Area Wrapper ==-->
+</div>

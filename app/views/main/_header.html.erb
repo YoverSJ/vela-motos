@@ -71,6 +71,7 @@
                 <% if user_signed_in? %>
                   <li class="has-submenu"><a href="#/"><span>Dashboard</span></a>
                     <ul class="submenu-nav">
+                      <li><%= link_to usuarios_path do %><span>Usuarios</span><% end %></li>
                       <li><%= link_to products_path do %><span>Motos electricas</span><% end %></li>
                       <li><%= link_to accessories_path do %><span>Accesorios</span><% end %></li>
                     </ul>

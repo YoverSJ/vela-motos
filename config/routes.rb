@@ -33,4 +33,6 @@ Rails.application.routes.draw do
     passwords:      "users/passwords",
   }
 
+  resources :usuarios
+
 end

@@ -30,10 +30,10 @@
         
         <div class="row mb-3">
           <div class="col-md-8">
-              <h3>Productos</h3>
+              <h3>Usuarios</h3>
           </div>
           <div class="col-md-4 d-flex justify-content-end">
-              <%= link_to "Nuevo", new_product_path, class: "btn-theme" %>
+              <%= link_to "Nuevo", new_usuario_path, class: "btn-theme" %>
           </div>
         </div>
         <div class="myaccount-table table-responsive text-center">
@@ -41,32 +41,30 @@
             <thead class="thead-light">
               <tr>
                 <th>#</th>
-                <th>Nombre</th>
-                <th>Garantía</th>
-                <th>Precio Total</th>
-                <th>Stock</th>
+                <th>Nombre Completo</th>
+                <th>Usuario</th>
+                <th>Correo</th>
                 <th>Acciones</th>
               </tr>
             </thead>
             <tbody>
-              <% unless @products.blank? %>
-                <% @products.each_with_index do |product, index| %>
+              <% unless @users.blank? %>
+                <% @users.each_with_index do |user, index| %>
                   <tr>
                     <td>
-                      <%= (@pagy.page - 1) * @products.limit_value + index + 1 %>
+                      <%= (@pagy.page - 1) * @users.limit_value + index + 1 %>
                     </td>
-                    <td><%= product.name %></td>
-                    <td><%= product.warranty %></td>
-                    <td><%= product.total_price %></td>
-                    <td><%= product.stock %></td>
+                    <td><%= user.first_name.to_s + " " + user.last_name.to_s %></td>
+                    <td><%= user.username %></td>
+                    <td><%= user.email %></td>
                     <td>
-                      <%= link_to product, class: "check-btn sqr-btn" do %>
+                      <%= link_to usuario_path(user), class: "check-btn sqr-btn" do %>
                         <i class="fa fa-eye"></i>
                       <% end %>  
-                      <%= link_to edit_product_path(product), class: "check-btn sqr-btn" do %>
+                      <%= link_to edit_usuario_path(user), class: "check-btn sqr-btn" do %>
                         <i class="fa fa-pencil"></i>
                       <% end %>  
-                      <%= link_to product, method: :delete, data: { confirm: '¿Estas seguro de eliminar este producto?' }, class: "check-btn sqr-btn" do %>
+                      <%= link_to usuario_path(user), method: :delete, data: { confirm: "¿Deseas borrar este usuario?" }, class: "check-btn sqr-btn" do %>
                         <i class="fa fa-trash"></i>
                       <% end %>
                     </td>
@@ -74,18 +72,18 @@
                 <% end %>
               <% else %>
                 <tr>
-                  <td colspan="6">No hay resultados</td>
+                  <td colspan="5">No hay resultados</td>
                 </tr>
               <% end %>
             </tbody>
           </table>
           <%# pagy_items_selector_js(@pagy) %>
-          <%# render "pagy/custom_pagy_items_selector", pagy: @pagy, items: @items unless @products.blank? %>
+          <%# render "pagy/custom_pagy_items_selector", pagy: @pagy, items: @items unless @users.blank? %>
         </div>
         <div class="d-flex justify-content-center">
-          <%= render "pagy/custom_pagy_info", pagy: @pagy unless @products.blank? %>
+          <%= render "pagy/custom_pagy_info", pagy: @pagy unless @users.blank? %>
         </div>
-        <%= render "pagy/custom_pagy", pagy: @pagy unless @products.blank? %>
+        <%= render "pagy/custom_pagy", pagy: @pagy unless @users.blank? %>
       </div>
     </div>
 
