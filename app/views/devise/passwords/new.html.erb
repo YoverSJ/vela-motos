@@ -1,16 +1,68 @@
-<h2>Forgot your password?</h2>
-
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<!--== Start Page Header Area Wrapper ==-->
+<div class="page-header-area" data-bg-img="/assets/velamotos/shop-bg.png">
+  <div class="container pt--0 pb--0">
+    <div class="row">
+      <div class="col-12">
+        <div class="page-header-content">
+          <h2 class="title" data-aos="fade-down" data-aos-duration="1000" style="color:#eb3e32;">Recuperar Contraseña</h2>
+          <nav class="breadcrumb-area" data-aos="fade-down" data-aos-duration="1200">
+            <ul class="breadcrumb">
+              <li><%= link_to "Inicio", root_path %></li>
+              <li class="breadcrumb-sep">//</li>
+              <li>Recuperar Contraseña</li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
+<!--== End Page Header Area Wrapper ==-->
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
+<!--== Start My Account Area Wrapper ==-->
+<section class="account-area">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 m-auto">
+        <div class="section-title text-center">
+          <h2 class="title">¿Ha olvidado su contraseña?</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="login-form-content">
+
+          <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
+
+            <div class="col-12">
+              <div class="form-group">
+                <%= f.label :email do %>
+                  Correo electronico <span class="required">*</span>
+                <% end %>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <div class="form-group">
+                <%= f.submit "Enviar instrucciones para restablecer la contraseña", class: "btn-login" %>
+              </div>
+            </div>
+
+          <% end %>
+
+          <%- if controller_name != 'sessions' %>
+            <%= link_to "Log in", new_session_path(resource_name) %><br />
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
-<% end %>
+</section>
+<!--== End My Account Area Wrapper ==-->
 
-<%= render "devise/shared/links" %>
+
+
+

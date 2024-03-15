@@ -25,7 +25,16 @@
                       <li class="account"><i class="fa fa-user"></i><%= link_to 'Inicar Sesión', new_user_session_path %></li>
                     <% end %>
                     <% if user_signed_in? %>
-                      <li class="account"><i class="fa fa-sign-out"></i><%= link_to 'Cerrar Sesión', destroy_user_session_path, method: :delete %></li>
+                      <li class="account">
+                        <ul class="main-menu">
+                          <li class="has-submenu"><i class="fa fa-user" style="color:#eb3e32"></i>  <%= current_user.username&.upcase %>
+                            <ul class="submenu-nav" style="padding: 10px 0 10px;min-width: 200px;">
+                              <li><%= link_to 'Cuenta', edit_user_registration_path %></li>
+                              <li><%= link_to 'Cerrar Sesión', destroy_user_session_path, method: :delete %></li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </li>
                     <% end %>
                   </ul>
                 </div>
