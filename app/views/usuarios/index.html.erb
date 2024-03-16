@@ -4,8 +4,6 @@
 <section class="contact-area contact-page-area">
   <div class="container" style="padding-top: 40px">
 
-    <p style="color: green"><%= notice %></p>
-
     <div class="tab-pane" id="orders" role="tabpanel" aria-labelledby="orders-tab">
       <div class="myaccount-content">
         
@@ -25,6 +23,7 @@
                 <th>Nombre Completo</th>
                 <th>Usuario</th>
                 <th>Correo</th>
+                <th>Rol</th>
                 <th>Acciones</th>
               </tr>
             </thead>
@@ -38,6 +37,7 @@
                     <td><%= user.first_name.to_s + " " + user.last_name.to_s %></td>
                     <td><%= user.username %></td>
                     <td><%= user.email %></td>
+                    <td><%= user.role %></td>
                     <td>
                       <%= link_to usuario_path(user), class: "check-btn sqr-btn" do %>
                         <i class="fa fa-eye"></i>

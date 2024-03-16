@@ -34,12 +34,22 @@
         <div class="login-form-content">
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <div class="row">
-              <% if notice  %>
-                <p class="notice"><%= notice %></p>
-              <% end %>
-              <% if alert %>
-                <p class="alert"><%= alert %></p>
-              <% end %>
+              <div class="col-12">
+                <div class="form-group">
+                  <% if alert  %>
+                    <div class="alert alert-danger alert-dismissible fade show" style="width: 100%;" role="alert">
+                      <%= alert %>
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                  <% end %>
+                  <% if notice %>
+                    <div class="alert alert-info alert-dismissible fade show" style="width: 100%;" role="alert">
+                      <%= notice %>
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
               <div class="col-12">
                 <div class="form-group">
                   <%= f.label :email do %>

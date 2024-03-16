@@ -11,7 +11,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <%= f.label :first_name do %>
                                     Nombres <abbr class="required" title="required">*</abbr>
@@ -19,7 +19,7 @@
                                 <%= f.text_field :first_name, class: "form-control" %>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <%= f.label :last_name do %>
                                     Apellidos <abbr class="required" title="required">*</abbr>
@@ -27,12 +27,20 @@
                                 <%= f.text_field :last_name, class: "form-control" %>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <%= f.label :username do %>
                                     Usuario <abbr class="required" title="required">*</abbr>
                                 <% end %>
                                 <%= f.text_field :username, class: "form-control" %>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <%= f.label :role do %>
+                                    Rol <abbr class="required" title="required">*</abbr>
+                                <% end %>
+                                <%= f.select :role, [["Seleccione", ""]] +  @roles.map { |key, value| [value, key]}, {}, class: "form-control" %>
                             </div>
                         </div>
                         <div class="col-md-4">

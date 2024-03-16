@@ -51,7 +51,9 @@
                 <% if user_signed_in? %>
                     <li><a href="#">Dashboard</a>
                         <ul class="sub-menu">
-                            <li><%= link_to usuarios_path do %><span>Usuarios</span><% end %></li>
+                            <% if current_user.has_role?("admin") %>
+                              <li><%= link_to usuarios_path do %><span>Usuarios</span><% end %></li>
+                            <% end %>
                             <li><%= link_to products_path do %><span>Motos electricas</span><% end %></li>
                             <li><%= link_to accessories_path do %><span>Accesorios</span><% end %></li>
                         </ul>

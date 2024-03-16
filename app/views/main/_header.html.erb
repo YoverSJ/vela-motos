@@ -49,6 +49,20 @@
     <div class="container pt--0 pb--0">
       <div class="row align-items-center">
         <div class="col-12">
+          <% if user_signed_in? %>
+            <% if alert  %>
+              <div class="alert alert-warning alert-dismissible fade show" style="width: 100%;" role="alert">
+                <%= alert %>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            <% end %>
+            <% if notice %>
+              <div class="alert alert-info alert-dismissible fade show" style="width: 100%;" role="alert">
+                <%= notice %>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            <% end %>
+          <% end %>  
           <div class="header-middle-align">
             <div class="header-middle-align-start">
               <div class="header-logo-area">
@@ -80,7 +94,9 @@
                 <% if user_signed_in? %>
                   <li class="has-submenu"><a href="#/"><span>Dashboard</span></a>
                     <ul class="submenu-nav">
-                      <li><%= link_to usuarios_path do %><span>Usuarios</span><% end %></li>
+                      <% if current_user.has_role?("admin") %>
+                        <li><%= link_to usuarios_path do %><span>Usuarios</span><% end %></li>
+                      <% end %>
                       <li><%= link_to products_path do %><span>Motos electricas</span><% end %></li>
                       <li><%= link_to accessories_path do %><span>Accesorios</span><% end %></li>
                     </ul>

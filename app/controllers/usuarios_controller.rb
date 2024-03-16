@@ -1,6 +1,8 @@
 class UsuariosController < ApplicationController
 
   before_action :authenticate_user!
+  before_action :authenticate_admin!
+  before_action :set_data_select, only: %i[ new create edit update show]
   before_action :set_user, only: %i[ show edit update destroy ]
 
   def index
@@ -65,7 +67,11 @@ class UsuariosController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :username, :email, :password, :password_confirmation)
+      params.require(:user).permit(:first_name, :last_name, :username, :role, :email, :password, :password_confirmation)
+    end
+
+    def set_data_select
+      @roles = {admin: "Administrador", user: "Usuario", seller: "Vendedor"}
     end
 
 end
